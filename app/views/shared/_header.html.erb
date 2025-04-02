@@ -1,10 +1,23 @@
+<div class='header-logo'>
+  ローカルグルメロゴ
+</div>
 <% if current_user %>
-  <p>ユーザーID</p>
-  <%= current_user.id %>
-  <div>
-    <%= link_to "ログアウト", destroy_user_session_path, method: :delete %>
+  <div class='end'>
+    <div>
+      ユーザーID
+      <%= current_user.id %>
+    </div>
+    <div>
+      ユーザー名
+      <%= current_user.name %>
+    </div>
+    <div>
+      <%= link_to "ログアウト", destroy_user_session_path, method: :delete %>
+    </div>
   </div>
 <% else %>
-  <%= link_to "ログイン", new_user_session_path %>
-  <%= link_to "新規登録", new_user_registration_path %>
+  <div class='end'>
+    <%= link_to "ログイン", new_user_session_path %>
+    <%= link_to "新規登録", new_user_registration_path %>
+  </div>
 <% end %>
