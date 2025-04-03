@@ -1,12 +1,12 @@
 body {
   margin: 0;
-  background-color: #FEFAE0;
+  background-color: #F9EFDB;
   color: #000000;
 }
 
 header {
   height: 56px;
-  background-color: #A6B37D;
+  background-color: #9DBC98;
   color: #ffffff;
   display: flex;
   justify-content: space-between;
@@ -63,8 +63,9 @@ input {
 .submit-btn {
   width: 340px;
   height: 40px;
-  background-color: #C0C78C;
+  background-color: #638889;
   color: #ffffff;
+  margin-bottom: 20px;
 }
 
 ul {
@@ -78,4 +79,12 @@ ul {
 
 .flash-message {
   color: #E50046;
+}
+
+.guide-link {
+  color: #000000;
+}
+
+.guide-link:hover {
+  text-decoration: underline;
 }
