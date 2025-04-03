@@ -28,3 +28,54 @@ a {
   align-items: center;
   display: flex;
 }
+
+.content {
+  width: 100%;
+  display: flex;
+  margin: 0 auto;
+  padding: 45px 0;
+}
+
+.registration-container {
+  margin: 0 auto;
+}
+
+.login-container {
+  margin: 0 auto;
+}
+
+input {
+  width: 320px;
+  height: 28px;
+  padding: 0 10px;
+  border: 1px;
+  border-radius: 0.2rem;
+}
+
+.field {
+  width: 344px;
+}
+
+.text-field {
+  margin-bottom: 20px;
+}
+
+.submit-btn {
+  width: 340px;
+  height: 40px;
+  background-color: #C0C78C;
+  color: #ffffff;
+}
+
+ul {
+  padding-inline-start: 0px;
+}
+
+.error-message-list {
+  list-style: none;
+  color: #E50046;
+}
+
+.flash-message {
+  color: #E50046;
+}
