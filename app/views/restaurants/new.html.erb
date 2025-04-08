@@ -1,0 +1,13 @@
+<h3>店舗登録画面</h3>
+
+<%= form_with model: @restaurant, local: true do |f| %>
+  <%= f.label :name, "飲食店名" %>
+  <%= f.text_field :name %>
+  <div>
+    <%= "住所: #{@not_registered_data[:address]}" %>
+  </div>
+  <%= f.hidden_field :address, value: @not_registered_data[:address] %>
+  <%= f.hidden_field :lat, value: @not_registered_data[:lat] %>
+  <%= f.hidden_field :lng, value: @not_registered_data[:lng] %>
+  <%= f.submit "店舗登録を完了する" %>
+<% end %>
