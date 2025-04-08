@@ -1,0 +1,40 @@
+<div>
+  以下のお店は既に登録されています。</br>
+  さっそくお店の口コミを投稿してみましょう。
+</div>
+<h3>
+  <div>
+    <%= "飲食店名: #{@restaurant.name}" %>
+  </div>
+</h3>
+<div>
+  <%= "住所: #{@restaurant.address}" %>
+</div>
+<%= link_to "口コミを投稿する", restaurant_path(@restaurant) %>
+<div id='map'></div>
+
+<style>
+#map {
+  height: 300px;
+  width: 400px;
+}
+</style>
+
+<script>
+  let map
+  let marker
+  function initMap(){
+    geocoder = new google.maps.Geocoder()
+
+    map = new google.maps.Map(document.getElementById('map'), {
+      center:  {lat: <%= @restaurant.lat %>, lng: <%= @restaurant.lng %>},
+      zoom: 15,
+    });
+
+    marker = new google.maps.Marker({
+      position:  {lat: <%= @restaurant.lat %>, lng: <%= @restaurant.lng %>},
+      map: map
+    });
+  }
+</script>
+<script src="https://maps.googleapis.com/maps/api/js?key=<%= ENV['GOOGLE_MAPS_API_KEY'] %>&callback=initMap" async defer></script>
