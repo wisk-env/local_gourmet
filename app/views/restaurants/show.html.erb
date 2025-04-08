@@ -1,0 +1,30 @@
+<%= render "shared/flash" %>
+<h3><%= "飲食店名: #{@restaurant.name}" %></h3>
+<div><%= "住所: #{@restaurant.address}" %></div>
+<div id='map'></div>
+
+<style>
+#map {
+  height: 300px;
+  width: 400px;
+}
+</style>
+
+<script>
+  let map
+  let marker
+  function initMap(){
+    geocoder = new google.maps.Geocoder()
+
+    map = new google.maps.Map(document.getElementById('map'), {
+      center:  {lat: <%= @restaurant.lat %>, lng: <%= @restaurant.lng %>},
+      zoom: 15,
+    });
+
+    marker = new google.maps.Marker({
+      position:  {lat: <%= @restaurant.lat %>, lng: <%= @restaurant.lng %>},
+      map: map
+    });
+  };
+</script>
+<script src="https://maps.googleapis.com/maps/api/js?key=<%= ENV['GOOGLE_MAPS_API_KEY'] %>&callback=initMap" async defer></script>
