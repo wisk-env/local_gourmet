@@ -10,9 +10,19 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema[7.1].define(version: 2025_04_02_113259) do
+ActiveRecord::Schema[7.1].define(version: 2025_04_07_061904) do
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
+
+  create_table "restaurants", force: :cascade do |t|
+    t.string "name", null: false
+    t.float "lat", null: false
+    t.float "lng", null: false
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.string "address", null: false
+    t.index ["lat", "lng"], name: "index_restaurants_on_lat_and_lng", unique: true
+  end
 
   create_table "users", force: :cascade do |t|
     t.string "email", default: "", null: false
