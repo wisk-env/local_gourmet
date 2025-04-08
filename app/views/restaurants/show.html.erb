@@ -1,6 +1,7 @@
 <%= render "shared/flash" %>
 <h3><%= "飲食店名: #{@restaurant.name}" %></h3>
 <div><%= "住所: #{@restaurant.address}" %></div>
+<%= render 'shared/bookmark_button', restaurant: @restaurant %>
 <div id='map'></div>
 
 <style>
