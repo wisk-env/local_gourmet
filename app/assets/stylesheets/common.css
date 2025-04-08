@@ -15,7 +15,7 @@ header {
   color: #ffffff;
   display: flex;
   justify-content: space-between;
-  position: fixed;
+  /* position: fixed; */
 }
 
 footer {
@@ -31,7 +31,6 @@ footer {
 }
 
 a {
-  color: #ffffff;
   text-decoration: none;
 }
 
