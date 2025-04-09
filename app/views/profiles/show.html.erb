@@ -1,0 +1,6 @@
+<h2>マイページ</h2>
+<div><%= "ユーザー名: #{@user.name}" %></div>
+<div><%= "メールアドレス: #{@user.email}" %></div>
+<div>
+  <%= link_to "プロフィール編集", edit_user_registration_path, class: "profile-edit-button" %>
+</div>
