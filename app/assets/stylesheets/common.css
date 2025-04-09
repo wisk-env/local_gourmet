@@ -40,14 +40,24 @@ a {
   display: flex;
 }
 
-.end {
+.header-end {
   min-width: 225px;
   align-items: center;
   display: flex;
 }
 
+.header-end-button {
+  color: #ffffff;
+  margin-right: 20px;
+}
+
+.logout-button {
+  color: #ffffff;
+}
+
 .footer-menu-link {
   margin-right: 20px;
+  color: #ffffff;
 }
 
 .content {
@@ -150,4 +160,14 @@ ul {
   margin: 10px;
   border-radius: 0.2rem;
   font-weight: 400;
+}
+
+.profile-edit-button {
+  width: 200px;
+  display: inline-block;
+  background-color: #9DBC98;
+  color: #ffffff;
+  padding: 10px 20px;
+  border-radius: .3rem;
+  text-align: center;
 }
