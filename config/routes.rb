@@ -4,6 +4,7 @@ Rails.application.routes.draw do
     registrations: 'users/registrations',
     sessions: 'users/sessions'
   }
+  resource :profile, only: %i[show]
   resources :restaurants do
     collection do
       get :bookmarks
