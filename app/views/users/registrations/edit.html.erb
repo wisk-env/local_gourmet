@@ -1,33 +1,35 @@
-<h2>プロフィール編集画面</h2>
+<div class="wrap-container">
+  <h2>プロフィール編集画面</h2>
 
-<%= form_for(resource, as: resource_name, url: registration_path(resource_name), html: { method: :put }) do |f| %>
-  <%= render "users/shared/error_messages", resource: resource %>
+  <%= form_for(resource, as: resource_name, url: registration_path(resource_name), html: { method: :put }) do |f| %>
+    <%= render "users/shared/error_messages", resource: resource %>
 
-  <div class="field">
-    <%= f.label :name %><br />
-    <%= f.text_field :name, autofocus: true, autocomplete: "name" %>
-  </div>
+    <div class="field">
+      <%= f.label :name %><br />
+      <%= f.text_field :name, autofocus: true, autocomplete: "name" %>
+    </div>
 
-  <div class="field">
-    <%= f.label :email %><br />
-    <%= f.email_field :email, autofocus: true, autocomplete: "email" %>
-  </div>
+    <div class="field">
+      <%= f.label :email %><br />
+      <%= f.email_field :email, autofocus: true, autocomplete: "email" %>
+    </div>
 
-  <div class="field">
-    <%= f.label :avatar %><br />
-    <%= f.file_field :avatar, autofocus: true, autocomplete: "avatar", onchange: "avatarImage(this);", accept: "image/jpeg, image/gif, image/png" %>
-  </div>
+    <div class="field">
+      <%= f.label :avatar %><br />
+      <%= f.file_field :avatar, autofocus: true, autocomplete: "avatar", onchange: "avatarImage(this);", accept: "image/jpeg, image/gif, image/png" %>
+    </div>
 
-  <div>
-    <%= image_tag resource.avatar, id: "avatar_preview", class: "avatar-image" %>
-  </div>
+    <div>
+      <%= image_tag resource.avatar, id: "avatar_preview", class: "avatar-image" %>
+    </div>
 
-  <div class="actions">
-    <%= f.submit "プロフィール更新", class: "profile-update-button" %>
-  </div>
-<% end %>
+    <div class="actions">
+      <%= f.submit "プロフィール更新", class: "profile-update-button" %>
+    </div>
+  <% end %>
 
-<%= link_to "戻る", :back, class: "back-button" %>
+  <%= link_to "戻る", :back, class: "back-button" %>
+</div>
 
 <script>
   function avatarImage(obj) {
