@@ -15,7 +15,6 @@ header {
   color: #ffffff;
   display: flex;
   justify-content: space-between;
-  /* position: fixed; */
 }
 
 footer {
@@ -81,7 +80,6 @@ a {
 
 input {
   width: 320px;
-  /* height: 28px; */
   padding: 0 10px;
   border: 1px;
   border-radius: 0.2rem;
@@ -171,9 +169,15 @@ ul {
   display: inline-block;
   background-color: #9DBC98;
   color: #ffffff;
-  padding: 10px 20px;
+  padding: 5px 10px;
   border-radius: .3rem;
   text-align: center;
+}
+
+.profile-edit-button:hover {
+  background-color: #D9EDBF;
+  color: #B99470;
+  border: 1px solid #B99470;
 }
 
 .avatar-image {
@@ -213,4 +217,80 @@ ul {
   display: inline-block;
   padding: 10px 20px;
   text-align: center;
+}
+
+.restaurant-card-container {
+  width: 400px;
+}
+
+.restaurant_card {
+  background-color: #ffffff;
+  border-radius: .5rem;
+  margin: 20px;
+  padding: 20px 30px;
+}
+
+.restaurant-card-content {
+  color: #000000;
+}
+
+.wrap-container {
+  width: 400px;
+  margin: 0 auto;
+}
+
+.user-container {
+  display: flex;
+  margin: 0px 0px 30px 20px;
+}
+
+.user-info-box {
+  margin-left: 20px;
+}
+
+.user-name {
+  font-size: 20px;
+}
+
+.user-email {
+  color: #A9A9A9;
+  margin-bottom: 8px;
+}
+
+.tab-list {
+  width: 400px;
+  display: flex;
+  list-style: none;
+}
+
+.tab {
+  margin: 0px 10px;
+  width: 50%;
+  text-align: center;
+  border-bottom: 1px solid #B7B7B7;
+  color: #674636;
+  transition: all 0.2s ease-in-out;
+}
+
+.tab:hover {
+  border-bottom: 2px solid #A9A9A9;
+  transform: scale(1.05);
+  color: #674636;
+}
+
+.tab-active {
+  transition: all 0.2s ease-in-out;
+  border-bottom: 2px solid #638889;
+}
+
+.tab-active:hover {
+  border-bottom: 2px solid #638889;
+}
+
+.tab-contents {
+  display: none;
+}
+
+.active-contents {
+  display: block;
 }
