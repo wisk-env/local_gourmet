@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema[7.1].define(version: 2025_04_09_080653) do
+ActiveRecord::Schema[7.1].define(version: 2025_04_13_073928) do
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
 
@@ -52,6 +52,18 @@ ActiveRecord::Schema[7.1].define(version: 2025_04_09_080653) do
     t.index ["user_id"], name: "index_bookmarks_on_user_id"
   end
 
+  create_table "feedback_options", force: :cascade do |t|
+    t.string "option_title", null: false
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+  end
+
+  create_table "genres", force: :cascade do |t|
+    t.string "name", null: false
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+  end
+
   create_table "restaurants", force: :cascade do |t|
     t.string "name", null: false
     t.float "lat", null: false
@@ -60,6 +72,39 @@ ActiveRecord::Schema[7.1].define(version: 2025_04_09_080653) do
     t.datetime "updated_at", null: false
     t.string "address", null: false
     t.index ["lat", "lng"], name: "index_restaurants_on_lat_and_lng", unique: true
+  end
+
+  create_table "review_feedback_options", force: :cascade do |t|
+    t.bigint "review_id", null: false
+    t.bigint "feedback_option_id", null: false
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["feedback_option_id"], name: "index_review_feedback_options_on_feedback_option_id"
+    t.index ["review_id"], name: "index_review_feedback_options_on_review_id"
+  end
+
+  create_table "review_genres", force: :cascade do |t|
+    t.bigint "review_id", null: false
+    t.bigint "genre_id", null: false
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["genre_id"], name: "index_review_genres_on_genre_id"
+    t.index ["review_id"], name: "index_review_genres_on_review_id"
+  end
+
+  create_table "reviews", force: :cascade do |t|
+    t.string "menu", null: false
+    t.integer "price", null: false
+    t.string "visit_date", null: false
+    t.string "visit_time", null: false
+    t.integer "number_of_visitors", null: false
+    t.text "comment"
+    t.bigint "user_id", null: false
+    t.bigint "restaurant_id", null: false
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["restaurant_id"], name: "index_reviews_on_restaurant_id"
+    t.index ["user_id"], name: "index_reviews_on_user_id"
   end
 
   create_table "users", force: :cascade do |t|
@@ -79,4 +124,10 @@ ActiveRecord::Schema[7.1].define(version: 2025_04_09_080653) do
   add_foreign_key "active_storage_variant_records", "active_storage_blobs", column: "blob_id"
   add_foreign_key "bookmarks", "restaurants"
   add_foreign_key "bookmarks", "users"
+  add_foreign_key "review_feedback_options", "feedback_options"
+  add_foreign_key "review_feedback_options", "reviews"
+  add_foreign_key "review_genres", "genres"
+  add_foreign_key "review_genres", "reviews"
+  add_foreign_key "reviews", "restaurants"
+  add_foreign_key "reviews", "users"
 end
