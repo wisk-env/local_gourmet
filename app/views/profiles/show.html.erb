@@ -1,9 +1,37 @@
-<h2>マイページ</h2>
-<div><%= "ユーザー名: #{@user.name}" %></div>
-<div><%= "メールアドレス: #{@user.email}" %></div>
-<div>
-  <%= image_tag @user.avatar, class: "avatar-image" %>
+<div class="wrap-container">
+  <h2>マイページ</h2>
+  <div class="user-container">
+    <div>
+      <%= image_tag @user.avatar, class: "avatar-image" %>
+    </div>
+    <div class="user-info-box">
+      <div class="user-name"><%= @user.name %></div>
+      <div class="user-email"><%= @user.email %></div>
+      <div>
+        <%= link_to "プロフィール編集", edit_user_registration_path, class: "profile-edit-button" %>
+      </div>
+    </div>
+  </div>
+
+  <ul class="tab-list">
+    <li class="tab tab-active">
+      ブックマークしたお店
+    </li>
+    <li class="tab">
+      投稿した口コミ
+    </li>
+  </ul>
+
+  <div class="tab-container">
+    <div class="tab-contents active-contents">
+      <%= render 'shared/bookmarks', bookmarks: @bookmark_restaurants %>
+    </div>
+    <div class="tab-contents">
+      <%= render 'shared/reviews' %>
+    </div>
+  </div>
 </div>
-<div>
-  <%= link_to "プロフィール編集", edit_user_registration_path, class: "profile-edit-button" %>
-</div>
+
+<% content_for :js do %>
+  <%= javascript_import_module_tag "profile/show" %>
+<% end %>
