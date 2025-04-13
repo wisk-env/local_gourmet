@@ -4,4 +4,5 @@ class Restaurant < ApplicationRecord
   validates :lat, presence: true
   validates :lng, presence: true
   validates :lat, uniqueness: { scope: :lng }
+  has_many :reviews
 end
