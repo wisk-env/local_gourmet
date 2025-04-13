@@ -5,7 +5,9 @@ Rails.application.routes.draw do
     sessions: 'users/sessions'
   }
   resource :profile, only: %i[show]
-  resources :restaurants
+  resources :restaurants do
+    resources :reviews, only: %i[show new create]
+  end
   resources :restaurant_registered_statuses, only: %i[index show new]
   resources :restaurant_unregistered_statuses, only: %i[index]
   resources :bookmarks, only: %i[create destroy]
