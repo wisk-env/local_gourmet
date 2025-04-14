@@ -134,6 +134,12 @@ ul {
   text-decoration: underline;
 }
 
+.right-side-element {
+  display: flex;
+  justify-content: flex-end;
+  margin-bottom: 20px;
+}
+
 .bookmark-button {
   background-color: #D7C3F1;
   border: 2px double #D7C3F1;
@@ -174,6 +180,25 @@ ul {
   margin: 10px;
   border-radius: 0.2rem;
   font-weight: 400;
+}
+
+.review-top-container {
+  display: flex;
+  justify-content: space-between;
+  margin: 30px 0;
+}
+
+.review-top-title {
+  margin: 30px auto;
+}
+
+.center-block {
+  display: flex;
+  justify-content: center
+}
+
+.restaurant-elements {
+  margin: 10px 5%;
 }
 
 .profile-edit-button {
@@ -308,6 +333,10 @@ ul {
   display: block;
 }
 
+.review-button-wrap {
+  text-align: right;
+}
+
 .post-review-button {
   background-color: #9DBC98;
   color: #ffffff;
@@ -317,6 +346,7 @@ ul {
   font-weight: 700;
   transition: transform .4s;
   display: inline-block;
+  margin-bottom: 20px;
 }
 
 .post-review-button:hover {
@@ -325,6 +355,12 @@ ul {
 
 .post-review-link {
   color: #ffffff;
+}
+
+.review-container {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: space-between;
 }
 
 .review-box {

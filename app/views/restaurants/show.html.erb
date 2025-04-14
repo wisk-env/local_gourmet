@@ -1,46 +1,56 @@
-<%= render "shared/flash" %>
-<h3><%= "飲食店名: #{@restaurant.name}" %></h3>
-<div><%= "住所: #{@restaurant.address}" %></div>
-<%= render 'shared/bookmark_button', restaurant: @restaurant %>
-<div id='map'></div>
-<div>お店の口コミ</div>
-<div class="post-review-button">
-  <%= link_to "口コミを投稿する→", new_restaurant_review_path(@restaurant), class: "post-review-link" %>
-</div>
+<div class="wrap-container">
+  <%= render "shared/flash" %>
+  <h3 class="restaurant-elements"><%= "飲食店名: #{@restaurant.name}" %></h3>
+  <div class="restaurant-elements"><%= "住所: #{@restaurant.address}" %></div>
+  <div class="right-side-element">
+    <%= render 'shared/bookmark_button', restaurant: @restaurant %>
+  </div>
+  <div class="center-block">
+    <div id='map'></div>
+  </div>
+  <h3 class="review-top-title center-block">お店の口コミ</h3>
+  <div class="review-button-wrap">
+    <div class="post-review-button">
+      <%= link_to "口コミを投稿する→", new_restaurant_review_path(@restaurant), class: "post-review-link" %>
+    </div>
+  </div>
 
-<% if @reviews.present? %>
-  <% @reviews.each do |review| %>
-    <div class="review-box">
-      <%= link_to restaurant_review_path(@restaurant, review) do %>
-        <div>
-          <% if review.image.present? %>
-            <div class="menu-image border-image">
-              <%= image_tag review.image, class: "menu-image" %>
+  <div class="review-container">
+    <% if @reviews.present? %>
+      <% @reviews.each do |review| %>
+        <div class="review-box">
+          <%= link_to restaurant_review_path(@restaurant, review) do %>
+            <div>
+              <% if review.image.present? %>
+                <div class="menu-image border-image">
+                  <%= image_tag review.image, class: "menu-image border-image" %>
+                </div>
+              <% else %>
+                <div class="menu-image no-image border-image">NO IMAGE</div>
+              <% end %>
             </div>
-          <% else %>
-            <div class="menu-image no-image">NO IMAGE</div>
+            <div class="review-content">
+              <div class="font-brown"><%= review.menu %></div>
+              <div class="menu-price"><%= "¥ #{review.price}" %></div>
+              <% review.genres.each do |genre| %>
+                <div class="tag genre-tag"><%= genre.name %></div>
+              <% end %>
+              <% review.feedback_options.each do |feedback_option| %>
+                <div class="tag feedback-tag"><%= feedback_option.option_title %></div>
+              <% end %>
+              <div class="review-user">
+                <div><%= image_tag review.user.avatar, class: "review-user-icon" %></div>
+                <div class="review-user-name"><%= review.user.name %></div>
+              </div>
+            </div>
           <% end %>
-        </div>
-        <div class="review-content">
-          <div class="font-brown"><%= review.menu %></div>
-          <div class="menu-price"><%= "¥ #{review.price}" %></div>
-          <% review.genres.each do |genre| %>
-            <div class="tag genre-tag"><%= genre.name %></div>
-          <% end %>
-          <% review.feedback_options.each do |feedback_option| %>
-            <div class="tag feedback-tag"><%= feedback_option.option_title %></div>
-          <% end %>
-          <div class="review-user">
-            <div><%= image_tag review.user.avatar, class: "review-user-icon" %></div>
-            <div class="review-user-name"><%= review.user.name %></div>
-          </div>
         </div>
       <% end %>
-    </div>
-  <% end %>
-<% else %>
-  お店の口コミはまだありません。
-<% end %>
+    <% else %>
+      お店の口コミはまだありません。
+    <% end %>
+  </div>
+</div>
 
 <style>
 #map {
