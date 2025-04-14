@@ -10,6 +10,7 @@ class User < ApplicationRecord
   has_one_attached :avatar
   has_many :bookmarks, dependent: :destroy
   has_many :bookmark_restaurants, through: :bookmarks, source: :restaurant
+  has_many :reviews
 
   def default_icon
     if !self.avatar.attached?
