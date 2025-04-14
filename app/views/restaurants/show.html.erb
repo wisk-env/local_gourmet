@@ -4,8 +4,8 @@
 <%= render 'shared/bookmark_button', restaurant: @restaurant %>
 <div id='map'></div>
 <div>お店の口コミ</div>
-<div>
-  <%= link_to "口コミを投稿する→", new_restaurant_review_path(@restaurant) %>
+<div class="post-review-button">
+  <%= link_to "口コミを投稿する→", new_restaurant_review_path(@restaurant), class: "post-review-link" %>
 </div>
 
 <% if @reviews.present? %>

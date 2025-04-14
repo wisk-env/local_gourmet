@@ -294,6 +294,25 @@ ul {
   display: block;
 }
 
+.post-review-button {
+  background-color: #9DBC98;
+  color: #ffffff;
+  border: 1px solid #9DBC98;
+  border-radius: .2rem;
+  padding: 10px 20px;
+  font-weight: 700;
+  transition: transform .4s;
+  display: inline-block;
+}
+
+.post-review-button:hover {
+  transform: scale(1.08);
+}
+
+.post-review-link {
+  color: #ffffff;
+}
+
 .review-box {
   width: 280px;
   background-color: #ffffff;
