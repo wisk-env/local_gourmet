@@ -372,6 +372,11 @@ ul {
   background-color: #ffffff;
   border-radius: .5rem;
   margin: 20px;
+  transition: transform .4s;
+}
+
+.review-box:hover {
+  transform: scale(1.04);
 }
 
 .review-content {
@@ -389,6 +394,11 @@ ul {
   opacity: .6;
   text-align: end;
   margin-right: 20px;
+}
+
+.tag-container {
+  height: 60px;
+  overflow: hidden;
 }
 
 .tag {
