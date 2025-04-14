@@ -109,6 +109,10 @@ ul {
   padding-inline-start: 0px;
 }
 
+.error-message-container {
+  margin: 0;
+}
+
 .error-message-list {
   list-style: none;
   color: #E50046;
