@@ -27,6 +27,13 @@ ja:
         unconfirmed_email: 未確認Eメール
         unlock_token: ロック解除用トークン
         updated_at: 更新日
+      review:
+        menu: 注文したメニュー
+        price: 料金
+        number_of_visitors: ご利用人数
+    errors:
+      messages:
+        blank: を入力してください
     models:
       user: ユーザー
   devise:

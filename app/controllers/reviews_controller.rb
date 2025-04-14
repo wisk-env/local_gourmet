@@ -5,6 +5,7 @@ class ReviewsController < ApplicationController
   end
 
   def create
+    @restaurant = Restaurant.find(params[:restaurant_id])
     @review = Review.new(review_params)
     if @review.save
       flash[:notice] = '口コミを投稿しました'
