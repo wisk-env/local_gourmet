@@ -121,30 +121,30 @@ ul {
   text-decoration: underline;
 }
 
-.bookmark-button-link {
-  width: 170px;
-  display: inline-block;
-}
-
 .bookmark-button {
   background-color: #D7C3F1;
   border: 2px double #D7C3F1;
-  color: #ffffff;
   padding: 10px;
   margin: 10px;
   border-radius: 0.2rem;
   font-weight: 700;
+  display: inline-block;
+  transition: transform .4s;
 }
 
 .bookmark-button:hover {
-  background-color: #D7C3F1;
-  color: #000000;
-  border: 4px double #ffffff;
   transform: scale(1.04);
+  opacity: 0.6;
+  background-color: #B771E5;
+  transition: tr;
+}
+
+.bookmark-button-link {
+  color: #ffffff;
 }
 
 .fa-bookmark {
-  margin-left: 10px;
+  margin: 0 5px 0 10px;
 }
 
 .unbookmark-button-link {
