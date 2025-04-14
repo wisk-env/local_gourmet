@@ -16,7 +16,7 @@ class ReviewsController < ApplicationController
       flash[:notice] = '口コミを投稿しました'
       redirect_to restaurant_path(@review.restaurant_id)
     else
-      flash[:alert] = '口コミ投稿に失敗しました'
+      flash.now[:alert] = '口コミ投稿に失敗しました'
       render 'new'
     end
   end
