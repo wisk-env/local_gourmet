@@ -1,4 +1,4 @@
-<div class="wrap-container">
+<div class="wrap-container review-form-width">
   <h2><%= "#{@restaurant.name}の口コミ投稿画面" %></h2>
   <%= render 'shared/flash' %>
   <%= form_with model: @review, url: restaurant_reviews_path, local: true do |f| %>
@@ -37,15 +37,19 @@
     </div>
     <div>
       <%= f.label :genres, "ジャンル", class: "form-text-label" %><br>
-      <%= collection_check_boxes(:review, :genre_ids, Genre.all, :id, :name) do |genre| %>
-        <%= genre.label { genre.check_box + genre.text } %>
-      <% end %>
+      <div class="checkbox-container">
+        <%= collection_check_boxes(:review, :genre_ids, Genre.all, :id, :name) do |genre| %>
+          <%= genre.label { genre.check_box + genre.text } %>
+        <% end %>
+      </div>
     </div>
     <div>
       <%= f.label :feedback_options, "お店の雰囲気・特徴・評価ポイントなど", class: "form-text-label" %><br>
-      <%= collection_check_boxes(:review, :feedback_option_ids, FeedbackOption.all, :id, :option_title) do |option| %>
-        <%= option.label { option.check_box + option.text } %>
-      <% end %>
+      <div class="checkbox-container">
+        <%= collection_check_boxes(:review, :feedback_option_ids, FeedbackOption.all, :id, :option_title) do |option| %>
+          <%= option.label { option.check_box + option.text } %>
+        <% end %>
+      </div>
     </div>
     <div>
       <%= f.label :comment, "コメント", class: "form-text-label" %><br>

@@ -277,6 +277,10 @@ ul {
   padding: 50px 0 100px 0;
 }
 
+.review-form-width {
+  width: 320px;
+}
+
 .user-container {
   display: flex;
   margin: 0px 0px 30px 20px;
@@ -463,6 +467,11 @@ ul {
   border: none;
   resize: none;
   padding: 5px 10px;
+}
+
+.checkbox-container {
+  display: flex;
+  flex-wrap: wrap;
 }
 
 .submit-button {
