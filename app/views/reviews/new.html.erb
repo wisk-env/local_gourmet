@@ -18,6 +18,10 @@
       <%= render 'shared/error_messages', model: @review, attribute: :price %>
     </div>
     <div>
+      <%= f.label :image, "写真", class: "form-text-label" %><br>
+      <%= f.file_field :image, accept: "image/jpeg, image/gif, image/png" %>
+    </div>
+    <div>
       <%= f.label :visit_date, "ご利用日", class: "form-text-label" %><br>
       <%= f.select :visit_date, [["平日", "平日"], ["土日", "土日"]] %>
     </div>

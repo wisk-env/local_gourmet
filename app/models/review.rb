@@ -4,6 +4,7 @@ class Review < ApplicationRecord
   validates :visit_date, presence: true
   validates :visit_time, presence: true
   validates :number_of_visitors, presence: true
+  has_one_attached :image
   belongs_to :user
   belongs_to :restaurant
   has_many :review_feedback_options
