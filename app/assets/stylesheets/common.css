@@ -198,11 +198,6 @@ ul {
   border-radius: 50%;
 }
 
-.menu-image {
-  width: 200px;
-  height: 100px;
-}
-
 .header-login-user {
   display: flex;
 }
@@ -252,8 +247,9 @@ ul {
 }
 
 .wrap-container {
-  width: 400px;
+  width: 600px;
   margin: 0 auto;
+  padding: 50px 0 100px 0;
 }
 
 .user-container {
@@ -342,7 +338,7 @@ ul {
   padding: 5px 0 0 10px;
 }
 
-.menu-title {
+.font-brown {
   font-weight: 700;
   color: #B99470;
 }
@@ -387,11 +383,15 @@ ul {
   margin-left: 5px;
   font-size: 12px;
   padding-top: 4%;
+  color: #000000;
 }
 
 .menu-image {
   width: 250px;
   height: 150px;
+}
+
+.border-image {
   border-radius: .5rem .5rem 0 0;
 }
 
@@ -432,4 +432,29 @@ ul {
 .submit-button {
   width: 250px;
   height: 50px;
+}
+
+.white-background-container {
+  background-color: #ffffff;
+  width: 600px;
+  border-radius: .5rem;
+  padding: 20px;
+}
+
+.detail-review-user-name {
+  margin-left: 10px;
+}
+
+.font-size-middle {
+  font-size: 14px;
+}
+
+.margin-bottom {
+  margin-bottom: 10px;
+}
+
+.review-top-elements {
+  display: flex;
+  justify-content: space-evenly;
+  margin-bottom: 20px;
 }

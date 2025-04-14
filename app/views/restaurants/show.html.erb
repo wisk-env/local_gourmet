@@ -11,29 +11,31 @@
 <% if @reviews.present? %>
   <% @reviews.each do |review| %>
     <div class="review-box">
-      <div>
-        <% if review.image.present? %>
-          <div class="menu-image">
-            <%= image_tag review.image, class: "menu-image" %>
-          </div>
-        <% else %>
-          <div class="menu-image no-image">NO IMAGE</div>
-        <% end %>
-      </div>
-      <div class="review-content">
-        <div class="menu-title"><%= review.menu %></div>
-        <div class="menu-price"><%= "¥ #{review.price}" %></div>
-        <% review.genres.each do |genre| %>
-          <div class="tag genre-tag"><%= genre.name %></div>
-        <% end %>
-        <% review.feedback_options.each do |feedback_option| %>
-          <div class="tag feedback-tag"><%= feedback_option.option_title %></div>
-        <% end %>
-        <div class="review-user">
-          <div><%= image_tag review.user.avatar, class: "review-user-icon" %></div>
-          <div class="review-user-name"><%= review.user.name %></div>
+      <%= link_to restaurant_review_path(@restaurant, review) do %>
+        <div>
+          <% if review.image.present? %>
+            <div class="menu-image border-image">
+              <%= image_tag review.image, class: "menu-image" %>
+            </div>
+          <% else %>
+            <div class="menu-image no-image">NO IMAGE</div>
+          <% end %>
         </div>
-      </div>
+        <div class="review-content">
+          <div class="font-brown"><%= review.menu %></div>
+          <div class="menu-price"><%= "¥ #{review.price}" %></div>
+          <% review.genres.each do |genre| %>
+            <div class="tag genre-tag"><%= genre.name %></div>
+          <% end %>
+          <% review.feedback_options.each do |feedback_option| %>
+            <div class="tag feedback-tag"><%= feedback_option.option_title %></div>
+          <% end %>
+          <div class="review-user">
+            <div><%= image_tag review.user.avatar, class: "review-user-icon" %></div>
+            <div class="review-user-name"><%= review.user.name %></div>
+          </div>
+        </div>
+      <% end %>
     </div>
   <% end %>
 <% else %>
