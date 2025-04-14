@@ -79,7 +79,6 @@ a {
 }
 
 input {
-  width: 320px;
   padding: 0 10px;
   border: 1px;
   border-radius: 0.2rem;
@@ -94,20 +93,33 @@ input {
 }
 
 .submit-btn {
-  width: 340px;
+  width: 300px;
   height: 40px;
+  margin-bottom: 20px;
   background-color: #638889;
   color: #ffffff;
-  margin-bottom: 20px;
+  transition: transform .4s;
+}
+
+.submit-btn:hover {
+  transform: scale(1.04);
 }
 
 ul {
   padding-inline-start: 0px;
 }
 
+.error-message-container {
+  margin: 0;
+}
+
 .error-message-list {
   list-style: none;
   color: #E50046;
+}
+
+.field_with_errors {
+  display: contents;
 }
 
 .flash-message {
@@ -122,30 +134,36 @@ ul {
   text-decoration: underline;
 }
 
-.bookmark-button-link {
-  width: 170px;
-  display: inline-block;
+.right-side-element {
+  display: flex;
+  justify-content: flex-end;
+  margin-bottom: 20px;
 }
 
 .bookmark-button {
   background-color: #D7C3F1;
   border: 2px double #D7C3F1;
-  color: #ffffff;
   padding: 10px;
   margin: 10px;
   border-radius: 0.2rem;
   font-weight: 700;
+  display: inline-block;
+  transition: transform .4s;
 }
 
 .bookmark-button:hover {
-  background-color: #D7C3F1;
-  color: #000000;
-  border: 4px double #ffffff;
   transform: scale(1.04);
+  opacity: 0.6;
+  background-color: #B771E5;
+  transition: tr;
+}
+
+.bookmark-button-link {
+  color: #ffffff;
 }
 
 .fa-bookmark {
-  margin-left: 10px;
+  margin: 0 5px 0 10px;
 }
 
 .unbookmark-button-link {
@@ -162,6 +180,25 @@ ul {
   margin: 10px;
   border-radius: 0.2rem;
   font-weight: 400;
+}
+
+.review-top-container {
+  display: flex;
+  justify-content: space-between;
+  margin: 30px 0;
+}
+
+.review-top-title {
+  margin: 30px auto;
+}
+
+.center-block {
+  display: flex;
+  justify-content: center
+}
+
+.restaurant-elements {
+  margin: 10px 5%;
 }
 
 .profile-edit-button {
@@ -235,8 +272,13 @@ ul {
 }
 
 .wrap-container {
-  width: 400px;
+  width: 600px;
   margin: 0 auto;
+  padding: 50px 0 100px 0;
+}
+
+.review-form-width {
+  width: 320px;
 }
 
 .user-container {
@@ -293,4 +335,181 @@ ul {
 
 .active-contents {
   display: block;
+}
+
+.review-button-wrap {
+  text-align: right;
+}
+
+.post-review-button {
+  background-color: #9DBC98;
+  color: #ffffff;
+  border: 1px solid #9DBC98;
+  border-radius: .2rem;
+  padding: 10px 20px;
+  font-weight: 700;
+  transition: transform .4s;
+  display: inline-block;
+  margin-bottom: 20px;
+}
+
+.post-review-button:hover {
+  transform: scale(1.08);
+}
+
+.post-review-link {
+  color: #ffffff;
+}
+
+.review-container {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: space-between;
+}
+
+.review-box {
+  width: 250px;
+  background-color: #ffffff;
+  border-radius: .5rem;
+  margin: 20px;
+  transition: transform .4s;
+}
+
+.review-box:hover {
+  transform: scale(1.04);
+}
+
+.review-content {
+  padding: 5px 0 0 10px;
+}
+
+.font-brown {
+  font-weight: 700;
+  color: #B99470;
+}
+
+.menu-price {
+  font-size: 12px;
+  color: #000000;
+  opacity: .6;
+  text-align: end;
+  margin-right: 20px;
+}
+
+.tag-container {
+  height: 60px;
+  overflow: hidden;
+}
+
+.tag {
+  color: #ffffff;
+  font-weight: 700;
+  display: inline-block;
+  border-radius: .7rem;
+  padding: 3px 6px;
+  margin: 0 0 4px 4px;
+  font-size: 12px;
+}
+
+.genre-tag {
+  background-color: #FFB996;
+}
+
+.feedback-tag {
+  background-color: #C6EBC5;
+}
+
+.review-user {
+  display: flex;
+}
+
+.review-user-icon {
+  width: 30px;
+  height: 30px;
+  border-radius: 50%;
+}
+
+.review-user-name {
+  margin-left: 5px;
+  font-size: 12px;
+  padding-top: 4%;
+  color: #000000;
+}
+
+.menu-image {
+  width: 250px;
+  height: 150px;
+}
+
+.border-image {
+  border-radius: .5rem .5rem 0 0;
+}
+
+.no-image {
+  background-color: #D9D9D9;
+  color: #ffffff;
+  font-size: 30px;
+  font-weight: 700;
+  line-height: 150px;
+  text-align: center;
+}
+
+.form-text-label {
+  color: #674636;
+  font-weight: 700;
+  display: inline-block;
+  margin: 10px 0;
+}
+
+.form-text-input {
+  width: 280px;
+  height: 25px;
+}
+
+.form-number-input {
+  width: 60px;
+  height: 25px;
+}
+
+.form-comment-input {
+  width: 280px;
+  height: 100px;
+  border: none;
+  resize: none;
+  padding: 5px 10px;
+}
+
+.checkbox-container {
+  display: flex;
+  flex-wrap: wrap;
+}
+
+.submit-button {
+  width: 250px;
+  height: 50px;
+}
+
+.white-background-container {
+  background-color: #ffffff;
+  width: 600px;
+  border-radius: .5rem;
+  padding: 20px;
+}
+
+.detail-review-user-name {
+  margin-left: 10px;
+}
+
+.font-size-middle {
+  font-size: 14px;
+}
+
+.margin-bottom {
+  margin-bottom: 10px;
+}
+
+.review-top-elements {
+  display: flex;
+  justify-content: space-evenly;
+  margin-bottom: 20px;
 }
