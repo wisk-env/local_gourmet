@@ -1,4 +1,9 @@
 class Review < ApplicationRecord
+  validates :menu, presence: true
+  validates :price, presence: true
+  validates :visit_date, presence: true
+  validates :visit_time, presence: true
+  validates :number_of_visitors, presence: true
   belongs_to :user
   belongs_to :restaurant
   has_many :review_feedback_options
