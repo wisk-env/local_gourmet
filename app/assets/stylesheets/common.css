@@ -300,7 +300,6 @@ ul {
 }
 
 .tab-list {
-  width: 400px;
   display: flex;
   list-style: none;
 }
@@ -381,6 +380,10 @@ ul {
 
 .review-content {
   padding: 5px 0 0 10px;
+}
+
+.my-page-review-card-padding {
+  padding: 10px;
 }
 
 .font-brown {
@@ -512,4 +515,8 @@ ul {
   display: flex;
   justify-content: space-evenly;
   margin-bottom: 20px;
+}
+
+.no-lists {
+  padding-top: 20px;
 }
