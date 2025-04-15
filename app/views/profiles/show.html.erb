@@ -7,8 +7,10 @@
     <div class="user-info-box">
       <div class="user-name"><%= @user.name %></div>
       <div class="user-email"><%= @user.email %></div>
-      <div>
-        <%= link_to "プロフィール編集", edit_user_registration_path, class: "profile-edit-button" %>
+      <div class="profile-edit-button">
+        <%= link_to edit_user_registration_path, class: "profile-edit-button-link" do %>
+          プロフィール編集
+        <% end %>
       </div>
     </div>
   </div>
