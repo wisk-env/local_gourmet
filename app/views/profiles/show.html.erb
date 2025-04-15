@@ -7,13 +7,16 @@
     <div class="user-info-box">
       <div class="user-name"><%= @user.name %></div>
       <div class="user-email"><%= @user.email %></div>
-      <div>
-        <%= link_to "プロフィール編集", edit_user_registration_path, class: "profile-edit-button" %>
+      <div class="profile-edit-button">
+        <%= link_to edit_user_registration_path, class: "profile-edit-button-link" do %>
+          プロフィール編集
+        <% end %>
       </div>
     </div>
   </div>
 
-  <ul class="tab-list">
+  
+  <ul class="tab-list center-block">
     <li class="tab tab-active">
       ブックマークしたお店
     </li>
@@ -21,13 +24,14 @@
       投稿した口コミ
     </li>
   </ul>
-
-  <div class="tab-container">
-    <div class="tab-contents active-contents">
-      <%= render 'shared/bookmarks', bookmarks: @bookmark_restaurants %>
-    </div>
-    <div class="tab-contents">
-      <%= render 'shared/reviews' %>
+  <div class="center-block">
+    <div class="tab-container">
+      <div class="tab-contents active-contents">
+        <%= render 'shared/bookmarks', bookmarks: @bookmark_restaurants %>
+      </div>
+      <div class="tab-contents">
+        <%= render 'shared/reviews', reviews: @reviews %>
+      </div>
     </div>
   </div>
 </div>
