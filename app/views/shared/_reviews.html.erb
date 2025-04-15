@@ -23,6 +23,10 @@
                 <div class="tag feedback-tag"><%= feedback_option.option_title %></div>
               <% end %>
             </div>
+            <div class="like-button-container">
+              <div><i class="fa-solid fa-heart"></i></div>
+              <div class="review-likes-count"><%= review.likes.count %></div>
+            </div>
           </div>
         <% end %>
       </div>
