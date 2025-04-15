@@ -52,6 +52,15 @@
         コメント
       </div>
       <div><%= @review.comment %></div>
+      <div>
+        <% if current_user.own?(@review) %>
+          編集・削除ボタン
+        <% else %>
+          <div id="like_buttons_<%= @review.id %>" class="like-button-container">
+            <%= render 'shared/like_button', review: @review %>
+          </div>
+        <% end %>
+      </div>
     </div>
   </div>
 </div>

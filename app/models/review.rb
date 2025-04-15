@@ -11,4 +11,10 @@ class Review < ApplicationRecord
   has_many :feedback_options, through: :review_feedback_options
   has_many :review_genres
   has_many :genres, through: :review_genres
+  has_many :likes, dependent: :destroy
+  has_many :users, through: :likes
+
+  def liked_by?(user)
+    likes.exists?(user_id: user.id)
+  end
 end

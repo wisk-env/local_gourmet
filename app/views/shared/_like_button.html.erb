@@ -1,0 +1,11 @@
+<% if review.liked_by?(current_user) %>
+  <%= link_to restaurant_review_likes_path(restaurant_id: @restaurant.id, review_id: review.id, id: current_user.likes.find_by(review_id: review.id)), method: :delete, remote: true, data: { turbo: false } do %>
+    <i class="fa-solid fa-heart"></i>
+    <div class="review-likes-count"><%= review.likes.count %></div>
+  <% end %>
+<% else %>
+  <%= link_to restaurant_review_likes_path(restaurant_id: @restaurant.id, review_id: review.id), method: :post, remote: true, data: { turbo: false } do %>
+    <i class="fa-regular fa-heart"></i>
+    <div class="review-likes-count"><%= review.likes.count %></div>
+  <% end %>
+<% end %>

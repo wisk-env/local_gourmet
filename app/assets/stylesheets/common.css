@@ -192,6 +192,11 @@ ul {
   margin: 30px auto;
 }
 
+.review-card-bottom-wrap {
+  display: flex;
+  justify-content: space-between;
+}
+
 .center-block {
   display: flex;
   justify-content: center
@@ -376,7 +381,7 @@ ul {
 }
 
 .review-content {
-  padding: 5px 0 0 10px;
+  padding: 5px 10px;
 }
 
 .my-page-review-card-padding {
@@ -421,6 +426,7 @@ ul {
 
 .review-user {
   display: flex;
+  align-items: center;
 }
 
 .review-user-icon {
@@ -432,7 +438,6 @@ ul {
 .review-user-name {
   margin-left: 5px;
   font-size: 12px;
-  padding-top: 4%;
   color: #000000;
 }
 
@@ -522,4 +527,21 @@ ul {
   color: #ffffff;
   display: block;
   width: 100%;
+}
+
+.like-button-container {
+  display: flex;
+  justify-content: flex-end;
+  align-items: center;
+}
+
+.fa-heart {
+  color: #E50046;
+}
+
+.review-likes-count {
+  color: #E50046;
+  display: inline-block;
+  margin-left: 5px;
+  justify-content: center;
 }

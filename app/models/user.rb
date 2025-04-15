@@ -11,6 +11,8 @@ class User < ApplicationRecord
   has_many :bookmarks, dependent: :destroy
   has_many :bookmark_restaurants, through: :bookmarks, source: :restaurant
   has_many :reviews
+  has_many :likes, dependent: :destroy
+  has_many :like_reviews, through: :likes, source: :review
 
   def default_icon
     if !self.avatar.attached?
@@ -28,5 +30,9 @@ class User < ApplicationRecord
 
   def bookmark?(restaurant)
     bookmark_restaurants.include?(restaurant)
+  end
+
+  def own?(object)
+    object.user_id == id
   end
 end

@@ -40,9 +40,21 @@
                   <div class="tag feedback-tag"><%= feedback_option.option_title %></div>
                 <% end %>
               </div>
-              <div class="review-user">
-                <div><%= image_tag review.user.avatar, class: "review-user-icon" %></div>
-                <div class="review-user-name"><%= review.user.name %></div>
+              <div class="review-card-bottom-wrap">
+                <div class="review-user">
+                  <div><%= image_tag review.user.avatar, class: "review-user-icon" %></div>
+                  <div class="review-user-name"><%= review.user.name %></div>
+                </div>
+                <% if current_user.own?(review) %>
+                  <div class="like-button-container">
+                    <div><i class="fa-solid fa-heart"></i></div>
+                    <div class="review-likes-count"><%= review.likes.count %></div>
+                  </div>
+                <% else %>
+                  <div id="like_buttons_<%= review.id %>" class="like-button-container">
+                    <%= render 'shared/like_button', review: review %>
+                  </div>
+                <% end %>
               </div>
             </div>
           <% end %>
@@ -76,6 +88,12 @@
       position:  {lat: <%= @restaurant.lat %>, lng: <%= @restaurant.lng %>},
       map: map
     });
+  };
+
+  window.onpageshow = function(event) {
+    if (event.persisted) {
+      window.location.reload();
+    }
   };
 </script>
 <script src="https://maps.googleapis.com/maps/api/js?key=<%= ENV['GOOGLE_MAPS_API_KEY'] %>&callback=initMap" async defer></script>
