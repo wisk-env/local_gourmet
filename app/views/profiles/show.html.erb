@@ -13,7 +13,8 @@
     </div>
   </div>
 
-  <ul class="tab-list">
+  
+  <ul class="tab-list center-block">
     <li class="tab tab-active">
       ブックマークしたお店
     </li>
@@ -21,13 +22,14 @@
       投稿した口コミ
     </li>
   </ul>
-
-  <div class="tab-container">
-    <div class="tab-contents active-contents">
-      <%= render 'shared/bookmarks', bookmarks: @bookmark_restaurants %>
-    </div>
-    <div class="tab-contents">
-      <%= render 'shared/reviews' %>
+  <div class="center-block">
+    <div class="tab-container">
+      <div class="tab-contents active-contents">
+        <%= render 'shared/bookmarks', bookmarks: @bookmark_restaurants %>
+      </div>
+      <div class="tab-contents">
+        <%= render 'shared/reviews', reviews: @reviews %>
+      </div>
     </div>
   </div>
 </div>
