@@ -1,5 +1,5 @@
 <% if @reviews.present? %>
-  <div class="review-container">
+  <div class="review-box-container">
     <% @reviews.each do |review| %>
       <div class="review-box">
         <%= link_to restaurant_review_path(review.restaurant_id, review) do %>

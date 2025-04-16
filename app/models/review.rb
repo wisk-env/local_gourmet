@@ -17,4 +17,12 @@ class Review < ApplicationRecord
   def liked_by?(user)
     likes.exists?(user_id: user.id)
   end
+
+  def self.ransackable_attributes(auth_object = nil)
+    ["menu", "price", "visit_date", "visit_time", "comment", "feedback_options", "genres"]
+  end
+
+  def self.ransackable_associations(auth_object = nil)
+    auth_object ? super : %w(feedback_options genres restaurant)
+  end
 end
