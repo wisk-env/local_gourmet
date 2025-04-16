@@ -362,10 +362,17 @@ ul {
   color: #ffffff;
 }
 
-.review-container {
+.review-box-container {
   display: flex;
   flex-wrap: wrap;
   justify-content: space-between;
+}
+
+.review-box-container::after {
+  display: block;
+  content: "";
+  width: 250px;
+  margin: 20px;
 }
 
 .review-box {
@@ -544,4 +551,139 @@ ul {
   display: inline-block;
   margin-left: 5px;
   justify-content: center;
+}
+
+.search-form-container {
+  width: 600px;
+  display: flex;
+  justify-content: center;
+}
+
+.search-tab-navigation {
+  display: flex;
+}
+
+.search-tab {
+  text-align: center;
+  border-bottom: 2px solid #A9A9A9;
+  padding: 5px 20px;
+  margin: 10px;
+  opacity: .7;
+}
+
+.search-tab:hover {
+  transform: scale(1.07);
+  border-bottom: 2px solid #43766C;
+  opacity: 1;
+}
+
+.active-status {
+  border-bottom: 2px solid #A2C579;
+  opacity: 1;
+}
+
+.active-status:hover {
+  opacity: 1;
+}
+
+.search-from-map {
+  color: #76453B;
+  opacity: .6;
+}
+
+.search-from-reviews {
+  color: #76453B;
+  opacity: .6;
+}
+
+.search-form-submit-button {
+  width: 600px;
+  display: flex;
+  justify-content: center;
+}
+
+.search-element {
+  margin: 10px;
+  display: flex;
+}
+
+.search-toggle {
+  color: #674636;
+  font-weight: 700;
+}
+
+.search-toggle::after {
+  content: "\2b";
+  font-family: 'FontAwesome';
+  margin-left: 5px;
+}
+
+.search-toggle.open::after {
+  content: "\f068";
+  font-family: 'FontAwesome';
+}
+
+.search-option {
+  display: none;
+}
+
+.search-form-label {
+  color: #674636;
+  font-weight: 700;
+  width: 150px;
+  line-height: 40px;
+}
+
+.search-form-input {
+  display: inline-block;
+  width: 100%;
+  height: 30px;
+  margin: 5px;
+}
+
+.search-price-input {
+  width: 55px;
+  height: 30px;
+  margin: 5px;
+}
+
+.text-in-price-element {
+  line-height: 40px;
+}
+
+.user-pick-element-box {
+  margin: 10px 10px 40px;
+}
+
+.select-element {
+  display: flex;
+  align-items: center;
+}
+
+.select-element select {
+  width: 100%;
+  height: 25px;
+  border: none;
+}
+
+.search-submit-button {
+  color: #ffffff;
+}
+
+.restaurant-name-in-card {
+  font-size: 16px;
+  font-weight: 700;
+  color: #E48586;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+
+.restaurant-address {
+  font-size: 12px;
+  color: #000000;
+  opacity: .6;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
 }
