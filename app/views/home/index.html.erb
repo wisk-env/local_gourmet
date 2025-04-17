@@ -8,43 +8,70 @@
 </p>
 
 <div class="wrap-container">
-  <div>ブックマークの獲得数が多いお店のランキング</div>
+  <% if @restaurants.present? %>
+    <div>ブックマークの獲得数が多いお店のランキング</div>
+    <div id="test" class="restaurant-card-container">
+      <% @restaurants.each do |restaurant| %>
+        <div class="restaurant_card">
+          <%= link_to restaurant_path(restaurant) do %>
+            <div class="restaurant-card-content"><%= "飲食店名: #{restaurant.name}" %></div>
+            <div class="restaurant-card-content"><%= "住所: #{restaurant.address}" %></div>
+          <% end %>
+        </div>
+      <% end %>
+    </div>
+  <% end %>
 </div>
 
-<div class="wrap-container">
-  <p>アプリの使い方に関するガイド</p>
+<div class="home-guide-container">
+  <p class="home-guide-top-title">アプリの使い方に関するガイド</p>
   <div>
-    <div>お店を検索</div>
+    <div class="home-guide-sub-element">
+      <i class="fa-solid fa-magnifying-glass sub-element-icon"></i>
+      <span class="home-guide-sub-title">お店を検索</span>
+    </div>
     <p>
+      <%= link_to restaurants_path, class: "home-guide-link" do %>
+        <span>検索</span>
+        <i class="fa-solid fa-magnifying-glass"></i>
+      <% end %>
       ページから駅や商業施設などの名前で検索してみましょう。
     </p>
     <p>
-      ローカルグルメで登録されたお店の口コミを見て<br>
-      行きたいお店を見つけましょう。
+      ローカルグルメで登録されたお店の口コミを見て行きたいお店を見つけましょう。
     </p>
     <p>
-      行きたいお店はマイページにブックマークとして<br>
-      保存することができます。
+      行きたいお店はマイページにブックマークとして保存することができます。
     </p>
-    <div>
-      <span>お店を見つける</span>
-      <i class="fa-solid fa-arrow-right"></i>
+    <div class="guide-button-wrap">
+      <div class="guide-button">
+        <%= link_to restaurants_path do %>
+          <div class="guide-button-text">お店を見つける<i class="fa-solid fa-arrow-right"></i></div>
+        <% end %>
+      </div>
     </div>
   </div>
-
   <div>
-    <div>お店を評価</div>
+    <div class="home-guide-sub-element">
+      <i class="fa-solid fa-pen-to-square sub-element-icon"></i>
+      <span class="home-guide-sub-title">お店を評価</span>
+    </div>
     <p>
+      <%= link_to restaurant_registered_statuses_path, class: "home-guide-link" do %>
+        <span>口コミ投稿</span>
+        <i class="fa-solid fa-pen-to-square"></i>
+      <% end %>
       ページからあなたの行きつけのお店を登録しましょう。
     </p>
     <p>
       お店の口コミを投稿してみましょう。
     </p>
-    <div>
-      <%= link_to restaurant_registered_statuses_path do %>
-        <span>口コミを投稿する</span>
-        <i class="fa-solid fa-arrow-right"></i>
-      <% end %>
+    <div class="guide-button-wrap">
+      <div class="guide-button">
+        <%= link_to restaurant_registered_statuses_path do %>
+          <div class="guide-button-text">口コミを投稿する<i class="fa-solid fa-arrow-right"></i></div>
+        <% end %>
+      </div>
     </div>
   </div>
 </div>
