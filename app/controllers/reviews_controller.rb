@@ -1,5 +1,6 @@
 class ReviewsController < ApplicationController
   before_action :search_params, only: %i[index search]
+  before_action :ensure_correct_user, only: %i[edit update destroy]
 
   def index
     @reviews = Review.all
@@ -73,5 +74,13 @@ class ReviewsController < ApplicationController
 
   def search_params
     @q = Review.ransack(params[:q])
+  end
+
+  def ensure_correct_user
+    @restaurant = Restaurant.find(params[:restaurant_id])
+    @review = Review.find(params[:id])
+    if @review.user_id != current_user.id
+      redirect_to restaurant_path(@restaurant)
+    end
   end
 end
