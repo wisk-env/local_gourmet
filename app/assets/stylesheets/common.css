@@ -689,3 +689,33 @@ ul {
   overflow: hidden;
   text-overflow: ellipsis;
 }
+
+.review-detail-card-button {
+  color: #ffffff;
+  padding: 10px 5px;
+  border-radius: .2rem;
+  box-shadow: 0 0 8px #B7B7B7;
+  margin: 0 6px;
+}
+
+.review-detail-card-button:active {
+  box-shadow: none;
+}
+
+.edit-color {
+  background-color: #7DB9B6;
+}
+
+.destroy-color {
+  background-color: #E96479;
+  padding-right: 10px;
+}
+
+.button-fonts {
+  margin: 0 5px;
+}
+
+.button-container {
+  display: flex;
+  justify-content: flex-end;
+}
