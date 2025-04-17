@@ -29,6 +29,26 @@ class ReviewsController < ApplicationController
     end
   end
 
+  def edit
+    @restaurant = Restaurant.find(params[:restaurant_id])
+    @review = Review.find(params[:id])
+  end
+
+  def update
+    @restaurant = Restaurant.find(params[:restaurant_id])
+    @review = Review.find(params[:id])
+    if @review.update(review_params)
+      flash[:notice] = '口コミを更新しました'
+      redirect_to restaurant_review_path(@restaurant, @review)
+    else
+      flash.now[:alert] = '口コミの更新に失敗しました'
+      render 'edit'
+    end
+  end
+
+  def destroy
+  end
+
   def search
     @reviews = Review.all
     @genres = Genre.all
