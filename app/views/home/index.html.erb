@@ -1,2 +1,50 @@
 <%= render "shared/flash" %>
-home#index
+<h2>ローカルグルメ</h2>
+<p>
+  ローカルグルメは<br>
+  飲食店の口コミ共有サービスです。<br>
+  発見したお店を<br>
+  ぜひローカルグルメでシェアしてください。
+</p>
+
+<div class="wrap-container">
+  <div>ブックマークの獲得数が多いお店のランキング</div>
+</div>
+
+<div class="wrap-container">
+  <p>アプリの使い方に関するガイド</p>
+  <div>
+    <div>お店を検索</div>
+    <p>
+      ページから駅や商業施設などの名前で検索してみましょう。
+    </p>
+    <p>
+      ローカルグルメで登録されたお店の口コミを見て<br>
+      行きたいお店を見つけましょう。
+    </p>
+    <p>
+      行きたいお店はマイページにブックマークとして<br>
+      保存することができます。
+    </p>
+    <div>
+      <span>お店を見つける</span>
+      <i class="fa-solid fa-arrow-right"></i>
+    </div>
+  </div>
+
+  <div>
+    <div>お店を評価</div>
+    <p>
+      ページからあなたの行きつけのお店を登録しましょう。
+    </p>
+    <p>
+      お店の口コミを投稿してみましょう。
+    </p>
+    <div>
+      <%= link_to restaurant_registered_statuses_path do %>
+        <span>口コミを投稿する</span>
+        <i class="fa-solid fa-arrow-right"></i>
+      <% end %>
+    </div>
+  </div>
+</div>
