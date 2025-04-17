@@ -6,7 +6,7 @@ Rails.application.routes.draw do
   }
   resource :profile, only: %i[show]
   resources :restaurants do
-    resources :reviews, only: %i[show new create] do  
+    resources :reviews, except: %i[index] do  
       resource :likes, only: %i[create destroy]
     end
   end

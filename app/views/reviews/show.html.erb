@@ -54,7 +54,14 @@
       <div><%= @review.comment %></div>
       <div>
         <% if current_user.own?(@review) %>
-          編集・削除ボタン
+          <div class="button-container">
+            <%= link_to edit_restaurant_review_path(@restaurant, @review), class: "review-detail-card-button edit-color" do %>
+              <span class="button-fonts">編集</span><i class="fa-solid fa-pen"></i>
+            <% end %>
+            <%= link_to restaurant_review_path, class: "review-detail-card-button destroy-color", method: :delete, data: {confirm: "#{@restaurant.name}の口コミを削除しますか？"} do %>
+              <span class="button-fonts">削除</span><i class="fa-solid fa-trash"></i>
+            <% end %>
+          </div>
         <% else %>
           <div id="like_buttons_<%= @review.id %>" class="like-button-container">
             <%= render 'shared/like_button', review: @review %>

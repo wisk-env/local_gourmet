@@ -1,5 +1,6 @@
 class ReviewsController < ApplicationController
   before_action :search_params, only: %i[index search]
+  before_action :ensure_correct_user, only: %i[edit update destroy]
 
   def index
     @reviews = Review.all
@@ -29,6 +30,35 @@ class ReviewsController < ApplicationController
     end
   end
 
+  def edit
+    @restaurant = Restaurant.find(params[:restaurant_id])
+    @review = Review.find(params[:id])
+  end
+
+  def update
+    @restaurant = Restaurant.find(params[:restaurant_id])
+    @review = Review.find(params[:id])
+    if @review.update(review_params)
+      flash[:notice] = '口コミを更新しました'
+      redirect_to restaurant_review_path(@restaurant, @review)
+    else
+      flash.now[:alert] = '口コミの更新に失敗しました'
+      render 'edit'
+    end
+  end
+
+  def destroy
+    @restaurant = Restaurant.find(params[:restaurant_id])
+    @review = Review.find(params[:id])
+    if @review.destroy
+      flash[:notice] = "口コミを削除しました"
+      redirect_to restaurant_path(@restaurant)
+    else
+      flash.now[:alert] = "口コミの削除に失敗しました"
+      render 'show'
+    end
+  end
+
   def search
     @reviews = Review.all
     @genres = Genre.all
@@ -44,5 +74,13 @@ class ReviewsController < ApplicationController
 
   def search_params
     @q = Review.ransack(params[:q])
+  end
+
+  def ensure_correct_user
+    @restaurant = Restaurant.find(params[:restaurant_id])
+    @review = Review.find(params[:id])
+    if @review.user_id != current_user.id
+      redirect_to restaurant_path(@restaurant)
+    end
   end
 end
