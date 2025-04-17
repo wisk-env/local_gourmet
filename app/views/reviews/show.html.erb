@@ -55,6 +55,7 @@
       <div>
         <% if current_user.own?(@review) %>
           編集・削除ボタン
+          <%= link_to "編集", edit_restaurant_review_path(@restaurant, @review) %>
         <% else %>
           <div id="like_buttons_<%= @review.id %>" class="like-button-container">
             <%= render 'shared/like_button', review: @review %>
