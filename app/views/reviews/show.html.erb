@@ -54,8 +54,8 @@
       <div><%= @review.comment %></div>
       <div>
         <% if current_user.own?(@review) %>
-          編集・削除ボタン
           <%= link_to "編集", edit_restaurant_review_path(@restaurant, @review) %>
+          <%= link_to "削除", restaurant_review_path, method: :delete, data: {confirm: "#{@restaurant.name}の口コミを削除しますか？"} %>
         <% else %>
           <div id="like_buttons_<%= @review.id %>" class="like-button-container">
             <%= render 'shared/like_button', review: @review %>

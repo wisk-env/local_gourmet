@@ -47,6 +47,15 @@ class ReviewsController < ApplicationController
   end
 
   def destroy
+    @restaurant = Restaurant.find(params[:restaurant_id])
+    @review = Review.find(params[:id])
+    if @review.destroy
+      flash[:notice] = "口コミを削除しました"
+      redirect_to restaurant_path(@restaurant)
+    else
+      flash.now[:alert] = "口コミの削除に失敗しました"
+      render 'show'
+    end
   end
 
   def search
