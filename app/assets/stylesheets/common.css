@@ -151,7 +151,7 @@ ul {
   transition: transform .4s;
 }
 
-.bookmark-button:hover {
+.right-side-element .bookmark-button:hover {
   transform: scale(1.04);
   opacity: 0.6;
   background-color: #B771E5;
@@ -725,6 +725,28 @@ ul {
   color: #76453B;
   border-radius: .5rem;
   padding: 20px 30px;
+}
+
+.rank-container {
+  width: 600px;
+  margin: 0 auto;
+  padding: 50px 0 100px 0;
+}
+
+.rank-title {
+  margin: 40px;
+}
+
+.rank-card {
+  width: auto;
+}
+
+.white-color {
+  color: #ffffff;
+}
+
+.rank-element {
+  color: #DDA853;
 }
 
 .button-container {

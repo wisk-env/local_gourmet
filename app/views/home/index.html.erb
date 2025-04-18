@@ -11,16 +11,30 @@
   </p>
 </div>
 
-<div class="wrap-container">
+<div class="rank-container">
   <% if @restaurants.present? %>
-    <div>ブックマークの獲得数が多いお店のランキング</div>
-    <div class="restaurant-card-container">
+    <div class="rank-title">
+      <div class="bookmark-button white-color">
+        ブックマーク<i class="fas fa-bookmark"></i>
+      </div>
+      の獲得数が多いお店のランキング
+    </div>
+    <div>
       <% @restaurants.each.with_index(1) do |restaurant, i| %>
-        <div class="restaurant_card">
+        <div class="restaurant_card rank-card">
           <%= link_to restaurant_path(restaurant) do %>
-            <div><i class="fa-solid fa-crown"></i><%= "No. #{i}" %></div>
-            <div class="restaurant-card-content"><%= "飲食店名: #{restaurant.name}" %></div>
-            <div class="restaurant-card-content"><%= "住所: #{restaurant.address}" %></div>
+            <div class="rank-element">
+              <i class="fa-solid fa-crown"></i>
+              <%= "No. #{i}" %>
+            </div>
+            <div class="restaurant-name-in-card">
+              <i class="fa-solid fa-shop"></i>
+              <%= restaurant.name %>
+            </div>
+            <div class="restaurant-address">
+              <i class="fa-solid fa-map-location-dot"></i>
+              <%= restaurant.address %>
+            </div>
           <% end %>
         </div>
       <% end %>
