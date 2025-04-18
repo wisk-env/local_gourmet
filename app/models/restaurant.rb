@@ -5,6 +5,7 @@ class Restaurant < ApplicationRecord
   validates :lng, presence: true
   validates :lat, uniqueness: { scope: :lng }
   has_many :reviews
+  has_many :bookmarks, dependent: :destroy
 
   def self.ransackable_attributes(auth_object = nil)
     ["id", "address"]
