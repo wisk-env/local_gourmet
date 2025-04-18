@@ -1,19 +1,24 @@
 <%= render "shared/flash" %>
-<h2>ローカルグルメ</h2>
-<p>
-  ローカルグルメは<br>
-  飲食店の口コミ共有サービスです。<br>
-  発見したお店を<br>
-  ぜひローカルグルメでシェアしてください。
-</p>
+<div class="wrap-container">
+  <h2 class="first-view-title">ローカルグルメ</h2>
+  <p class="service-overview">
+    <span>
+      ローカルグルメは<br>
+      飲食店の口コミ共有サービスです。<br>
+      発見したお店を<br>
+      ぜひローカルグルメでシェアしてください。
+    </span>
+  </p>
+</div>
 
 <div class="wrap-container">
   <% if @restaurants.present? %>
     <div>ブックマークの獲得数が多いお店のランキング</div>
-    <div id="test" class="restaurant-card-container">
-      <% @restaurants.each do |restaurant| %>
+    <div class="restaurant-card-container">
+      <% @restaurants.each.with_index(1) do |restaurant, i| %>
         <div class="restaurant_card">
           <%= link_to restaurant_path(restaurant) do %>
+            <div><i class="fa-solid fa-crown"></i><%= "No. #{i}" %></div>
             <div class="restaurant-card-content"><%= "飲食店名: #{restaurant.name}" %></div>
             <div class="restaurant-card-content"><%= "住所: #{restaurant.address}" %></div>
           <% end %>

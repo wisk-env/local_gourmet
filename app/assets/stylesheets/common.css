@@ -715,6 +715,18 @@ ul {
   margin: 0 5px;
 }
 
+.first-view-title {
+  color: #76453B;
+}
+
+.service-overview {
+  display: inline-block;
+  background-color: #ffffff;
+  color: #76453B;
+  border-radius: .5rem;
+  padding: 20px 30px;
+}
+
 .button-container {
   display: flex;
   justify-content: flex-end;
