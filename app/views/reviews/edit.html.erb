@@ -22,6 +22,13 @@
       <%= f.file_field :image, accept: "image/jpeg, image/gif, image/png", id: "image" %>
     </div>
     <div>
+      <% if @review.image.attached? %>
+        <%= image_tag @review.image, id: "image-preview", class: "menu-preview" %>
+      <% else %> 
+        <%= image_tag 'NOIMAGE.jpg', id: "image-preview", class: "menu-preview" %>
+      <% end %>
+    </div>
+    <div>
       <%= f.label :visit_date, "ご利用日", class: "form-text-label" %><br>
       <%= f.select :visit_date, [["平日", "平日"], ["土日", "土日"]] %>
     </div>
@@ -64,3 +71,7 @@
     </div>
   <% end %>
 </div>
+
+<% content_for :js do %>
+  <%= javascript_import_module_tag "review" %>
+<% end %>
