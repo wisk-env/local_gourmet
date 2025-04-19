@@ -489,6 +489,13 @@ ul {
   flex-wrap: wrap;
 }
 
+.menu-preview {
+  width: 200px;
+  height: 150px;
+  margin: 20px;
+  border-radius: .2rem;
+}
+
 .submit-button {
   width: 250px;
   height: 50px;

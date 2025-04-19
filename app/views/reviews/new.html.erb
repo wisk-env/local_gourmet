@@ -19,7 +19,10 @@
     </div>
     <div>
       <%= f.label :image, "写真", class: "form-text-label" %><br>
-      <%= f.file_field :image, accept: "image/jpeg, image/gif, image/png" %>
+      <%= f.file_field :image, accept: "image/jpeg, image/gif, image/png", id: "image" %>
+    </div>
+    <div>
+      <%= image_tag 'default_icon.png', id: "image-preview", class: "menu-preview" %>
     </div>
     <div>
       <%= f.label :visit_date, "ご利用日", class: "form-text-label" %><br>
@@ -64,3 +67,23 @@
     </div>
   <% end %>
 </div>
+
+<script>
+  document.addEventListener('turbo:load', () => {
+    const imageInput = document.querySelector('#image');
+    const imagePreview = document.querySelector('#image-preview');
+
+    imageInput.addEventListener('change', (e) => {
+      const file = e.target.files[0];
+      const reader = new FileReader();
+
+      reader.onloadend = () => {
+        imagePreview.src = reader.result;
+      };
+
+      if (file) {
+        reader.readAsDataURL(file);
+      }
+    });
+  });
+</script>
