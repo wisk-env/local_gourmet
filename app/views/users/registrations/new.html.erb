@@ -1,7 +1,6 @@
 <div class="content">
   <div class="registration-container">
     <h2 class="page-top-text">ユーザー登録</h2>
-    <%= render "users/shared/error_messages", resource: resource %>
 
     <%= form_for(resource, as: resource_name, url: registration_path(resource_name)) do |f| %>
 
@@ -10,6 +9,15 @@
           <%= f.label :name %>
         </div>
         <%= f.text_field :name, autofocus: true, autocomplete: "name", class: "text-field form-input" %>
+        <% if resource.errors.any? %>
+          <div id="error_explanation" data-turbo-cache="false">
+            <ul>
+              <% resource.errors.full_messages_for(:name).each do |message| %>
+                <li class="error-message-list"><%= message %></li>
+              <% end %>
+            </ul>
+          </div>
+        <% end %>
       </div>
 
       <div class="field">
@@ -17,6 +25,15 @@
           <%= f.label :email %>
         </div>
         <%= f.email_field :email, autofocus: true, autocomplete: "email", class: "text-field form-input" %>
+        <% if resource.errors.any? %>
+          <div id="error_explanation" data-turbo-cache="false">
+            <ul>
+              <% resource.errors.full_messages_for(:email).each do |message| %>
+                <li class="error-message-list"><%= message %></li>
+              <% end %>
+            </ul>
+          </div>
+        <% end %>
       </div>
 
       <div class="field">
@@ -27,6 +44,15 @@
           <% end %>
         </div>
         <%= f.password_field :password, autocomplete: "new-password", class: "text-field form-input" %>
+        <% if resource.errors.any? %>
+          <div id="error_explanation" data-turbo-cache="false">
+            <ul>
+              <% resource.errors.full_messages_for(:password).each do |message| %>
+                <li class="error-message-list"><%= message %></li>
+              <% end %>
+            </ul>
+          </div>
+        <% end %>
       </div>
 
       <div class="field">
@@ -34,6 +60,15 @@
           <%= f.label :password_confirmation %>
         </div>
         <%= f.password_field :password_confirmation, autocomplete: "new-password", class: "text-field form-input" %>
+        <% if resource.errors.any? %>
+          <div id="error_explanation" data-turbo-cache="false">
+            <ul>
+              <% resource.errors.full_messages_for(:password_confirmation).each do |message| %>
+                <li class="error-message-list"><%= message %></li>
+              <% end %>
+            </ul>
+          </div>
+        <% end %>
       </div>
 
       <div class="actions">
