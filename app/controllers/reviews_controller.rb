@@ -1,4 +1,5 @@
 class ReviewsController < ApplicationController
+  before_action :authenticate_user!, only: %i[new create edit update destroy]
   before_action :search_params, only: %i[index search]
   before_action :ensure_correct_user, only: %i[edit update destroy]
 

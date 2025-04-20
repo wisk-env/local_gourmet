@@ -1,4 +1,6 @@
 class RestaurantsController < ApplicationController
+  before_action :authenticate_user!, only: %i[new create]
+  
   def index
     @restaurant = Restaurant.new
     @restaurants = Restaurant.all
