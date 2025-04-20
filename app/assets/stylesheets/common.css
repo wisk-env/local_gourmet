@@ -78,6 +78,42 @@ a {
   margin: 0 auto;
 }
 
+.guest-login-button-wrap {
+  text-align: center;
+  margin: 30px 0 40px;
+}
+
+.guest-login-button {
+  background-color: #9DBC98;
+  color: #76453B;
+  padding: 10px 20px;
+  border-radius: .2rem;
+  transition: background-color .4s;
+}
+
+.guest-login-button:hover {
+  background-color: #43766C;
+  color: #ffffff;
+}
+
+.border-line {
+  display: flex;
+  align-items: center;
+  margin: 10px 0 20px;
+}
+
+.border-line::before,
+.border-line::after {
+  content: "";
+  flex-grow: 1;
+  height: 1px;
+  background: #000000;
+}
+
+.border-line-text {
+  margin: 0 10px;
+}
+
 input {
   padding: 0 10px;
   border: 1px;

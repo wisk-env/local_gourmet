@@ -3,6 +3,10 @@
     <h2>ログイン</h2>
     <%= render "shared/flash" %>
 
+    <div class="guest-login-button-wrap">
+      <%= link_to 'ゲストログイン', users_guest_sign_in_path, class: "guest-login-button", method: :post %>
+    </div>
+    <div class="border-line"><span class="border-line-text">または</span></div>
     <%= form_for(resource, as: resource_name, url: session_path(resource_name)) do |f| %>
       <div class="field">
         <%= f.label :email %><br />
