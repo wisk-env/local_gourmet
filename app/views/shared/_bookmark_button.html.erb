@@ -1,4 +1,4 @@
-<% if current_user.bookmark?(restaurant) %>
+<% if user_signed_in? && current_user.bookmark?(restaurant) %>
   <%= render 'shared/unbookmark', { restaurant: restaurant } %>
 <% else %>
   <%= render 'shared/bookmark', { restaurant: restaurant } %>
