@@ -6,7 +6,6 @@
 <h3>検索結果</h3>
 <div>お店の住所：</div>
 <div id="addressDisplay">検索結果がありません</div>
-<%= render "shared/flash" %>
 
 <%= form_with model: @restaurant, url: new_restaurant_registered_status_path(lat: @lat, lng: @lng, address: @address), method: :get, local: true do |f| %>
   <div>
