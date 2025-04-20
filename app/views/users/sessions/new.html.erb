@@ -1,6 +1,6 @@
 <div class="content">
   <div class="login-container">
-    <h2>ログイン</h2>
+    <h2 class="page-top-text">ログイン</h2>
     <%= render "shared/flash" %>
 
     <div class="guest-login-button-wrap">
@@ -9,13 +9,17 @@
     <div class="border-line"><span class="border-line-text">または</span></div>
     <%= form_for(resource, as: resource_name, url: session_path(resource_name)) do |f| %>
       <div class="field">
-        <%= f.label :email %><br />
-        <%= f.email_field :email, autofocus: true, autocomplete: "email", class: "text-field" %>
+        <div class="label-wrap">
+          <%= f.label :email %>
+        </div>
+        <%= f.email_field :email, autofocus: true, autocomplete: "email", class: "text-field form-input" %>
       </div>
 
       <div class="field">
-        <%= f.label :password %><br />
-        <%= f.password_field :password, autocomplete: "current-password", class: "text-field" %>
+        <div class="label-wrap">
+          <%= f.label :password %>
+        </div>
+        <%= f.password_field :password, autocomplete: "current-password", class: "text-field form-input" %>
       </div>
 
       <div class="actions">
