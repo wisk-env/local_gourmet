@@ -930,3 +930,22 @@ ul {
 .fa-arrow-right {
   margin-left: 10px;
 }
+
+@media screen and (max-width:400px) {
+  .page-top-text {
+    margin: 40px 30px 50px;
+  }
+
+  .field {
+    margin: 0 30px;
+  }
+
+  .submit-btn {
+    width: 85%;
+  }
+
+  .actions {
+    display: flex;
+    justify-content: center;
+  }
+}
