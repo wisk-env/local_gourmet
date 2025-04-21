@@ -78,4 +78,61 @@ RSpec.describe User, type: :model do
       expect(@user.likes).to include like
     end
   end
+
+  describe 'default_iconメソッドに関するテスト' do
+    it 'ユーザーが新規登録された際にユーザーのデフォルト画像が設定されていること' do
+      @user = FactoryBot.create(:user)
+      expect(@user.avatar.filename).to eq('default_icon.png')
+    end
+  end
+
+  describe 'ブックマークのメソッドに関するテスト' do
+    before do
+      @user = FactoryBot.create(:user)
+      @restaurant = FactoryBot.create(:restaurant)
+    end
+
+    context 'bookmarkメソッドを呼び出した時' do
+      it 'bookmarksテーブルに一つレコードが追加されていること' do
+        expect { @user.bookmark(@restaurant) }.to change { Bookmark.count }.by(1)
+      end
+    end
+
+    context 'unbookmarkメソッドを呼び出した時' do
+      it 'bookmarksテーブルから一つレコードが削除されていること' do
+        bookmark = FactoryBot.create(:bookmark, user: @user, restaurant: @restaurant)
+        expect { @user.unbookmark(@restaurant) }.to change { Bookmark.count }.by(-1)
+      end
+    end
+
+    context 'bookmark?メソッドを呼び出した時' do
+      it 'ユーザーがお店をブックマークしていた場合は、trueを返すこと' do
+        bookmark = FactoryBot.create(:bookmark, user: @user, restaurant: @restaurant)
+        expect(@user.bookmark?(@restaurant)).to eq(true)
+      end
+
+      it 'ユーザーがお店をブックマークしていない場合は、falseを返すこと' do
+        another_user = FactoryBot.create(:user)
+        bookmark = FactoryBot.create(:bookmark, user: another_user, restaurant: @restaurant)
+        expect(@user.bookmark?(@restaurant)).to eq(false)
+      end
+    end
+  end
+
+  describe 'ユーザーが口コミの投稿者であるか判定するメソッドのテスト' do
+    before do
+      @user = FactoryBot.create(:user)
+    end
+
+    it 'ユーザーが口コミの投稿者である場合はtrueを返すこと' do
+      review = FactoryBot.create(:review, user: @user)
+      expect(@user.own?(review)).to eq(true)
+    end
+
+    it 'ユーザーが口コミの投稿者でない場合はfalseを返すこと' do
+      another_user = FactoryBot.create(:user)
+      review = FactoryBot.create(:review, user: another_user)
+      expect(@user.own?(review)).to eq(false)
+    end
+  end
 end
