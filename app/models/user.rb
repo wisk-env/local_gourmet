@@ -6,14 +6,12 @@ class User < ApplicationRecord
   devise :database_authenticatable, :registerable,
          :recoverable, :rememberable, :validatable
   validates :name, presence: true
-  validates :email, presence: true
-  validates :password, presence: true
   validates :password_confirmation, presence: true
   attr_accessor :current_password
   has_one_attached :avatar
   has_many :bookmarks, dependent: :destroy
   has_many :bookmark_restaurants, through: :bookmarks, source: :restaurant
-  has_many :reviews
+  has_many :reviews, dependent: :destroy
   has_many :likes, dependent: :destroy
   has_many :like_reviews, through: :likes, source: :review
 
