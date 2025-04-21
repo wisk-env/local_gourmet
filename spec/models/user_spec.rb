@@ -57,4 +57,25 @@ RSpec.describe User, type: :model do
       end
     end
   end
+
+  describe 'ユーザーの関連付け' do
+    before do
+      @user = FactoryBot.create(:user)
+    end
+
+    it 'bookmarksとの関連付けが正しく設定されていること' do
+      bookmark = FactoryBot.create(:bookmark, user: @user)
+      expect(@user.bookmarks).to include bookmark
+    end
+
+    it 'reviewsとの関連付けが正しく設定されていること' do
+      review = FactoryBot.create(:review, user: @user)
+      expect(@user.reviews).to include review
+    end
+
+    it 'likesとの関連付けが正しく設定されていること' do
+      like = FactoryBot.create(:like, user: @user)
+      expect(@user.likes).to include like
+    end
+  end
 end
