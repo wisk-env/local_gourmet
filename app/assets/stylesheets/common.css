@@ -286,6 +286,7 @@ ul {
   width: 90px;
   height: 90px;
   border-radius: 50%;
+  margin: 20px;
 }
 
 .header-login-user {
@@ -306,16 +307,24 @@ ul {
   vertical-align: middle;
 }
 
+.profile-edit-container {
+  width: 400px;
+  margin: 0 auto;
+  padding: 40px 0;
+}
+
 .profile-update-button {
   background-color: #9DBC98;
   color: #ffffff;
   padding: 10px 20px;
+  width: 85%;
+  margin-bottom: 10px;
 }
 
 .back-button {
   background-color: #D9D9D9;
   color: #000000;
-  width: 280px;
+  width: 75%;
   display: inline-block;
   padding: 10px 20px;
   text-align: center;
@@ -947,5 +956,19 @@ ul {
   .actions {
     display: flex;
     justify-content: center;
+  }
+
+  .avatar-image {
+    margin: 30px;
+  }
+
+  .back-button {
+    margin: 10px 30px;
+  }
+}
+
+@media screen and (min-width:401px) and (max-width:650px) {
+  .profile-edit-container {
+    padding: 50px 0 100px 40px;
   }
 }
