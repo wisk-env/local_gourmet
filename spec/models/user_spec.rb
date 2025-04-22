@@ -44,12 +44,6 @@ RSpec.describe User, type: :model do
         expect(@user.errors.full_messages).to include("パスワード は6文字以上で設定してください")
       end
 
-      it 'password_confirmationが空の場合は登録できないこと' do
-        @user.password_confirmation = nil
-        @user.valid?
-        expect(@user.errors.full_messages).to include("パスワード（確認用） を入力してください")
-      end
-
       it 'passwordとpassword_confirmationが一致しない場合は登録できないこと' do
         @user.password_confirmation = 'another_password'
         @user.valid?

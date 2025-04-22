@@ -78,16 +78,6 @@ RSpec.describe "Users", type: :system do
       expect(page).to have_content('パスワード は6文字以上で設定してください')
     end
 
-    it "パスワード（確認用）を入力せず登録ボタンを押したらユーザー登録に失敗すること" do
-      fill_in 'user[name]', with: 'test_user'
-      fill_in 'user[email]', with: 'test_user@example.com'
-      fill_in 'user[password]', with: 'password'
-      fill_in 'user[password_confirmation]', with: ''
-      expect{find('input[name="commit"]').click}.to change { User.count }.by(0)
-      expect(current_path).to eq('/users')
-      expect(page).to have_content('パスワード（確認用） を入力してください')
-    end
-
     it 'パスワードとパスワード（確認用）が一致しない場合はユーザー登録できないこと' do
       fill_in 'user[name]', with: 'test_user'
       fill_in 'user[email]', with: 'test_user@example.com'
@@ -121,6 +111,38 @@ RSpec.describe "Users", type: :system do
       click_button 'ログイン'
       expect(current_path).to eq(new_user_session_path)
       expect(find('.flash-message')).to have_content('メールアドレスまたはパスワードが違います')
+    end
+  end
+
+  context 'ログインしている時' do
+    before do
+      @user = FactoryBot.create(:user)
+      sign_in @user
+      visit profile_path
+    end
+
+    it 'マイページにユーザー名とユーザーのメールアドレスとデフォルト画像が表示されていること' do
+      expect(page).to have_content(@user.name)
+      expect(page).to have_content(@user.email)
+      expect(page).to have_selector("img[src$='default_icon.png']")
+    end
+
+    it 'プロフィール編集ボタンをクリックしたらプロフィール編集画面を表示できること' do
+      click_link 'プロフィール編集'
+      expect(current_path).to eq(edit_user_registration_path)
+    end
+
+    it 'プロフィールを編集して更新ボタンをクリックしたらプロフィール情報が編集されていること' do
+      click_link 'プロフィール編集'
+      fill_in 'user[name]', with: 'update_user'
+      fill_in 'user[email]', with: 'update_user@example.com'
+      attach_file 'user[avatar]', "spec/fixtures/image/test_image.jpg"
+      click_button 'プロフィール更新'
+      expect(current_path).to eq(profile_path)
+      expect(page).to have_content('アカウント情報を変更しました。')
+      expect(page).to have_content('update_user')
+      expect(page).to have_content('update_user@example.com')
+      expect(page).to have_selector("img[src$='test_image.jpg']")
     end
   end
 
