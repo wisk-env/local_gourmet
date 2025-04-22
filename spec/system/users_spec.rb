@@ -90,21 +90,23 @@ RSpec.describe "Users", type: :system do
   end
 
   context 'ログインに成功する時' do
+    let(:user) { create(:user) }
+
     it "ログイン画面でフォームに必要事項を入力してログインボタンを押したらホーム画面に遷移すること" do
-      @user = FactoryBot.create(:user)
       visit new_user_session_path
-      fill_in 'メールアドレス', with: @user.email
-      fill_in 'パスワード', with: @user.password
+      fill_in 'メールアドレス', with: user.email
+      fill_in 'パスワード', with: user.password
       click_button 'ログイン'
       expect(current_path).to eq(root_path)
-      expect(find('.header-end')).to have_content(@user.name)
+      expect(find('.header-end')).to have_content(user.name)
       expect(find('.header-end')).to have_content('ログアウト')
     end
   end
 
   context 'ログインに失敗する時' do
+    let(:user) { create(:user) }
+
     it "メールアドレスとパスワードを入力せずログインボタンを押したらログインに失敗すること" do
-      @user = FactoryBot.create(:user)
       visit new_user_session_path
       fill_in 'メールアドレス', with: ''
       fill_in 'パスワード', with: ''
@@ -115,15 +117,16 @@ RSpec.describe "Users", type: :system do
   end
 
   context 'ログインしている時' do
+    let(:user) { create(:user) }
+
     before do
-      @user = FactoryBot.create(:user)
-      sign_in @user
+      sign_in user
       visit profile_path
     end
 
     it 'マイページにユーザー名とユーザーのメールアドレスとデフォルト画像が表示されていること' do
-      expect(page).to have_content(@user.name)
-      expect(page).to have_content(@user.email)
+      expect(page).to have_content(user.name)
+      expect(page).to have_content(user.email)
       expect(page).to have_selector("img[src$='default_icon.png']")
     end
 
@@ -143,6 +146,12 @@ RSpec.describe "Users", type: :system do
       expect(page).to have_content('update_user')
       expect(page).to have_content('update_user@example.com')
       expect(page).to have_selector("img[src$='test_image.jpg']")
+    end
+
+    it '口コミ投稿へ遷移するリンクをクリックしたら口コミ投稿するお店を検索する画面が表示されていること' do
+      click_link '口コミ投稿'
+      expect(current_path).to eq(restaurant_registered_statuses_path)
+      expect(page).to have_content('口コミを投稿したいお店を検索')
     end
   end
 
