@@ -112,6 +112,18 @@ RSpec.describe "Users", type: :system do
     end
   end
 
+  context 'ログインに失敗する時' do
+    it "メールアドレスとパスワードを入力せずログインボタンを押したらログインに失敗すること" do
+      @user = FactoryBot.create(:user)
+      visit new_user_session_path
+      fill_in 'メールアドレス', with: ''
+      fill_in 'パスワード', with: ''
+      click_button 'ログイン'
+      expect(current_path).to eq(new_user_session_path)
+      expect(find('.flash-message')).to have_content('メールアドレスまたはパスワードが違います')
+    end
+  end
+
   context 'ログインしていない時' do
     before do
       visit root_path
