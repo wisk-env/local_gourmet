@@ -1,31 +1,74 @@
 <div class="content">
   <div class="registration-container">
-    <h2>ユーザー登録</h2>
-    <%= render "users/shared/error_messages", resource: resource %>
+    <h2 class="page-top-text">ユーザー登録</h2>
 
     <%= form_for(resource, as: resource_name, url: registration_path(resource_name)) do |f| %>
 
       <div class="field">
-        <%= f.label :name %><br />
-        <%= f.text_field :name, autofocus: true, autocomplete: "name", class: "text-field" %>
+        <div class="label-wrap">
+          <%= f.label :name %>
+        </div>
+        <%= f.text_field :name, autofocus: true, autocomplete: "name", class: "text-field form-input" %>
+        <% if resource.errors.any? %>
+          <div id="error_explanation" data-turbo-cache="false">
+            <ul>
+              <% resource.errors.full_messages_for(:name).each do |message| %>
+                <li class="error-message-list"><%= message %></li>
+              <% end %>
+            </ul>
+          </div>
+        <% end %>
       </div>
 
       <div class="field">
-        <%= f.label :email %><br />
-        <%= f.email_field :email, autofocus: true, autocomplete: "email", class: "text-field" %>
+        <div class="label-wrap">
+          <%= f.label :email %>
+        </div>
+        <%= f.email_field :email, autofocus: true, autocomplete: "email", class: "text-field form-input" %>
+        <% if resource.errors.any? %>
+          <div id="error_explanation" data-turbo-cache="false">
+            <ul>
+              <% resource.errors.full_messages_for(:email).each do |message| %>
+                <li class="error-message-list"><%= message %></li>
+              <% end %>
+            </ul>
+          </div>
+        <% end %>
       </div>
 
       <div class="field">
-        <%= f.label :password %>
-        <% if @minimum_password_length %>
-          (<%= @minimum_password_length %> 桁以上)
-        <% end %><br />
-        <%= f.password_field :password, autocomplete: "new-password", class: "text-field" %>
+        <div class="label-wrap">
+          <%= f.label :password %>
+          <% if @minimum_password_length %>
+            (<%= @minimum_password_length %> 桁以上)
+          <% end %>
+        </div>
+        <%= f.password_field :password, autocomplete: "new-password", class: "text-field form-input" %>
+        <% if resource.errors.any? %>
+          <div id="error_explanation" data-turbo-cache="false">
+            <ul>
+              <% resource.errors.full_messages_for(:password).each do |message| %>
+                <li class="error-message-list"><%= message %></li>
+              <% end %>
+            </ul>
+          </div>
+        <% end %>
       </div>
 
       <div class="field">
-        <%= f.label :password_confirmation %><br />
-        <%= f.password_field :password_confirmation, autocomplete: "new-password", class: "text-field" %>
+        <div class="label-wrap">
+          <%= f.label :password_confirmation %>
+        </div>
+        <%= f.password_field :password_confirmation, autocomplete: "new-password", class: "text-field form-input" %>
+        <% if resource.errors.any? %>
+          <div id="error_explanation" data-turbo-cache="false">
+            <ul>
+              <% resource.errors.full_messages_for(:password_confirmation).each do |message| %>
+                <li class="error-message-list"><%= message %></li>
+              <% end %>
+            </ul>
+          </div>
+        <% end %>
       </div>
 
       <div class="actions">
@@ -33,5 +76,8 @@
       </div>
     <% end %>
 
+    <div class="guide_wrap">
+      <%= link_to 'ログインページへ', new_user_session_path, class: "guide-link" %>
+    </div>
   </div>
 </div>

@@ -38,15 +38,17 @@
               <div><%= image_tag review.user.avatar, class: "review-user-icon" %></div>
               <div class="review-user-name"><%= review.user.name %></div>
             </div>
-            <% if current_user.own?(review) %>
-              <div class="like-button-container">
-                <div><i class="fa-solid fa-heart"></i></div>
-                <div class="review-likes-count"><%= review.likes.length %></div>
-              </div>
-            <% else %>
-              <div id="like_buttons_<%= review.id %>" class="like-button-container">
-                <%= render 'shared/like_button', review: review %>
-              </div>
+            <% if user_signed_in? %>
+              <% if current_user.own?(review) %>
+                <div class="like-button-container">
+                  <div><i class="fa-solid fa-heart"></i></div>
+                  <div class="review-likes-count"><%= review.likes.length %></div>
+                </div>
+              <% else %>
+                <div id="like_buttons_<%= review.id %>" class="like-button-container">
+                  <%= render 'shared/like_button', review: review %>
+                </div>
+              <% end %>
             <% end %>
           </div>
         </div>

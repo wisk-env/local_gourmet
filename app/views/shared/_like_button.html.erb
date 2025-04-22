@@ -1,4 +1,4 @@
-<% if review.liked_by?(current_user) %>
+<% if user_signed_in? && review.liked_by?(current_user) %>
   <%= link_to restaurant_review_likes_path(restaurant_id: review.restaurant_id, review_id: review.id, id: current_user.likes.find_by(review_id: review.id)), method: :delete, remote: true, data: { turbo: false } do %>
     <i class="fa-solid fa-heart"></i>
     <div class="review-likes-count"><%= review.likes.length %></div>

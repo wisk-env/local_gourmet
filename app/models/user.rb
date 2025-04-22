@@ -10,7 +10,7 @@ class User < ApplicationRecord
   has_one_attached :avatar
   has_many :bookmarks, dependent: :destroy
   has_many :bookmark_restaurants, through: :bookmarks, source: :restaurant
-  has_many :reviews
+  has_many :reviews, dependent: :destroy
   has_many :likes, dependent: :destroy
   has_many :like_reviews, through: :likes, source: :review
 
@@ -34,5 +34,12 @@ class User < ApplicationRecord
 
   def own?(object)
     object.user_id == id
+  end
+
+  def self.guest
+    find_or_create_by!(email: 'guest@example.com') do |user|
+      user.name = 'ゲスト'
+      user.password = SecureRandom.urlsafe_base64
+    end
   end
 end

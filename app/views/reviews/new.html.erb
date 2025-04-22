@@ -1,6 +1,5 @@
 <div class="wrap-container review-form-width">
   <h2><%= "#{@restaurant.name}の口コミ投稿画面" %></h2>
-  <%= render 'shared/flash' %>
   <%= form_with model: @review, url: restaurant_reviews_path, local: true do |f| %>
     <div>
       <p class="form-text-label">口コミを投稿するお店の名前</p><br>

@@ -5,14 +5,16 @@ ja:
         user:
           attributes:
             name:
-              blank: "を入力してください"
+              blank: 'を入力してください'
             email:
-              blank: "を入力してください"
+              blank: 'を入力してください'
+              taken: 'は既に登録されています'
             password:
-              blank: "を入力してください"
-              too_short: "は6文字以上で設定してください"
+              blank: 'を入力してください'
+              too_short: 'は6文字以上で設定してください'
             password_confirmation:
-              confirmation: "を入力してください"
+              blank: 'を入力してください'
+              confirmation: 'が一致しません'
   errors:
     messages:
       not_found: "は見つかりませんでした"
