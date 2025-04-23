@@ -631,6 +631,11 @@ ul {
   justify-content: center;
 }
 
+.search-tab-container {
+  width: 400px;
+  margin: 40px auto;
+}
+
 .search-tab-navigation {
   display: flex;
 }
@@ -719,7 +724,6 @@ ul {
   display: inline-block;
   width: 100%;
   height: 30px;
-  margin: 5px;
 }
 
 .search-price-input {
@@ -940,7 +944,50 @@ ul {
   margin-left: 10px;
 }
 
+.search-top-title {
+  color: #76453B;
+}
+
+.search-top-text {
+  margin-left: 5px;
+}
+
+.search-restaurant-container {
+  width: 400px;
+  margin: 40px auto;
+}
+
+.restaurant-map-wrap {
+  width: 400px;
+}
+
+.search-input-wrap {
+  display: flex;
+  margin: 20px auto;
+}
+
+.search-button {
+  background-color: #43766C;
+  color: #ffffff;
+  margin-left: 7px;
+  width: 100px;
+}
+
+.map-wrap {
+  display: flex;
+  justify-content: center;
+}
+
+#map {
+  width: 100%;
+  height: 400px;
+}
+
 @media screen and (max-width:400px) {
+  .wrap-container {
+    width: 400px;
+  }
+  
   .page-top-text {
     margin: 40px 30px 50px;
   }
