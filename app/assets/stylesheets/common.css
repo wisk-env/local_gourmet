@@ -1014,6 +1014,39 @@ ul {
   height: 400px;
 }
 
+.restaurant-registration-form {
+  width: 400px;
+  margin: 0 auto;
+}
+
+.registration-top-text {
+  color: #76453B;
+  margin: 40px 0 50px;
+}
+
+.registration-button {
+  background-color: #9DBC98;
+  color: #ffffff;
+  padding: 10px 20px;
+  text-align: center;
+  border-radius: .2rem;
+  transition: transform .4s;
+  width: 100%;
+  margin-top: 20px;
+}
+
+.registration-button:hover {
+  transform: scale(1.04);
+}
+
+.registration-form-container {
+  color: #76453B;
+}
+
+.registration-form-container .form-text-input {
+  padding: 5px 10px;
+}
+
 @media screen and (max-width:380px) {  
   .font-size-S {
     font-size: 20px;
