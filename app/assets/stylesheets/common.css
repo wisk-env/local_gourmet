@@ -20,6 +20,10 @@ header {
   z-index: 1;
 }
 
+main {
+  margin-top: 56px;
+}
+
 footer {
   height: 56px;
   width: 100%;
