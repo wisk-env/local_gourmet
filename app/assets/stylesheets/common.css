@@ -1000,6 +1000,10 @@ ul {
   width: 100px;
 }
 
+.search-form-text {
+  color: #76453B;
+}
+
 .map-wrap {
   display: flex;
   justify-content: center;
