@@ -15,6 +15,9 @@ header {
   color: #ffffff;
   display: flex;
   justify-content: space-between;
+  position: fixed;
+  top: 0;
+  z-index: 1;
 }
 
 footer {
@@ -347,8 +350,10 @@ ul {
 
 .wrap-container {
   width: 600px;
-  margin: 0 auto;
+  margin: 56px auto;
   padding: 20px 40px 50px;
+  /* display: flex; */
+  justify-content: center;
 }
 
 .review-form-width {
@@ -437,7 +442,8 @@ ul {
 .review-box-container {
   display: flex;
   flex-wrap: wrap;
-  justify-content: space-between;
+  /* justify-content: space-between; */
+  justify-content: center;
 }
 
 .review-box {
@@ -674,7 +680,7 @@ ul {
 }
 
 .search-form-submit-button {
-  width: 400px;
+  width: 100%;
   display: flex;
   justify-content: center;
   margin-bottom: 30px;
@@ -1004,11 +1010,11 @@ ul {
   height: 400px;
 }
 
-@media screen and (max-width:400px) {
+@media screen and (max-width:679px) {  
   .wrap-container {
     width: 400px;
   }
-  
+
   .page-top-text {
     margin: 40px 30px 50px;
   }
@@ -1039,7 +1045,7 @@ ul {
   }
 }
 
-@media screen and (min-width:401px) and (max-width:650px) {
+@media screen and (min-width:680px) and (max-width:960px) {
   .profile-edit-container {
     padding: 50px 0 100px 40px;
   }
