@@ -1078,6 +1078,11 @@ ul {
   margin: 5px 0 30px;
 }
 
+.registration-form-container .back-button {
+  width: 90%;
+  margin: 15px 0 30px;
+}
+
 @media screen and (max-width:380px) {  
   .font-size-S {
     font-size: 20px;

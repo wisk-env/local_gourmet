@@ -17,6 +17,7 @@
         <%= f.hidden_field :lat, value: @not_registered_data[:lat] %>
         <%= f.hidden_field :lng, value: @not_registered_data[:lng] %>
         <%= f.submit "店舗登録を完了する", class: "registration-button font-size-M" %>
+        <%= link_to "キャンセル", restaurant_registered_statuses_path, class: "back-button font-size-M" %>
       <% end %>
     </div>
   </div>
