@@ -1,25 +1,27 @@
-<div class="search-restaurant-container">
-  <h2 class="search-top-title">
-    <i class="fa-solid fa-magnifying-glass"></i>
-    <span class="search-top-text">お店を探す</span>
-  </h2>
-  <div class="search-tab-container">
-    <div class="search-tab-navigation">
-      <div class="search-tab active-status">
-        <%= link_to '地図から探す', restaurants_path, class: "search-from-map" %>
-      </div>
-      <div class="search-tab">
-        <%= link_to '口コミから探す', reviews_path, class: "search-from-reviews" %>
+<div class="wrap-container">
+  <div class="search-restaurant-container">
+    <h2 class="search-top-title">
+      <i class="fa-solid fa-magnifying-glass"></i>
+      <span class="search-top-text">お店を探す</span>
+    </h2>
+    <div class="search-tab-container">
+      <div class="search-tab-navigation">
+        <div class="search-tab active-status">
+          <%= link_to '地図から探す', restaurants_path, class: "search-from-map" %>
+        </div>
+        <div class="search-tab">
+          <%= link_to '口コミから探す', reviews_path, class: "search-from-reviews" %>
+        </div>
       </div>
     </div>
-  </div>
-  <div>
-    <div class="search-input-wrap">
-      <input id="address" type="textbox" placeholder="駅や施設名で検索" class="search-form-input">
-      <input type="button" value="&#xf002;" onclick="codeAddress()" class="search-button fa-solid fa-magnifying-glass">
-    </div>
-    <div class="map-wrap">
-      <div id='map'></div>
+    <div>
+      <div class="search-input-wrap">
+        <input id="address" type="textbox" placeholder="駅や施設名で検索" class="search-form-input">
+        <input type="button" value="&#xf002;" onclick="codeAddress()" class="search-button fa-solid fa-magnifying-glass">
+      </div>
+      <div class="map-wrap">
+        <div id='map'></div>
+      </div>
     </div>
   </div>
 </div>
