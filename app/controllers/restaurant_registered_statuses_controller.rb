@@ -1,5 +1,6 @@
 class RestaurantRegisteredStatusesController < ApplicationController
   before_action :authenticate_user!
+  before_action :params_required, only: %i[new]
   
   def index
     @restaurants = Restaurant.all
@@ -14,7 +15,7 @@ class RestaurantRegisteredStatusesController < ApplicationController
     if @restaurant && @restaurant.name
       redirect_to restaurant_registered_status_path(@restaurant)
     else
-      redirect_to restaurant_unregistered_statuses_path(check_params)
+      redirect_to new_restaurant_path(check_params)
     end
   end
 
@@ -22,5 +23,11 @@ class RestaurantRegisteredStatusesController < ApplicationController
 
   def check_params
     params.permit(:lat, :lng, :address)
+  end
+
+  def params_required
+    if params[:lat].blank? || params[:lng].blank? || params[:address].blank?
+      redirect_to restaurant_registered_statuses_path
+    end
   end
 end
