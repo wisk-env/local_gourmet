@@ -18,7 +18,7 @@ class RestaurantsController < ApplicationController
       flash[:alert] = 'お店の登録に失敗しました。飲食店名を入力して下さい。'
       redirect_to new_restaurant_path(restaurant_params)
     elsif @restaurant.save!
-      flash[:notice] = 'お店を登録しました'
+      flash[:notice] = 'お店を登録しました。さっそくお店の口コミを投稿してみましょう。'
       redirect_to restaurant_path(@restaurant)
     else
       flash[:alert] = 'お店の登録に失敗しました'
