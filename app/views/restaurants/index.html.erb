@@ -7,17 +7,17 @@
     <div class="search-tab-container">
       <div class="search-tab-navigation">
         <div class="search-tab active-status">
-          <%= link_to '地図から探す', restaurants_path, class: "search-from-map" %>
+          <%= link_to '地図から探す', restaurants_path, class: "search-from-map font-size-S" %>
         </div>
         <div class="search-tab">
-          <%= link_to '口コミから探す', reviews_path, class: "search-from-reviews" %>
+          <%= link_to '口コミから探す', reviews_path, class: "search-from-reviews font-size-S" %>
         </div>
       </div>
     </div>
     <div>
       <div class="search-input-wrap">
-        <input id="address" type="textbox" placeholder="駅や施設名で検索" class="search-form-input">
-        <input type="button" value="&#xf002;" onclick="codeAddress()" class="search-button fa-solid fa-magnifying-glass">
+        <input id="address" type="textbox" placeholder="駅や施設名で検索" class="search-form-input font-size-S">
+        <input type="button" value="&#xf002;" onclick="codeAddress()" class="search-button fa-solid fa-magnifying-glass font-size-S">
       </div>
       <div class="map-wrap">
         <div id='map'></div>

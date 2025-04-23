@@ -1010,7 +1010,65 @@ ul {
   height: 400px;
 }
 
-@media screen and (max-width:679px) {  
+@media screen and (max-width:380px) {  
+  .font-size-S {
+    font-size: 20px;
+  }
+  .font-size-M {
+      font-size: 24px;
+  }
+  .font-size-L {
+      font-size: 30px;
+  }
+
+  .search-top-text {
+    font-size: 30px;
+  }
+
+  .search-element {
+    display: block;
+  }
+
+  .search-form-input {
+    height: auto;
+    padding: 10px;
+  }
+
+  .select-element {
+    display: block;
+  }
+
+  .search-price-element {
+    display: inline-block;
+  }
+
+  .text-in-price-element {
+    font-size: 15px;
+  }
+
+  .submit-btn {
+    width: 100%;
+    height: auto;
+    font-size: 25px;
+    padding: 10px 40px;
+  }
+
+  .review-box {
+    width: 100%;
+  }
+
+  .center-image {
+    display: flex;
+    justify-content: center;
+    margin-bottom: 20px;
+  }
+
+  .tag-container {
+    height: auto;
+  }
+}
+
+@media screen and (max-width:679px) {
   .wrap-container {
     width: 400px;
   }
@@ -1024,7 +1082,7 @@ ul {
   }
 
   .submit-btn {
-    width: 85%;
+    width: 100%;
   }
 
   .actions {
@@ -1038,6 +1096,10 @@ ul {
 
   .back-button {
     margin: 10px 30px;
+  }
+
+  .search-top-text {
+    font-size: 30px;
   }
 
   .review-box-container {
