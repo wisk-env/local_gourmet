@@ -1102,7 +1102,8 @@ ul {
     font-size: 20px;
   }
   .font-size-M {
-      font-size: 24px;
+      /* font-size: 1.7vw; */
+    font-size: 24px;
   }
   .font-size-L {
       font-size: 30px;
@@ -1164,6 +1165,10 @@ ul {
 
   .border-image {
     border-radius: 0;
+  }
+
+  .search-tab {
+    padding: 5px 10px;
   }
 }
 

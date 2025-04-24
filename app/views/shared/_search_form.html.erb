@@ -6,30 +6,30 @@
   <div class="search-tab-container">
     <div class="search-tab-navigation">
       <div class="search-tab">
-        <%= link_to '地図から探す', restaurants_path, class: "search-from-map font-size-S" %>
+        <%= link_to '地図から探す', restaurants_path, class: "search-from-map font-size-M" %>
       </div>
       <div class="search-tab active-status">
-        <%= link_to '口コミから探す', reviews_path, class: "search-from-reviews font-size-S" %>
+        <%= link_to '口コミから探す', reviews_path, class: "search-from-reviews font-size-M" %>
       </div>
     </div>
   </div>
   <%= search_form_for @q, url: search_reviews_path do |f| %>
     <div class="search-element">
-      <%= f.label :menu_or_comment_or_genres_name_or_feedback_options_option_title_cont, 'キーワード', class: "search-form-label font-size-S" %>
-      <%= f.search_field :menu_or_comment_or_genres_name_or_feedback_options_option_title_cont, placeholder: "キーワードを入力 (例: 料理名)", class: "search-form-input font-size-S" %>
+      <%= f.label :menu_or_comment_or_genres_name_or_feedback_options_option_title_cont, 'キーワード', class: "search-form-label font-size-M" %>
+      <%= f.search_field :menu_or_comment_or_genres_name_or_feedback_options_option_title_cont, placeholder: "キーワードを入力 (例: 料理名)", class: "search-form-input font-size-M" %>
     </div>
 
     <div class="search-element">
-      <%= f.label :restaurant_address_cont, 'エリア名', class: "search-form-label font-size-S" %>
-      <%= f.search_field :restaurant_address_cont, placeholder: "エリア名を入力 (例: 東京)", class: "search-form-input font-size-S" %>
+      <%= f.label :restaurant_address_cont, 'エリア名', class: "search-form-label font-size-M" %>
+      <%= f.search_field :restaurant_address_cont, placeholder: "エリア名を入力 (例: 東京)", class: "search-form-input font-size-M" %>
     </div>
 
     <div class="search-price-element">
-      <%= f.label :price, '料金', class: "search-form-label font-size-S" %>
+      <%= f.label :price, '料金', class: "search-form-label font-size-M" %>
       <span class="text-in-price-element">¥</span>
-      <%= f.number_field :price_gteq, class: "search-price-input font-size-S" %>
+      <%= f.number_field :price_gteq, class: "search-price-input font-size-M" %>
       <span class="text-in-price-element">以上 〜¥</span>
-      <%= f.number_field :price_lteq, class: "search-price-input font-size-S" %>
+      <%= f.number_field :price_lteq, class: "search-price-input font-size-M" %>
       <span class="text-in-price-element">以下</span>
     </div>
 
@@ -38,31 +38,35 @@
 
       <div class="search-option">
         <div class="user-pick-element select-element">
-          <%= f.label :visit_date_eq, 'ご来店日', class: "search-form-label font-size-S" %>
+          <%= f.label :visit_date_eq, 'ご来店日', class: "search-form-label font-size-M" %>
           <%= f.select :visit_date_eq, options_for_select({平日: "平日", 土日: "土日"}), include_blank: true %>
         </div>
 
         <div class="user-pick-element select-element">
-          <%= f.label :visit_time_eq, 'ご来店時間帯', class: "search-form-label font-size-S" %>
+          <%= f.label :visit_time_eq, 'ご来店時間帯', class: "search-form-label font-size-M" %>
           <%= f.select :visit_time_eq, options_for_select({ランチ: "ランチ", ディナー: "ディナー"}), include_blank: true %>
         </div>
 
         <div class="user-pick-element">
-          <%= f.label :genres_id_eq_any, 'ジャンル', class: "search-form-label font-size-S" %>
+          <%= f.label :genres_id_eq_any, 'ジャンル', class: "search-form-label font-size-M" %>
           <div class="checkbox-container font-size-S">
             <% @genres.each do |genre| %>
-              <%= f.check_box :genres_id_eq_any, { multiple: true, checked: genre[:checked], disabled: genre[:disabled], include_hidden: false }, genre[:id] %>
-              <label><%= genre.name %></label>
+              <div>
+                <%= f.check_box :genres_id_eq_any, { multiple: true, checked: genre[:checked], disabled: genre[:disabled], include_hidden: false }, genre[:id] %>
+                <label><%= genre.name %></label>
+              </div>
             <% end %>
           </div>
         </div>
 
         <div class="user-pick-element">
-          <%= f.label :feedback_options_id_eq_any, 'お店の雰囲気・特徴・評価ポイントなど', class: "search-form-label font-size-S" %>
+          <%= f.label :feedback_options_id_eq_any, 'お店の雰囲気・特徴・評価ポイントなど', class: "search-form-label font-size-M" %>
           <div class="checkbox-container font-size-S">
             <% @feedback_options.each do |option| %>
-              <%= f.check_box :feedback_options_id_eq_any, { multiple: true, checked: option[:checked], disabled: option[:disabled], include_hidden: false }, option[:id] %>
-              <label><%= option.option_title %></label>
+              <div>
+                <%= f.check_box :feedback_options_id_eq_any, { multiple: true, checked: option[:checked], disabled: option[:disabled], include_hidden: false }, option[:id] %>
+                <label><%= option.option_title %></label>
+              </div>
             <% end %>
           </div>
         </div>
