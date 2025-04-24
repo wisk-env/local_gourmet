@@ -1,6 +1,22 @@
 <div class="wrap-container">
-  <h3 class="restaurant-elements"><%= "飲食店名: #{@restaurant.name}" %></h3>
-  <div class="restaurant-elements"><%= "住所: #{@restaurant.address}" %></div>
+  <div class="restaurant-top-elements">
+    <%= link_to restaurants_path, class: "back-arrow dark-brown font-size-S" do %>
+      <i class="fa-solid fa-arrow-left"></i>
+      <span>戻る</span>
+    <% end %>
+    <h2 class="font-size-L">
+      <i class="fa-solid fa-utensils"></i>
+      <span>お店の詳細</span>
+    </h2>
+    <h3 class="font-size-M">
+      <i class="fa-solid fa-shop"></i>
+      <%= @restaurant.name %>
+    </h3>
+    <div class="font-size-S">
+      <i class="fa-solid fa-map-location-dot"></i>
+      <%= @restaurant.address %>
+    </div>
+  </div>
   <div class="right-side-element">
     <% if user_signed_in? %>
       <%= render 'shared/bookmark_button', restaurant: @restaurant %>
@@ -9,10 +25,10 @@
   <div class="center-block">
     <div id='map'></div>
   </div>
-  <h3 class="review-top-title center-block">お店の口コミ</h3>
+  <h3 class="review-top-title center-block font-size-L dark-brown">お店の口コミ</h3>
   <div class="review-button-wrap">
     <div class="post-review-button">
-      <%= link_to "口コミを投稿する→", new_restaurant_review_path(@restaurant), class: "post-review-link" %>
+      <%= link_to "口コミを投稿する→", new_restaurant_review_path(@restaurant), class: "post-review-link font-size-M" %>
     </div>
   </div>
 
@@ -21,7 +37,7 @@
       <% @reviews.each do |review| %>
         <div class="review-box">
           <%= link_to restaurant_review_path(@restaurant, review) do %>
-            <div>
+            <div class="center-image">
               <% if review.image.present? %>
                 <div class="menu-image border-image">
                   <%= image_tag review.image, class: "menu-image border-image" %>
@@ -31,29 +47,29 @@
               <% end %>
             </div>
             <div class="review-content">
-              <div class="font-brown"><%= review.menu %></div>
-              <div class="menu-price"><%= "¥ #{review.price}" %></div>
+              <div class="font-brown font-size-M"><%= review.menu %></div>
+              <div class="menu-price font-size-S"><%= "¥ #{review.price}" %></div>
               <div class="tag-container">
                 <% review.genres.each do |genre| %>
-                  <div class="tag genre-tag"><%= genre.name %></div>
+                  <div class="tag genre-tag font-size-S"><%= genre.name %></div>
                 <% end %>
                 <% review.feedback_options.each do |feedback_option| %>
-                  <div class="tag feedback-tag"><%= feedback_option.option_title %></div>
+                  <div class="tag feedback-tag font-size-S"><%= feedback_option.option_title %></div>
                 <% end %>
               </div>
               <div class="review-card-bottom-wrap">
                 <div class="review-user">
                   <div><%= image_tag review.user.avatar, class: "review-user-icon" %></div>
-                  <div class="review-user-name"><%= review.user.name %></div>
+                  <div class="review-user-name font-size-S"><%= review.user.name %></div>
                 </div>
                 <% if user_signed_in? %>
                   <% if current_user.own?(review) %>
-                    <div class="like-button-container">
+                    <div class="like-button-container font-size-M">
                       <div><i class="fa-solid fa-heart"></i></div>
                       <div class="review-likes-count"><%= review.likes.length %></div>
                     </div>
                   <% else %>
-                    <div id="like_buttons_<%= review.id %>" class="like-button-container">
+                    <div id="like_buttons_<%= review.id %>" class="like-button-container font-size-M">
                       <%= render 'shared/like_button', review: review %>
                     </div>
                   <% end %>

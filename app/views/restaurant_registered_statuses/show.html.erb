@@ -1,23 +1,35 @@
-<div>
-  以下のお店は既に登録されています。</br>
-  さっそくお店の口コミを投稿してみましょう。
-</div>
-<h3>
-  <div>
-    <%= "飲食店名: #{@restaurant.name}" %>
+<div class="wrap-container">
+  <div class="restaurant-container font-size-S">
+    <div>
+      以下のお店は既に登録されています。</br>
+      さっそくお店の口コミを投稿してみましょう。
+    </div>
+    <h3>
+      <div class="font-size-M">
+        <i class="fa-solid fa-shop"></i>
+        <%= "飲食店名: #{@restaurant.name}" %>
+      </div>
+    </h3>
+    <div>
+      <i class="fa-solid fa-map-location-dot"></i>
+      <%= "住所: #{@restaurant.address}" %>
+    </div>
+    <%= link_to new_restaurant_review_path(@restaurant) do %>
+      <div class="guide-assist-button font-size-M">
+        口コミを投稿する
+        <i class="fa-solid fa-arrow-right"></i>
+      </div>
+    <% end %>
+    <%= link_to "キャンセル", :back, class: "back-button font-size-M" %>
+    <div id='map'></div>
   </div>
-</h3>
-<div>
-  <%= "住所: #{@restaurant.address}" %>
 </div>
-<%= link_to "口コミを投稿する", new_restaurant_review_path(@restaurant) %>
-<div id='map'></div>
 
 <style>
-#map {
-  height: 300px;
-  width: 400px;
-}
+  #map {
+    width: 100%;
+    height: 300px;
+  }  
 </style>
 
 <script>

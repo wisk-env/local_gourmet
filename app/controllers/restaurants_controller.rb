@@ -1,5 +1,6 @@
 class RestaurantsController < ApplicationController
   before_action :authenticate_user!, only: %i[new create]
+  before_action :params_required, only: %i[new]
   
   def index
     @restaurant = Restaurant.new
@@ -13,11 +14,15 @@ class RestaurantsController < ApplicationController
 
   def create
     @restaurant = Restaurant.new(restaurant_params)
-    if @restaurant.save
+    if @restaurant.name.blank?
+      flash[:alert] = 'お店の登録に失敗しました。飲食店名を入力して下さい。'
+      redirect_to new_restaurant_path(restaurant_params)
+    elsif @restaurant.save!
+      flash[:notice] = 'お店を登録しました。さっそくお店の口コミを投稿してみましょう。'
       redirect_to restaurant_path(@restaurant)
     else
       flash[:alert] = 'お店の登録に失敗しました'
-      render 'new'
+      redirect_to new_restaurant_path(restaurant_params)
     end
   end
 
@@ -37,5 +42,11 @@ class RestaurantsController < ApplicationController
 
   def not_registered_params
     params.permit(:lat, :lng, :address)
+  end
+
+  def params_required
+    if params[:lat].blank? || params[:lng].blank? || params[:address].blank?
+      redirect_to restaurant_registered_statuses_path
+    end
   end
 end

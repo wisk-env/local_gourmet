@@ -17,8 +17,10 @@
     <header>
       <%= render "shared/header" %>
     </header>
-    <%= render "shared/flash" %>
-    <%= yield %>
+    <main>
+      <%= render "shared/flash" %>
+      <%= yield %>
+    </main>
     <footer>
       <%= render "shared/footer" %>
     </footer>

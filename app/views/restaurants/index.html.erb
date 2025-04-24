@@ -1,18 +1,30 @@
-<h2>お店を探す</h2>
-<%= link_to '地図から探す', restaurants_path %>
-<%= link_to '口コミから探す', reviews_path %>
-<div>
-<input id="address" type="textbox" placeholder="駅や施設名で検索">
-<input type="button" value="検索" onclick="codeAddress()">
+<div class="wrap-container">
+  <div class="search-restaurant-container">
+    <h2 class="search-top-title">
+      <i class="fa-solid fa-magnifying-glass"></i>
+      <span class="search-top-text">お店を探す</span>
+    </h2>
+    <div class="search-tab-container">
+      <div class="search-tab-navigation">
+        <div class="search-tab active-status">
+          <%= link_to '地図から探す', restaurants_path, class: "search-from-map font-size-S" %>
+        </div>
+        <div class="search-tab">
+          <%= link_to '口コミから探す', reviews_path, class: "search-from-reviews font-size-S" %>
+        </div>
+      </div>
+    </div>
+    <div>
+      <div class="search-input-wrap">
+        <input id="address" type="textbox" placeholder="駅や施設名で検索" class="search-form-input font-size-S">
+        <input type="button" value="&#xf002;" onclick="codeAddress()" class="search-button fa-solid fa-magnifying-glass font-size-S">
+      </div>
+      <div class="map-wrap">
+        <div id='map'></div>
+      </div>
+    </div>
+  </div>
 </div>
-<div id='map'></div>
-
-<style>
-#map {
-  height: 400px;
-  width: 300px;
-}
-</style>
 
 <script>
 let map
