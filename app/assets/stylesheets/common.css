@@ -1139,6 +1139,11 @@ ul {
       font-size: 30px;
   }
 
+  input[type=checkbox] {
+    width: 20px;
+    height: 20px;
+  }
+
   .search-top-text {
     font-size: 30px;
   }

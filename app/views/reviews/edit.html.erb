@@ -1,72 +1,78 @@
 <div class="wrap-container review-form-width">
-  <h2><%= "#{@restaurant.name}の口コミ編集画面" %></h2>
+  <h2 class="review-top-text dark-brown font-size-L">
+    <i class="fa-solid fa-pen-to-square"></i>
+    <span>口コミ編集画面</span>
+  </h2>
   <%= form_with model: @review, url: restaurant_review_path(@restaurant, @review), local: true do |f| %>
-    <div>
-      <p class="form-text-label">口コミを編集するお店の名前</p><br>
-      <%= @restaurant.name %>
-    </div>
-    <div>
-      <%= f.label :menu, "注文したメニュー", class: "form-text-label" %><br>
-      <%= f.text_field :menu, class: "form-text-input" %>
-      <%= render 'shared/error_messages', model: @review, attribute: :menu %>
-    </div>
-    <div>
-      <%= f.label :price, "料金", class: "form-text-label" %><br>
-      <span>¥</span>
-      <%= f.number_field :price, class: "form-number-input" %>
-      <%= render 'shared/error_messages', model: @review, attribute: :price %>
-    </div>
-    <div>
-      <%= f.label :image, "写真", class: "form-text-label" %><br>
-      <%= f.file_field :image, accept: "image/jpeg, image/gif, image/png", id: "image" %>
-    </div>
-    <div>
-      <% if @review.image.attached? %>
-        <%= image_tag @review.image, id: "image-preview", class: "menu-preview" %>
-      <% else %> 
-        <%= image_tag 'NOIMAGE.jpg', id: "image-preview", class: "menu-preview" %>
-      <% end %>
-    </div>
-    <div>
-      <%= f.label :visit_date, "ご利用日", class: "form-text-label" %><br>
-      <%= f.select :visit_date, [["平日", "平日"], ["土日", "土日"]] %>
-    </div>
-    <div>
-      <%= f.label :visit_time, "ご利用時間帯", class: "form-text-label" %><br>
-      <%= f.select :visit_time, [["ランチ", "ランチ"], ["ディナー", "ディナー"]] %>
-    </div>
-    <div>
-      <%= f.label :number_of_visitors, "ご利用人数", class: "form-text-label" %><br>
-      <%= f.number_field :number_of_visitors, class: "form-number-input" %>
-      <span>人</span>
-      <%= render 'shared/error_messages', model: @review, attribute: :number_of_visitors %>
-    </div>
-    <div>
-      <%= f.label :genres, "ジャンル", class: "form-text-label" %><br>
-      <div class="checkbox-container">
-        <%= collection_check_boxes(:review, :genre_ids, Genre.all, :id, :name) do |genre| %>
-          <%= genre.label { genre.check_box + genre.text } %>
+    <div class="font-size-M">
+      <div>
+        <p class="form-text-label">口コミを編集するお店の名前</p><br>
+        <%= @restaurant.name %>
+      </div>
+      <div>
+        <%= f.label :menu, "注文したメニュー", class: "form-text-label" %><br>
+        <%= f.text_field :menu, class: "form-text-input font-size-M" %>
+        <%= render 'shared/error_messages', model: @review, attribute: :menu %>
+      </div>
+      <div>
+        <%= f.label :price, "料金", class: "form-text-label" %><br>
+        <span>¥</span>
+        <%= f.number_field :price, class: "form-number-input font-size-M" %>
+        <%= render 'shared/error_messages', model: @review, attribute: :price %>
+      </div>
+      <div>
+        <%= f.label :image, "写真", class: "form-text-label" %><br>
+        <%= f.file_field :image, accept: "image/jpeg, image/gif, image/png", id: "image", class: "font-size-M" %>
+      </div>
+      <div>
+        <% if @review.image.attached? %>
+          <%= image_tag @review.image, id: "image-preview", class: "menu-preview" %>
+        <% else %> 
+          <%= image_tag 'NOIMAGE.jpg', id: "image-preview", class: "menu-preview" %>
         <% end %>
       </div>
-    </div>
-    <div>
-      <%= f.label :feedback_options, "お店の雰囲気・特徴・評価ポイントなど", class: "form-text-label" %><br>
-      <div class="checkbox-container">
-        <%= collection_check_boxes(:review, :feedback_option_ids, FeedbackOption.all, :id, :option_title) do |option| %>
-          <%= option.label { option.check_box + option.text } %>
-        <% end %>
+      <div>
+        <%= f.label :visit_date, "ご利用日", class: "form-text-label" %><br>
+        <%= f.select :visit_date, [["平日", "平日"], ["土日", "土日"]] %>
       </div>
-    </div>
-    <div>
-      <%= f.label :comment, "コメント", class: "form-text-label" %><br>
-      <%= f.text_area :comment, class: "form-comment-input" %>
+      <div>
+        <%= f.label :visit_time, "ご利用時間帯", class: "form-text-label" %><br>
+        <%= f.select :visit_time, [["ランチ", "ランチ"], ["ディナー", "ディナー"]] %>
+      </div>
+      <div>
+        <%= f.label :number_of_visitors, "ご利用人数", class: "form-text-label" %><br>
+        <%= f.number_field :number_of_visitors, class: "form-number-of-visitors-input font-size-M" %>
+        <span>人</span>
+        <%= render 'shared/error_messages', model: @review, attribute: :number_of_visitors %>
+      </div>
+      <div>
+        <%= f.label :genres, "ジャンル", class: "form-text-label" %><br>
+        <div class="checkbox-container">
+          <%= collection_check_boxes(:review, :genre_ids, Genre.all, :id, :name) do |genre| %>
+            <%= genre.label { genre.check_box + genre.text } %>
+          <% end %>
+        </div>
+      </div>
+      <div>
+        <%= f.label :feedback_options, "お店の雰囲気・特徴・評価ポイントなど", class: "form-text-label" %><br>
+        <div class="checkbox-container">
+          <%= collection_check_boxes(:review, :feedback_option_ids, FeedbackOption.all, :id, :option_title) do |option| %>
+            <%= option.label { option.check_box + option.text } %>
+          <% end %>
+        </div>
+      </div>
+      <div>
+        <%= f.label :comment, "コメント", class: "form-text-label" %><br>
+        <%= f.text_area :comment, class: "form-comment-input font-size-M" %>
+      </div>
     </div>
     <div>
       <%= f.hidden_field :user_id, value: current_user.id %><br>
       <%= f.hidden_field :restaurant_id, value: @restaurant.id %>
     </div>
     <div>
-      <%= f.submit "上記内容で口コミ内容を編集する", class: "submit-btn" %>
+      <%= f.submit "上記内容で口コミを編集する", class: "submit-btn" %>
+      <%= link_to "戻る", restaurant_review_path(@restaurant, @review), class: "back-button font-size-M" %>
     </div>
   <% end %>
 </div>
