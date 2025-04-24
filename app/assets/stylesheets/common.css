@@ -272,8 +272,9 @@ ul {
   justify-content: center
 }
 
-.restaurant-elements {
+.restaurant-top-elements {
   margin: 10px 5%;
+  color: #76453B;
 }
 
 .profile-edit-button {
@@ -357,7 +358,6 @@ ul {
   width: 600px;
   margin: 56px auto;
   padding: 20px 40px 50px;
-  /* display: flex; */
   justify-content: center;
 }
 
@@ -447,8 +447,14 @@ ul {
 .review-box-container {
   display: flex;
   flex-wrap: wrap;
-  /* justify-content: space-between; */
   justify-content: center;
+}
+
+.review-box-container::after {
+  content: "";
+  display: block;
+  width: 250px;
+  margin: 20px;
 }
 
 .review-box {
@@ -474,6 +480,14 @@ ul {
 .font-brown {
   font-weight: 700;
   color: #B99470;
+}
+
+.dark-brown {
+  color: #76453B;
+}
+
+.back-arrow:hover {
+  text-decoration: underline;
 }
 
 .menu-price {
@@ -1138,6 +1152,18 @@ ul {
 
   .tag-container {
     height: auto;
+  }
+
+  .bookmark-button {
+    height: 35px;
+  }
+
+  .unbookmark-button-link {
+    width: 270px;
+  }
+
+  .border-image {
+    border-radius: 0;
   }
 }
 
