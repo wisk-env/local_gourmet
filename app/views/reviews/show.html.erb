@@ -1,74 +1,90 @@
 <div class="wrap-container">
-  <h2><%= "飲食店 #{@restaurant.name} の口コミ詳細" %></h2>
-  <div class="white-background-container">
-    <div class="review-user">
-      <div>
-        <%= image_tag @review.user.avatar, class: "review-user-icon" %>
-      </div>
-      <div class="detail-review-user-name">
-        <%= @review.user.name %>
-      </div>
-    </div>
-    <div>
-      <div class="review-top-elements">
+  <div class="review-top-margin">
+    <%= link_to 'javascript:history.back()', class: "back-arrow dark-brown font-size-S" do %>
+      <i class="fa-solid fa-arrow-left"></i>
+      <span>戻る</span>
+    <% end %>
+    <h2 class="font-size-L dark-brown">
+    <i class="fa-solid fa-shop"></i>
+      <%= link_to restaurant_path(@restaurant), class: "dark-brown underline" do %>
+        <%= @restaurant.name %>
+      <% end %>
+      <span>の口コミ詳細</span>
+    </h2>
+    <div class="white-background-container font-size-M">
+      <div class="review-user">
         <div>
-          <% if @review.image.present? %>
-            <div class="menu-image">
-              <%= image_tag @review.image, class: "menu-image" %>
+          <%= image_tag @review.user.avatar, class: "review-user-icon" %>
+        </div>
+        <div class="detail-review-user-name">
+          <%= @review.user.name %>
+        </div>
+      </div>
+      <div>
+        <div class="review-top-elements">
+          <div class="menu-image-wrap">
+            <% if @review.image.present? %>
+              <div class="review-menu-image">
+                <%= image_tag @review.image, class: "review-menu-image" %>
+              </div>
+            <% else %>
+              <div class="review-menu-image no-image">NO IMAGE</div>
+            <% end %>
+          </div>
+          <div class="review-contents-wrap">
+            <div class="font-brown">
+              注文したメニュー名
             </div>
-          <% else %>
-            <div class="menu-image no-image">NO IMAGE</div>
+            <div class="margin-bottom"><%= @review.menu %></div>
+            <div class="font-brown">
+              料金
+            </div>
+            <div class="margin-bottom"><%= "¥ #{@review.price}" %></div>
+            <div class="margin-bottom"><%= "#{@review.visit_date} #{@review.visit_time}の時間帯に #{@review.number_of_visitors} 名で利用" %></div>
+          </div>
+        </div>
+        <div class="margin-bottom">
+          <div class="tag-label font-brown">
+            ジャンル
+          </div>
+          <% @review.genres.each do |genre| %>
+            <div class="tag genre-tag font-size-M">
+              <%= genre.name %>
+            </div>
           <% end %>
         </div>
-        <div>
-          <div class="font-brown">
-            注文したメニュー名
+        <div class="margin-bottom">
+          <div class="tag-label font-brown">
+            お店の雰囲気・特徴・評価ポイントなど
           </div>
-          <div class="margin-bottom"><%= @review.menu %></div>
-          <div class="font-brown">
-            料金
-          </div>
-          <div class="margin-bottom"><%= "¥ #{@review.price}" %></div>
-          <div class="margin-bottom"><%= "#{@review.visit_date} #{@review.visit_time}の時間帯に #{@review.number_of_visitors} 名で利用" %></div>
-        </div>
-      </div>
-      <div class="margin-bottom">
-        <div class="font-brown">
-          ジャンル
-        </div>
-        <% @review.genres.each do |genre| %>
-          <div class="tag genre-tag font-size-middle"><%= genre.name %></div>
-        <% end %>
-      </div>
-      <div class="margin-bottom">
-        <div class="font-brown">
-          お店の雰囲気・特徴・評価ポイントなど
-        </div>
-        <% @review.feedback_options.each do |feedback_option| %>
-          <div class="tag feedback-tag font-size-middle"><%= feedback_option.option_title %></div>
-        <% end %>
-      </div>
-      <div class="font-brown">
-        コメント
-      </div>
-      <div><%= @review.comment %></div>
-      <div>
-        <% if user_signed_in? %>
-          <% if current_user.own?(@review) %>
-            <div class="button-container">
-              <%= link_to edit_restaurant_review_path(@restaurant, @review), class: "review-detail-card-button edit-color" do %>
-                <span class="button-fonts">編集</span><i class="fa-solid fa-pen"></i>
-              <% end %>
-              <%= link_to restaurant_review_path, class: "review-detail-card-button destroy-color", method: :delete, data: {confirm: "#{@restaurant.name}の口コミを削除しますか？"} do %>
-                <span class="button-fonts">削除</span><i class="fa-solid fa-trash"></i>
-              <% end %>
-            </div>
-          <% else %>
-            <div id="like_buttons_<%= @review.id %>" class="like-button-container">
-              <%= render 'shared/like_button', review: @review %>
+          <% @review.feedback_options.each do |feedback_option| %>
+            <div class="tag feedback-tag font-size-M">
+              <%= feedback_option.option_title %>
             </div>
           <% end %>
-        <% end %>
+        </div>
+        <div class="font-brown">
+          コメント
+        </div>
+        <div class="comment-box"><%= @review.comment %></div>
+        <div>
+          <% if user_signed_in? %>
+            <% if current_user.own?(@review) %>
+              <div class="button-container">
+                <%= link_to edit_restaurant_review_path(@restaurant, @review), class: "review-detail-card-button edit-color" do %>
+                  <span class="button-fonts">編集</span><i class="fa-solid fa-pen"></i>
+                <% end %>
+                <%= link_to restaurant_review_path, class: "review-detail-card-button destroy-color", method: :delete, data: {confirm: "#{@restaurant.name}の口コミを削除しますか？"} do %>
+                  <span class="button-fonts">削除</span><i class="fa-solid fa-trash"></i>
+                <% end %>
+              </div>
+            <% else %>
+              <div id="like_buttons_<%= @review.id %>" class="like-button-container">
+                <%= render 'shared/like_button', review: @review %>
+              </div>
+            <% end %>
+          <% end %>
+        </div>
       </div>
     </div>
   </div>
