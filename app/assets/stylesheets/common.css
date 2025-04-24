@@ -273,7 +273,7 @@ ul {
 }
 
 .restaurant-top-elements {
-  margin: 10px 5%;
+  margin: 50px 5% 10px;
   color: #76453B;
 }
 
@@ -506,7 +506,7 @@ ul {
 }
 
 .tag-container {
-  height: 60px;
+  height: 65px;
   overflow: hidden;
 }
 
@@ -517,7 +517,6 @@ ul {
   border-radius: .7rem;
   padding: 3px 6px;
   margin: 0 0 4px 4px;
-  font-size: 12px;
 }
 
 .genre-tag {
@@ -525,7 +524,11 @@ ul {
 }
 
 .feedback-tag {
-  background-color: #C6EBC5;
+  background-color: #A8E6CF;
+}
+
+.tag-label {
+  margin-bottom: 10px;
 }
 
 .review-user {
@@ -1153,7 +1156,7 @@ ul {
   height: 150px;  
 }
 
-@media screen and (max-width:380px) {  
+@media screen and (max-width:390px) {  
   .font-size-S {
     font-size: 20px;
   }

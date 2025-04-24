@@ -72,7 +72,9 @@
     </div>
     <div>
       <%= f.submit "上記内容で口コミを編集する", class: "submit-btn" %>
-      <%= link_to "戻る", restaurant_review_path(@restaurant, @review), class: "back-button font-size-M" %>
+      <%= link_to 'javascript:history.back()', class: "back-button font-size-M" do %>
+        戻る
+      <% end %>
     </div>
   <% end %>
 </div>
