@@ -366,6 +366,12 @@ ul {
   width: 320px;
 }
 
+.review-form-width .back-button {
+  margin: 0;
+  width: 94%;
+  padding: 10px;
+}
+
 .user-container {
   display: flex;
   margin: 0px 0px 30px 20px;
@@ -566,16 +572,24 @@ ul {
 
 .form-text-input {
   width: 280px;
-  height: 25px;
+  height: auto;
+  padding: 10px;
 }
 
 .form-number-input {
   width: 60px;
-  height: 25px;
+  height: auto;
+  padding: 5px;
+}
+
+.form-number-of-visitors-input {
+  width: 50px;
+  height: auto;
+  padding: 5px;
 }
 
 .form-comment-input {
-  width: 280px;
+  width: 94%;
   height: 100px;
   border: none;
   resize: none;
@@ -1110,6 +1124,10 @@ ul {
   display: block;
 }
 
+.review-top-text {
+  margin: 50px 0;
+}
+
 @media screen and (max-width:380px) {  
   .font-size-S {
     font-size: 20px;
@@ -1190,6 +1208,34 @@ ul {
   .tab-list .tab:last-child {
     padding: 0 5px;
   }
+
+  .review-form-width {
+    margin-left: 30px;
+  }
+
+  .form-text-input {
+    width: 95%;
+  }
+
+  .form-number-input {
+    width: 100px;
+    padding: 10px;
+  }
+
+  #review_visit_date, #review_visit_time,
+  #q_visit_date_eq, #q_visit_time_eq {
+    font-size: 24px;
+  }
+
+  .form-number-of-visitors-input {
+    height: 25px;
+    padding: 10px;
+  }
+
+  .form-comment-input {
+    width: 95%;
+    padding: 10px;
+  }
 }
 
 @media screen and (max-width:679px) {
@@ -1228,6 +1274,10 @@ ul {
 
   .review-box-container {
     justify-content: center;
+  }
+
+  .review-form-width .back-button {
+    width: 95%;
   }
 }
 
