@@ -3,8 +3,14 @@
     <% @bookmark_restaurants.each do |restaurant| %>
       <div class="restaurant_card">
         <%= link_to restaurant_path(restaurant) do %>
-          <div class="restaurant-card-content"><%= "飲食店名: #{restaurant.name}" %></div>
-          <div class="restaurant-card-content"><%= "住所: #{restaurant.address}" %></div>
+          <div class="restaurant-name-in-card font-size-M">
+            <i class="fa-solid fa-shop"></i>
+            <%= restaurant.name %>
+          </div>
+          <div class="restaurant-address font-size-S">
+            <i class="fa-solid fa-map-location-dot"></i>
+            <%= restaurant.address %>
+          </div>
         <% end %>
       </div>
     <% end %>

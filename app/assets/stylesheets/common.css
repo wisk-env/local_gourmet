@@ -348,10 +348,11 @@ ul {
   border-radius: .5rem;
   margin: 20px;
   padding: 20px 30px;
+  transition: transform .4s;
 }
 
-.restaurant-card-content {
-  color: #000000;
+.restaurant_card:hover {
+  transform: scale(1.04);
 }
 
 .wrap-container {
@@ -809,6 +810,10 @@ ul {
   text-overflow: ellipsis;
 }
 
+.restaurant_card .restaurant-name-in-card {
+  white-space: normal;
+}
+
 .restaurant-address {
   font-size: 12px;
   color: #000000;
@@ -1097,12 +1102,19 @@ ul {
   margin: 15px 0 30px;
 }
 
+.hide {
+  display: none;
+}
+
+.show {
+  display: block;
+}
+
 @media screen and (max-width:380px) {  
   .font-size-S {
     font-size: 20px;
   }
   .font-size-M {
-      /* font-size: 1.7vw; */
     font-size: 24px;
   }
   .font-size-L {
@@ -1169,6 +1181,14 @@ ul {
 
   .search-tab {
     padding: 5px 10px;
+  }
+
+  .break-keep {
+    word-break: keep-all;
+  }
+
+  .tab-list .tab:last-child {
+    padding: 0 5px;
   }
 }
 

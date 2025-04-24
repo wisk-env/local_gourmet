@@ -1,13 +1,16 @@
 <div class="wrap-container">
   <div class="search-restaurant-container">
-    <h2 class="search-top-title">口コミを投稿したいお店を検索</h2>
+    <h2 class="search-top-title">
+      <i class="fa-solid fa-pen-to-square"></i>
+      <span>口コミを投稿したいお店を検索</span>
+    </h2>
     <div class="search-input-wrap">
       <input id="search-form" type="textbox" placeholder="店舗名で検索" class="search-form-input font-size-S" required="required">
       <input type="button" value="&#xf002;" onclick="codeAddress()" class="search-button fa-solid fa-magnifying-glass font-size-S">
     </div>
 
-    <div class="search-form-text">
-      <h3 class="font-size-M">検索結果</h3>
+    <div id="result-block" class="search-form-text hide">
+      <h3 id="result" class="font-size-M">検索結果</h3>
       <div class="font-size-S">お店の住所：</div>
       <div id="addressDisplay" class="font-size-S">
         検索結果がありません
@@ -22,9 +25,9 @@
           </div>
         </div>
       <% end %>
-      <p class="font-size-S">地図</p>
-      <div id='map'></div>
     </div>
+    <p class="font-size-S">地図</p>
+    <div id='map'></div>
   </div>
 </div>
 
@@ -32,6 +35,7 @@
 let map
 let marker
 const addressDis = document.getElementById('addressDisplay')
+const resultBlock = document.getElementById('result-block')
 
 function initMap() {
   geocoder = new google.maps.Geocoder()
@@ -65,13 +69,15 @@ function codeAddress() {
       document.getElementById('address').value = results[0].formatted_address.slice(13);
       addressDis.innerHTML = results[0].formatted_address.slice(13);
 
-      google.maps.event.addListener( marker, 'dragend', function(ev){
+      google.maps.event.addListener( marker, function(ev){
         document.getElementById('lat').value = ev.latLng.lat();
         document.getElementById('lng').value = ev.latLng.lng();
     });
 
     geocoder.geocode({ 'location': marker.getPosition() }, function(results, status) {
       if (status == "OK"){
+        resultBlock.classList.remove('hide');
+        resultBlock.classList.add('show');
         addressDis.innerHTML = results[0].formatted_address.slice(13);
       } else {
         alert("Geocode 取得に失敗しました：" + status);
