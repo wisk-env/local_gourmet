@@ -3,7 +3,7 @@
     <% @reviews.each do |review| %>
       <div class="review-box">
         <%= link_to restaurant_review_path(review.restaurant_id, review) do %>
-          <div>
+          <div class="center-image">
             <% if review.image.present? %>
               <div class="menu-image border-image">
                 <%= image_tag review.image, class: "menu-image border-image" %>
@@ -13,17 +13,20 @@
             <% end %>
           </div>
           <div class="review-content my-page-review-card-padding">
-            <div class="font-brown"><%= review.menu %></div>
-            <div class="menu-price"><%= "¥ #{review.price}" %></div>
+            <div class="font-brown font-size-M">
+              <i class="fa-solid fa-utensils"></i>
+              <%= review.menu %>
+            </div>
+            <div class="menu-price font-size-S"><%= "¥ #{review.price}" %></div>
             <div class="tag-container">
               <% review.genres.each do |genre| %>
-                <div class="tag genre-tag"><%= genre.name %></div>
+                <div class="tag genre-tag font-size-S"><%= genre.name %></div>
               <% end %>
               <% review.feedback_options.each do |feedback_option| %>
-                <div class="tag feedback-tag"><%= feedback_option.option_title %></div>
+                <div class="tag feedback-tag font-size-S"><%= feedback_option.option_title %></div>
               <% end %>
             </div>
-            <div class="like-button-container">
+            <div class="like-button-container font-size-M">
               <div><i class="fa-solid fa-heart"></i></div>
               <div class="review-likes-count"><%= review.likes.length %></div>
             </div>

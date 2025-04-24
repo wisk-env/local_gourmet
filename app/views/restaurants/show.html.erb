@@ -47,7 +47,10 @@
               <% end %>
             </div>
             <div class="review-content">
-              <div class="font-brown font-size-M"><%= review.menu %></div>
+              <div class="font-brown font-size-M">
+                <i class="fa-solid fa-utensils"></i>
+                <%= review.menu %>
+              </div>
               <div class="menu-price font-size-S"><%= "¥ #{review.price}" %></div>
               <div class="tag-container">
                 <% review.genres.each do |genre| %>
