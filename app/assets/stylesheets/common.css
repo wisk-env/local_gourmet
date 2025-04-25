@@ -162,6 +162,7 @@ input {
   color: #ffffff;
   transition: transform .4s;
   font-weight: 600;
+  font-size: 16px;
 }
 
 .submit-btn:hover {
@@ -1295,6 +1296,10 @@ ul {
   .my-page .page-top-text {
     margin-left: 0;
   }
+  
+  .label-wrap, .form-input {
+    font-size: 24px;
+  }
 }
 
 @media screen and (max-width:679px) {
@@ -1308,6 +1313,10 @@ ul {
 
   .field {
     margin: 0 30px;
+  }
+
+  .registration-container .submit-btn {
+    width: 85%;
   }
 
   .submit-btn {
