@@ -1,5 +1,5 @@
 <div class='header-logo'>
-  ローカルグルメロゴ
+  <%= image_tag('local_gourmet.svg') %>
 </div>
 <% if current_user %>
   <div class="header-end">
@@ -16,7 +16,7 @@
     </div>
   </div>
 <% else %>
-  <div class='header-end'>
+  <div class='header-end font-size-S'>
     <%= link_to "ログイン", new_user_session_path, class: "header-end-button" %>
     <%= link_to "新規登録", new_user_registration_path, class: "header-end-button" %>
   </div>
