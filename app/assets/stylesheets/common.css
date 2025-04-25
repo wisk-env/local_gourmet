@@ -1315,7 +1315,13 @@ ul {
     margin: 0 30px;
   }
 
-  .registration-container .submit-btn {
+  .border-line {
+    width: 85%;
+    margin: 10px auto 20px;
+  }
+
+  .registration-container .submit-btn,
+  .login-container .submit-btn {
     width: 85%;
   }
 

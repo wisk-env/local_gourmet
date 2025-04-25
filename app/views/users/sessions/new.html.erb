@@ -1,11 +1,11 @@
 <div class="content">
   <div class="login-container">
-    <h2 class="page-top-text">ログイン</h2>
+    <h2 class="page-top-text font-size-L">ログイン</h2>
 
     <div class="guest-login-button-wrap">
-      <%= link_to 'ゲストログイン', users_guest_sign_in_path, class: "guest-login-button", method: :post %>
+      <%= link_to 'ゲストログイン', users_guest_sign_in_path, class: "guest-login-button font-size-M", method: :post %>
     </div>
-    <div class="border-line"><span class="border-line-text">または</span></div>
+    <div class="border-line"><span class="border-line-text font-size-S">または</span></div>
     <%= form_for(resource, as: resource_name, url: session_path(resource_name)) do |f| %>
       <div class="field">
         <div class="label-wrap">
@@ -26,7 +26,7 @@
       </div>
     <% end %>
 
-    <div class="guide_wrap">
+    <div class="guide_wrap font-size-S">
       <%- if devise_mapping.registerable? && controller_name != 'registrations' %>
         ユーザー登録は<%= link_to "こちら", new_registration_path(resource_name), class: 'guide-link' %>から<br />
       <% end %>
