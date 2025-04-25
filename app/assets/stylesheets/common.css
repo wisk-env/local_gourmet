@@ -25,7 +25,7 @@ main {
 }
 
 footer {
-  height: 56px;
+  height: 70px;
   width: 100%;
   background-color: #9DBC98;
   color: #ffffff;
@@ -34,6 +34,23 @@ footer {
   align-items: center;
   position: fixed;
   bottom: 0;
+}
+
+.footer-menu-link {
+  margin-right: 20px;
+  color: #ffffff;
+  display: inline-block;
+  text-align: center;
+  font-weight: 700;
+  width: 80px;
+}
+
+.footer-menu-link .fa-solid {
+  font-size: 25px;
+}
+
+.footer-text {
+  font-size: 14px;
 }
 
 a {
@@ -62,11 +79,6 @@ a {
 }
 
 .logout-button {
-  color: #ffffff;
-}
-
-.footer-menu-link {
-  margin-right: 20px;
   color: #ffffff;
 }
 
@@ -1332,6 +1344,10 @@ ul {
 
   .rank-title .bookmark-button {
     height: auto;
+  }
+
+  .footer-menu-link {
+    width: 100px;
   }
 }
 
