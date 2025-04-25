@@ -162,6 +162,7 @@ input {
   color: #ffffff;
   transition: transform .4s;
   font-weight: 600;
+  font-size: 16px;
 }
 
 .submit-btn:hover {
@@ -1273,6 +1274,32 @@ ul {
   .no-lists {
     font-size: 24px;
   }
+
+  #user_avatar {
+    padding: 0;
+    width: 100%;
+  }
+
+  .user-container {
+    margin-left: 0;
+  }
+
+  .user-container .avatar-image {
+    margin: 0;
+  }
+
+  .avatar-image {
+    width: 150px;
+    height: 150px;
+  }
+
+  .my-page .page-top-text {
+    margin-left: 0;
+  }
+  
+  .label-wrap, .form-input {
+    font-size: 24px;
+  }
 }
 
 @media screen and (max-width:679px) {
@@ -1286,6 +1313,16 @@ ul {
 
   .field {
     margin: 0 30px;
+  }
+
+  .border-line {
+    width: 85%;
+    margin: 10px auto 20px;
+  }
+
+  .registration-container .submit-btn,
+  .login-container .submit-btn {
+    width: 85%;
   }
 
   .submit-btn {
