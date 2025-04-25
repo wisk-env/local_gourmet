@@ -1273,6 +1273,28 @@ ul {
   .no-lists {
     font-size: 24px;
   }
+
+  #user_avatar {
+    padding: 0;
+    width: 100%;
+  }
+
+  .user-container {
+    margin-left: 0;
+  }
+
+  .user-container .avatar-image {
+    margin: 0;
+  }
+
+  .avatar-image {
+    width: 150px;
+    height: 150px;
+  }
+
+  .my-page .page-top-text {
+    margin-left: 0;
+  }
 }
 
 @media screen and (max-width:679px) {
