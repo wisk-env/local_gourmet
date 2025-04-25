@@ -1346,6 +1346,10 @@ ul {
     height: auto;
   }
 
+  footer {
+    height: 90px;
+  }
+
   .footer-menu-link {
     width: 100px;
   }
