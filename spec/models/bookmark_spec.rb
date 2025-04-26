@@ -21,6 +21,15 @@ RSpec.describe Bookmark, type: :model do
           user_id: @user.id, restaurant_id: another_restaurant.id)
           ).to be_valid
       end
+
+      it 'restaurant_idが同じでも、user_idが異なればbookmarksテーブルに保存できる' do
+        another_user = FactoryBot.create(:user)
+        bookmark = FactoryBot.create(:bookmark, user_id: @user.id, restaurant_id: @restaurant.id)
+        expect(
+          FactoryBot.create(:bookmark,
+          user_id: another_user.id, restaurant_id: @restaurant.id)
+        ).to be_valid
+      end
     end
   end
 end
