@@ -1,6 +1,9 @@
 ja:
   activerecord:
     attributes:
+      bookmark:
+        user: ユーザーID
+        restaurant: レストランID
       user:
         avatar: プロフィール写真
         confirmation_sent_at: パスワード確認送信時刻
@@ -34,6 +37,10 @@ ja:
     errors:
       messages:
         blank: を入力してください
+        record_invalid: 無効です
+      models:
+        bookmark:
+          required: が必要です
     models:
       user: ユーザー
   devise:
