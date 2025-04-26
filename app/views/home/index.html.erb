@@ -1,57 +1,58 @@
-<div class="carousel-slider">
-  <div class="slide-block">
-    <%= image_tag('slide-image1.jpg', class: "slide-item") %>
-    <%= image_tag('slide-image2.jpg', class: "slide-item") %>
-    <%= image_tag('slide-image3.jpg', class: "slide-item") %>
-    <%= image_tag('slide-image4.jpg', class: "slide-item") %>
+<div class="first-view">
+  <div class="carousel-slider">
+    <div class="slide-block">
+      <%= image_tag('slide-image1.jpg', class: "slide-item") %>
+      <%= image_tag('slide-image2.jpg', class: "slide-item") %>
+      <%= image_tag('slide-image3.jpg', class: "slide-item") %>
+      <%= image_tag('slide-image4.jpg', class: "slide-item") %>
+    </div>
+    <div class="slide-block">
+      <%= image_tag('slide-image1.jpg', class: "slide-item") %>
+      <%= image_tag('slide-image2.jpg', class: "slide-item") %>
+      <%= image_tag('slide-image3.jpg', class: "slide-item") %>
+      <%= image_tag('slide-image4.jpg', class: "slide-item") %>
+    </div>
+    <div class="slide-block">
+      <%= image_tag('slide-image1.jpg', class: "slide-item") %>
+      <%= image_tag('slide-image2.jpg', class: "slide-item") %>
+      <%= image_tag('slide-image3.jpg', class: "slide-item") %>
+      <%= image_tag('slide-image4.jpg', class: "slide-item") %>
+    </div>
   </div>
-  <div class="slide-block">
-    <%= image_tag('slide-image1.jpg', class: "slide-item") %>
-    <%= image_tag('slide-image2.jpg', class: "slide-item") %>
-    <%= image_tag('slide-image3.jpg', class: "slide-item") %>
-    <%= image_tag('slide-image4.jpg', class: "slide-item") %>
-  </div>
-  <div class="slide-block">
-    <%= image_tag('slide-image1.jpg', class: "slide-item") %>
-    <%= image_tag('slide-image2.jpg', class: "slide-item") %>
-    <%= image_tag('slide-image3.jpg', class: "slide-item") %>
-    <%= image_tag('slide-image4.jpg', class: "slide-item") %>
+  <div class="slide-cover left"></div>
+  <div class="slide-cover right"></div>
+  <div class="service-overview-wrap">
+    <p class="service-overview font-size-L">
+      <span>
+        ローカルグルメは<br>
+        飲食店の口コミ共有サービスです。<br>
+        発見したお店を<br>
+        ぜひローカルグルメでシェアしてください。
+      </span>
+    </p>
   </div>
 </div>
-<div class="slide-cover left"></div>
-<div class="slide-cover right"></div>
-<div class="service-overview-wrap">
-  <p class="service-overview">
-    <span>
-      ローカルグルメは<br>
-      飲食店の口コミ共有サービスです。<br>
-      発見したお店を<br>
-      ぜひローカルグルメでシェアしてください。
-    </span>
-  </p>
-</div>
-
 <div class="rank-container">
   <% if @restaurants.present? %>
-    <div class="rank-title">
+    <div class="rank-title font-size-L break-keep">
       <div class="bookmark-button white-color">
         ブックマーク<i class="fas fa-bookmark"></i>
       </div>
-      の獲得数が多いお店のランキング
+      の獲得数が<wbr />多いお店のランキング
     </div>
     <div>
       <% @restaurants.each.with_index(1) do |restaurant, i| %>
         <div class="restaurant_card rank-card">
           <%= link_to restaurant_path(restaurant) do %>
-            <div class="rank-element">
+            <div class="rank-element font-size-L">
               <i class="fa-solid fa-crown"></i>
               <%= "No. #{i}" %>
             </div>
-            <div class="restaurant-name-in-card">
+            <div class="restaurant-name-in-card font-size-L">
               <i class="fa-solid fa-shop"></i>
               <%= restaurant.name %>
             </div>
-            <div class="restaurant-address">
+            <div class="restaurant-address font-size-M">
               <i class="fa-solid fa-map-location-dot"></i>
               <%= restaurant.address %>
             </div>
@@ -61,20 +62,19 @@
     </div>
   <% end %>
 </div>
-
-<div class="home-guide-container">
+<div class="home-guide-container font-size-L">
   <p class="home-guide-top-title">アプリの使い方に関するガイド</p>
-  <div>
+  <div class="guide-block">
     <div class="home-guide-sub-element">
       <i class="fa-solid fa-magnifying-glass sub-element-icon"></i>
       <span class="home-guide-sub-title">お店を検索</span>
     </div>
-    <p>
+    <p class="guide-text">
       <%= link_to restaurants_path, class: "home-guide-link" do %>
         <span>検索</span>
         <i class="fa-solid fa-magnifying-glass"></i>
       <% end %>
-      ページから駅や商業施設などの名前で検索してみましょう。
+      ページから駅や商業施設などの名前で検索してみましょう。</span>
     </p>
     <p>
       ローカルグルメで登録されたお店の口コミを見て行きたいお店を見つけましょう。
@@ -90,12 +90,12 @@
       </div>
     </div>
   </div>
-  <div>
+  <div class="guide-block">
     <div class="home-guide-sub-element">
       <i class="fa-solid fa-pen-to-square sub-element-icon"></i>
       <span class="home-guide-sub-title">お店を評価</span>
     </div>
-    <p>
+    <p class="guide-text">
       <%= link_to restaurant_registered_statuses_path, class: "home-guide-link" do %>
         <span>口コミ投稿</span>
         <i class="fa-solid fa-pen-to-square"></i>
