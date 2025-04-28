@@ -16,25 +16,25 @@ RSpec.describe "Likes", type: :system do
     it '店舗の詳細画面で他のユーザーの口コミに「いいね」ボタンがあること' do
       sign_in user
       visit restaurant_path(restaurant, review)
-      expect(page).to have_selector('.unlike')
+      expect(page).to have_selector('.unliked')
     end
 
     it '店舗の詳細画面で、他のユーザーの口コミの「いいね」ボタンをクリックしたらlikesテーブルのレコードが一つ増えること' do
       sign_in user
       visit restaurant_path(restaurant, review)
-      expect{find('.unlike').click}.to change { Like.count }.by(1)
+      expect{find('.unliked').click}.to change { Like.count }.by(1)
     end
 
     it '他のユーザーの口コミ詳細画面に遷移したら「いいね」ボタンが表示されること' do
       sign_in user
       visit restaurant_review_path(restaurant_id: restaurant.id, id: review.id)
-      expect(page).to have_selector('.unlike')
+      expect(page).to have_selector('.unliked')
     end
 
     it '他のユーザーの口コミ詳細画面で「いいね」ボタンをクリックしたらlikesテーブルのレコードが一つ増えること' do
       sign_in user
       visit restaurant_review_path(restaurant_id: restaurant.id, id: review.id)
-      expect{find('.unlike').click}.to change { Like.count }.by(1)
+      expect{find('.unliked').click}.to change { Like.count }.by(1)
     end
   end
 
@@ -74,7 +74,7 @@ RSpec.describe "Likes", type: :system do
     it 'ログインしていないユーザーが口コミ投稿のある店舗の詳細画面に遷移しても「いいね」ボタンが表示されないこと' do
       visit restaurant_path(restaurant, review)
       expect(page).to have_no_selector('.like-button-container')
-      expect(page).to have_no_selector('.unlike')
+      expect(page).to have_no_selector('.unliked')
       expect(page).to have_no_selector('.liked')
       expect(page).to have_no_selector '.review-likes-count', text: '0'
       expect(page).to have_content(review.menu)
@@ -85,7 +85,7 @@ RSpec.describe "Likes", type: :system do
     it 'ログインしていないユーザーが口コミ詳細画面に遷移しても「いいね」ボタンが表示されないこと' do
       visit restaurant_review_path(restaurant_id: restaurant.id, id: review.id)
       expect(page).to have_no_selector('.like-button-container')
-      expect(page).to have_no_selector('.unlike')
+      expect(page).to have_no_selector('.unliked')
       expect(page).to have_no_selector('.liked')
       expect(page).to have_no_selector '.review-likes-count', text: '0'
     end
