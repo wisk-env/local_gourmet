@@ -56,15 +56,28 @@ RSpec.describe "Likes", type: :system do
   end
 
   context '自分が投稿した口コミの場合' do
-    it '店舗詳細画面で、自分が投稿した口コミの「いいね」ボタンをクリックしてもlikesテーブルのレコード数が変化しないこと' do
+    before do
       sign_in user
+    end
+
+    it '店舗詳細画面で、自分が投稿した口コミの「いいね」ボタンをクリックしてもlikesテーブルのレコード数が変化しないこと' do
       visit restaurant_path(another_restaurant, my_review)
       expect(user.own?(my_review)).to be true
+      expect(find('.review-user-name').text).to eq(user.name)
       expect{find('.like-button-container').click}.to change { Like.count }.by(0)
     end
 
+    it '自分が投稿した口コミ詳細画面に「いいね」ボタンは表示されず、編集・削除ボタンが表示されていること' do
+      visit restaurant_review_path(restaurant_id: another_restaurant.id, id: my_review.id)
+      expect(page).to have_link('編集')
+      expect(page).to have_link('削除')
+      expect(page).to have_no_selector('.like-button-container')
+      expect(page).to have_no_selector('.unliked')
+      expect(page).to have_no_selector('.liked')
+      expect(page).to have_no_selector '.review-likes-count', text: '0'
+    end
+
     it 'マイページで、投稿した口コミの「いいね」をクリックしてもlikesテーブルのレコード数が変化しないこと' do
-      sign_in user
       visit profile_path(my_review)
       expect{find('.like-button-container').click}.to change { Like.count }.by(0)
     end
