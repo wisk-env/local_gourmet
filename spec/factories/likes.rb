@@ -1,7 +1,7 @@
 FactoryBot.define do
   factory :like do
-    user_id { |n| n }
-    review_id { |n| n }
+    sequence(:user_id) { |n| n }
+    sequence(:review_id) { |n| n }
     association :user
     association :review
   end
