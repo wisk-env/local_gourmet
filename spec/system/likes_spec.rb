@@ -69,4 +69,25 @@ RSpec.describe "Likes", type: :system do
       expect{find('.like-button-container').click}.to change { Like.count }.by(0)
     end
   end
+
+  context 'ログインしていない場合' do
+    it 'ログインしていないユーザーが口コミ投稿のある店舗の詳細画面に遷移しても「いいね」ボタンが表示されないこと' do
+      visit restaurant_path(restaurant, review)
+      expect(page).to have_no_selector('.like-button-container')
+      expect(page).to have_no_selector('.unlike')
+      expect(page).to have_no_selector('.liked')
+      expect(page).to have_no_selector '.review-likes-count', text: '0'
+      expect(page).to have_content(review.menu)
+      expect(page).to have_content(review.price)
+      expect(page).to have_content(review.user.name)
+    end
+
+    it 'ログインしていないユーザーが口コミ詳細画面に遷移しても「いいね」ボタンが表示されないこと' do
+      visit restaurant_review_path(restaurant_id: restaurant.id, id: review.id)
+      expect(page).to have_no_selector('.like-button-container')
+      expect(page).to have_no_selector('.unlike')
+      expect(page).to have_no_selector('.liked')
+      expect(page).to have_no_selector '.review-likes-count', text: '0'
+    end
+  end
 end
