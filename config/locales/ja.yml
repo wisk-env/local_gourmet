@@ -4,6 +4,9 @@ ja:
       bookmark:
         user: ユーザーID
         restaurant: レストランID
+      like:
+        review: レビューID
+        user: ユーザーID
       user:
         avatar: プロフィール写真
         confirmation_sent_at: パスワード確認送信時刻
@@ -40,6 +43,8 @@ ja:
         record_invalid: 無効です
       models:
         bookmark:
+          required: が必要です
+        like:
           required: が必要です
     models:
       user: ユーザー

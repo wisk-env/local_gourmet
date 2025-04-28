@@ -25,5 +25,25 @@ RSpec.describe Like, type: :model do
         expect(another_like).to be_valid
       end
     end
+
+    context 'いいねできない場合' do
+      it 'user_idが空だと「いいね」できない' do
+        like = build(:like, user_id: nil, review_id: review.id)
+        like.valid?
+        expect(like.errors.full_messages).to include "ユーザーID が必要です"
+      end
+
+      it 'review_idが空だと「いいね」できない' do
+        like = build(:like, user_id: user.id, review_id: nil)
+        like.valid?
+        expect(like.errors.full_messages).to include "レビューID が必要です"
+      end
+
+      it 'user_idとreview_idの両方が同じデータが既に存在すれば「いいね」できない' do
+        like = create(:like, user_id: user.id, review_id: review.id)
+        same_like = build(:like, user_id: user.id, review_id: review.id)
+        expect(same_like.valid?).to be false
+      end
+    end
   end
 end
