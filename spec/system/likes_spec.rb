@@ -35,4 +35,21 @@ RSpec.describe "Likes", type: :system do
       expect{find('.unlike').click}.to change { Like.count }.by(1)
     end
   end
+
+  context '投稿された口コミに既に「いいね」している場合' do
+    before do
+      like = create(:like, user_id: user.id, review_id: review.id)
+      sign_in user
+      visit restaurant_path(restaurant, review)
+    end
+
+    it '既に「いいね」している場合は、「いいね」を解除するボタンが表示されること' do
+      expect(page).to have_selector '.review-likes-count', text: '1'
+      expect(page).to have_selector('.liked')
+    end
+
+    it '「いいね」解除ボタンをクリックしたらlikesテーブルのレコードが一つ減ること' do
+      expect{find('.liked').click}.to change { Like.count }.by(-1)
+    end
+  end
 end
