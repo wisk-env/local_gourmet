@@ -4,7 +4,7 @@
     <div class="review-likes-count"><%= review.likes.length %></div>
   <% end %>
 <% else %>
-  <%= link_to restaurant_review_likes_path(restaurant_id: review.restaurant_id, review_id: review.id), method: :post, remote: true, data: { turbo: false } do %>
+  <%= link_to restaurant_review_likes_path(restaurant_id: review.restaurant_id, review_id: review.id), method: :post, remote: true, data: { turbo: false }, class: "unlike" do %>
     <i class="fa-regular fa-heart"></i>
     <div class="review-likes-count"><%= review.likes.length %></div>
   <% end %>
