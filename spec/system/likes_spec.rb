@@ -8,6 +8,8 @@ RSpec.describe "Likes", type: :system do
   let(:user) { create(:user) }
   let(:another_user) { create(:user) }
   let(:restaurant) { create(:restaurant) }
+  let(:another_restaurant) { create(:restaurant) }
+  let(:my_review) { create(:review, user_id: user.id, restaurant_id: another_restaurant.id) }
   let(:review) { create(:review, user_id: another_user.id, restaurant_id: restaurant.id) }
 
   context '投稿された口コミに「いいね」していない場合' do
@@ -50,6 +52,21 @@ RSpec.describe "Likes", type: :system do
 
     it '「いいね」解除ボタンをクリックしたらlikesテーブルのレコードが一つ減ること' do
       expect{find('.liked').click}.to change { Like.count }.by(-1)
+    end
+  end
+
+  context '自分が投稿した口コミの場合' do
+    it '店舗詳細画面で、自分が投稿した口コミの「いいね」ボタンをクリックしてもlikesテーブルのレコード数が変化しないこと' do
+      sign_in user
+      visit restaurant_path(another_restaurant, my_review)
+      expect(user.own?(my_review)).to be true
+      expect{find('.like-button-container').click}.to change { Like.count }.by(0)
+    end
+
+    it 'マイページで、投稿した口コミの「いいね」をクリックしてもlikesテーブルのレコード数が変化しないこと' do
+      sign_in user
+      visit profile_path(my_review)
+      expect{find('.like-button-container').click}.to change { Like.count }.by(0)
     end
   end
 end
