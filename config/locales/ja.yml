@@ -10,6 +10,9 @@ ja:
       review_feedback_option:
         feedback_option: フィードバックオプションID
         review: レビューID
+      review_genre:
+        genre: ジャンルID
+        review: レビューID
       user:
         avatar: プロフィール写真
         confirmation_sent_at: パスワード確認送信時刻
@@ -52,6 +55,8 @@ ja:
         like:
           required: が必要です
         review_feedback_option:
+          required: が必要です
+        review_genre:
           required: が必要です
     models:
       user: ユーザー
