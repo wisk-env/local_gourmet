@@ -4,6 +4,8 @@ ja:
       bookmark:
         user: ユーザーID
         restaurant: レストランID
+      feedback_option:
+        option_title: 選択肢
       like:
         review: レビューID
         user: ユーザーID
