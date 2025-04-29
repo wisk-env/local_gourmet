@@ -7,6 +7,9 @@ ja:
       like:
         review: レビューID
         user: ユーザーID
+      review_feedback_option:
+        feedback_option: フィードバックオプションID
+        review: レビューID
       user:
         avatar: プロフィール写真
         confirmation_sent_at: パスワード確認送信時刻
@@ -47,6 +50,8 @@ ja:
         bookmark:
           required: が必要です
         like:
+          required: が必要です
+        review_feedback_option:
           required: が必要です
     models:
       user: ユーザー
