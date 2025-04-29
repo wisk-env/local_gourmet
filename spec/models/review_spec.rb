@@ -44,4 +44,25 @@ RSpec.describe Review, type: :model do
       end
     end
   end
+
+  describe 'Reviewの関連付け' do
+    before do
+      @review = create(:review)
+    end
+
+    it 'review_feedback_optionsとの関連付けが正しく設定されていること' do
+      review_feedback_option = create(:review_feedback_option, review_id: @review.id)
+      expect(@review.review_feedback_options).to include review_feedback_option
+    end
+
+    it 'review_genresとの関連付けが正しく設定されていること' do
+      review_genre = create(:review_genre, review_id: @review.id)
+      expect(@review.review_genres).to include review_genre
+    end
+
+    it 'likesとの関連付けが正しく設定されていること' do
+      like = create(:like, review_id: @review.id)
+      expect(@review.likes).to include like
+    end
+  end
 end
