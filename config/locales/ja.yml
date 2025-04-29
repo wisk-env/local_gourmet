@@ -35,8 +35,10 @@ ja:
         updated_at: 更新日
       review:
         menu: 注文したメニュー
-        price: 料金
         number_of_visitors: ご利用人数
+        price: 料金
+        visit_date: ご利用日
+        visit_time: ご利用時間帯
     errors:
       messages:
         blank: を入力してください
