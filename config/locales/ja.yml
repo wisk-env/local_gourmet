@@ -6,6 +6,8 @@ ja:
         restaurant: レストランID
       feedback_option:
         option_title: 選択肢
+      genre:
+        name: ジャンル名
       like:
         review: レビューID
         user: ユーザーID
