@@ -13,26 +13,28 @@ RSpec.describe "Likes", type: :system do
   let(:review) { create(:review, user_id: another_user.id, restaurant_id: restaurant.id) }
 
   context '投稿された口コミに「いいね」していない場合' do
-    it '店舗の詳細画面で他のユーザーの口コミに「いいね」ボタンがあること' do
+    before do
       sign_in user
+    end
+
+    it '店舗の詳細画面で他のユーザーの口コミに「いいね」ボタンがあること' do
       visit restaurant_path(restaurant, review)
       expect(page).to have_selector('.unliked')
+      expect(page).to have_selector '.review-likes-count', text: '0'
     end
 
     it '店舗の詳細画面で、他のユーザーの口コミの「いいね」ボタンをクリックしたらlikesテーブルのレコードが一つ増えること' do
-      sign_in user
       visit restaurant_path(restaurant, review)
       expect{find('.unliked').click}.to change { Like.count }.by(1)
     end
 
     it '他のユーザーの口コミ詳細画面に遷移したら「いいね」ボタンが表示されること' do
-      sign_in user
       visit restaurant_review_path(restaurant_id: restaurant.id, id: review.id)
       expect(page).to have_selector('.unliked')
+      expect(page).to have_selector '.review-likes-count', text: '0'
     end
 
     it '他のユーザーの口コミ詳細画面で「いいね」ボタンをクリックしたらlikesテーブルのレコードが一つ増えること' do
-      sign_in user
       visit restaurant_review_path(restaurant_id: restaurant.id, id: review.id)
       expect{find('.unliked').click}.to change { Like.count }.by(1)
     end
@@ -52,6 +54,15 @@ RSpec.describe "Likes", type: :system do
 
     it '「いいね」解除ボタンをクリックしたらlikesテーブルのレコードが一つ減ること' do
       expect{find('.liked').click}.to change { Like.count }.by(-1)
+    end
+
+    it 'あるユーザーが「いいね」した場合でも、別のユーザーでサインインすると「いいね」ボタンが表示されており、いいね解除ボタンが表示されないこと' do
+      other_user = create(:user)
+      sign_in other_user
+      visit restaurant_path(restaurant, review)
+      expect(page).to have_selector('.unliked')
+      expect(page).to have_selector '.review-likes-count', text: '1'
+      expect(page).to have_no_selector('.liked')
     end
   end
 
