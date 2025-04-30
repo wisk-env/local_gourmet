@@ -1,10 +1,6 @@
 require 'rails_helper'
 
 RSpec.describe "Likes", type: :system do
-  before do
-    driven_by(:rack_test)
-  end
-
   let(:user) { create(:user) }
   let(:another_user) { create(:user) }
   let(:restaurant) { create(:restaurant) }
