@@ -1,20 +1,16 @@
 require 'rails_helper'
 
 RSpec.describe "Users", type: :system do
-  before do
-    driven_by(:rack_test)  
-  end
-
   context 'ユーザー登録に成功する時' do
     before do
       visit new_user_registration_path
     end
 
     it "ユーザー登録画面でフォームに必要事項を入力して登録ボタンを押したらホーム画面に遷移すること" do
-      fill_in 'user[name]', with: 'test_user'
-      fill_in 'user[email]', with: 'test_user@example.com'
-      fill_in 'user[password]', with: 'password'
-      fill_in 'user[password_confirmation]', with: 'password'
+      fill_in 'ユーザー名', with: 'test_user'
+      fill_in 'メールアドレス', with: 'test_user@example.com'
+      fill_in 'パスワード', with: 'password'
+      fill_in 'パスワード（確認用）', with: 'password'
       expect{find('input[name="commit"]').click}.to change { User.count }.by(1)
       expect(current_path).to eq(root_path)
       expect(find('.header-end')).to have_content('test_user')
@@ -27,62 +23,44 @@ RSpec.describe "Users", type: :system do
       visit new_user_registration_path
     end
 
-    it "名前を入力せず登録ボタンを押したらユーザー登録に失敗すること" do
-      fill_in 'user[name]', with: ''
-      fill_in 'user[email]', with: 'test_user@example.com'
-      fill_in 'user[password]', with: 'password'
-      fill_in 'user[password_confirmation]', with: 'password'
+    it "全てのフォームを入力せず登録ボタンを押したらユーザー登録に失敗すること" do
+      fill_in 'ユーザー名', with: ''
+      fill_in 'メールアドレス', with: ''
+      fill_in 'パスワード', with: ''
+      fill_in 'パスワード（確認用）', with: ''
       expect{find('input[name="commit"]').click}.to change { User.count }.by(0)
       expect(current_path).to eq('/users')
-      expect(find('.error-message-list')).to have_content('ユーザー名 を入力してください')
-    end
-
-    it "メールアドレスを入力せず登録ボタンを押したらユーザー登録に失敗すること" do
-      fill_in 'user[name]', with: 'test_user'
-      fill_in 'user[email]', with: ''
-      fill_in 'user[password]', with: 'password'
-      fill_in 'user[password_confirmation]', with: 'password'
-      expect{find('input[name="commit"]').click}.to change { User.count }.by(0)
-      expect(current_path).to eq('/users')
-      expect(find('.error-message-list')).to have_content('メールアドレス を入力してください')
+      expect(page).to have_content('ユーザー名 を入力してください')
+      expect(page).to have_content('メールアドレス を入力してください')
+      expect(page).to have_content('パスワード を入力してください')
     end
 
     it "既に登録されているメールアドレスを入力して登録ボタンを押したらユーザー登録に失敗すること" do
       user = FactoryBot.create(:user, email: 'test_user@example.com')
-      fill_in 'user[name]', with: 'test_user'
-      fill_in 'user[email]', with: user.email
-      fill_in 'user[password]', with: 'password'
-      fill_in 'user[password_confirmation]', with: 'password'
+      fill_in 'ユーザー名', with: 'test_user'
+      fill_in 'メールアドレス', with: user.email
+      fill_in 'パスワード', with: 'password'
+      fill_in 'パスワード（確認用）', with: 'password'
       expect{find('input[name="commit"]').click}.to change { User.count }.by(0)
       expect(current_path).to eq('/users')
       expect(find('.error-message-list')).to have_content('メールアドレス は既に登録されています')
     end
 
-    it "パスワードを入力せず登録ボタンを押したらユーザー登録に失敗すること" do
-      fill_in 'user[name]', with: 'test_user'
-      fill_in 'user[email]', with: 'test_user@example.com'
-      fill_in 'user[password]', with: ''
-      fill_in 'user[password_confirmation]', with: 'password'
-      expect{find('input[name="commit"]').click}.to change { User.count }.by(0)
-      expect(current_path).to eq('/users')
-      expect(page).to have_content('パスワード を入力してください')
-    end
-
     it '5文字以下のパスワードを入力して登録ボタンを押したらユーザー登録に失敗すること' do
-      fill_in 'user[name]', with: 'test_user'
-      fill_in 'user[email]', with: 'test_user@example.com'
-      fill_in 'user[password]', with: '12345'
-      fill_in 'user[password_confirmation]', with: 'password'
+      fill_in 'ユーザー名', with: 'test_user'
+      fill_in 'メールアドレス', with: 'test_user@example.com'
+      fill_in 'パスワード', with: '12345'
+      fill_in 'パスワード（確認用）', with: 'password'
       expect{find('input[name="commit"]').click}.to change { User.count }.by(0)
       expect(current_path).to eq('/users')
       expect(page).to have_content('パスワード は6文字以上で設定してください')
     end
 
     it 'パスワードとパスワード（確認用）が一致しない場合はユーザー登録できないこと' do
-      fill_in 'user[name]', with: 'test_user'
-      fill_in 'user[email]', with: 'test_user@example.com'
-      fill_in 'user[password]', with: 'password'
-      fill_in 'user[password_confirmation]', with: 'another_password'
+      fill_in 'ユーザー名', with: 'test_user'
+      fill_in 'メールアドレス', with: 'test_user@example.com'
+      fill_in 'パスワード', with: 'password'
+      fill_in 'パスワード（確認用）', with: 'another_password'
       expect{find('input[name="commit"]').click}.to change { User.count }.by(0)
       expect(current_path).to eq('/users')
       expect(page).to have_content('パスワード（確認用） が一致しません')
@@ -112,7 +90,7 @@ RSpec.describe "Users", type: :system do
       fill_in 'パスワード', with: ''
       click_button 'ログイン'
       expect(current_path).to eq(new_user_session_path)
-      expect(find('.flash-message')).to have_content('メールアドレスまたはパスワードが違います')
+      expect(page).to have_content('メールアドレスまたはパスワードが違います')
     end
   end
 
@@ -137,9 +115,9 @@ RSpec.describe "Users", type: :system do
 
     it 'プロフィールを編集して更新ボタンをクリックしたらプロフィール情報が編集されていること' do
       click_link 'プロフィール編集'
-      fill_in 'user[name]', with: 'update_user'
-      fill_in 'user[email]', with: 'update_user@example.com'
-      attach_file 'user[avatar]', "spec/fixtures/image/test_image.jpg"
+      fill_in 'ユーザー名', with: 'update_user'
+      fill_in 'メールアドレス', with: 'update_user@example.com'
+      attach_file 'プロフィール写真', "spec/fixtures/image/test_image.jpg"
       click_button 'プロフィール更新'
       expect(current_path).to eq(profile_path)
       expect(page).to have_content('アカウント情報を変更しました。')

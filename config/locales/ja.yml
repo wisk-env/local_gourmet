@@ -4,9 +4,19 @@ ja:
       bookmark:
         user: ユーザーID
         restaurant: レストランID
+      feedback_option:
+        option_title: 選択肢
+      genre:
+        name: ジャンル名
       like:
         review: レビューID
         user: ユーザーID
+      review_feedback_option:
+        feedback_option: フィードバックオプションID
+        review: レビューID
+      review_genre:
+        genre: ジャンルID
+        review: レビューID
       user:
         avatar: プロフィール写真
         confirmation_sent_at: パスワード確認送信時刻
@@ -35,8 +45,10 @@ ja:
         updated_at: 更新日
       review:
         menu: 注文したメニュー
-        price: 料金
         number_of_visitors: ご利用人数
+        price: 料金
+        visit_date: ご利用日
+        visit_time: ご利用時間帯
     errors:
       messages:
         blank: を入力してください
@@ -45,6 +57,10 @@ ja:
         bookmark:
           required: が必要です
         like:
+          required: が必要です
+        review_feedback_option:
+          required: が必要です
+        review_genre:
           required: が必要です
     models:
       user: ユーザー
