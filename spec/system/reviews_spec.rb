@@ -16,7 +16,7 @@ RSpec.describe "Reviews", type: :system do
       expect(current_path).to eq(new_restaurant_review_path(restaurant))
     end
 
-    it '口コミ投稿に成功したらreviewsテーブルのレコードが一つ増えて、店舗詳細画面に口コミの「メニュー」と「料金」が表示されること' do
+    it '口コミ投稿に成功したらreviewsテーブルのレコードが一つ増えて、店舗詳細画面に遷移して口コミの「メニュー」と「料金」が表示されること' do
       sign_in user
       visit new_restaurant_review_path(restaurant)
       fill_in '注文したメニュー', with: 'test_food'
@@ -107,6 +107,45 @@ RSpec.describe "Reviews", type: :system do
       find('.tab-list').find('.my-review').click
       expect(page).to have_no_content(another_user_review.menu)
       expect(page).to have_no_content(another_user_review.price)
+    end
+  end
+
+  context '口コミ編集に関するテスト' do
+    before do
+      sign_in user
+    end
+
+    let(:my_review) { create(:review, user_id: user.id) }
+
+    it '口コミ詳細画面の「編集」ボタンをクリックしたら口コミ編集画面に遷移すること' do
+      visit restaurant_review_path(restaurant, my_review)
+      click_link '編集'
+      expect(current_path).to eq(edit_restaurant_review_path(restaurant, my_review))
+    end
+
+    it '口コミの更新に成功したら、口コミの詳細画面に遷移して「メニュー」と「料金」が表示され、reviewsテーブルのレコード数は変化しないこと' do
+      visit edit_restaurant_review_path(restaurant, my_review)
+      fill_in '注文したメニュー', with: 'test_food_update'
+      fill_in '料金', with: '4000'
+      fill_in 'ご利用人数', with: '2'
+      expect{find('.submit-btn').click}.to change { Review.count }.by(0)
+      expect(current_path).to eq(restaurant_review_path(restaurant, my_review))
+      expect(page).to have_content '口コミを更新しました'
+      expect(page).to have_content 'test_food_update'
+      expect(page).to have_content '¥ 4000'
+    end
+
+    it '口コミ投稿に失敗したらreviewsテーブルのレコード数は変化せず、入力が必要な項目のエラーが表示されること' do
+      visit edit_restaurant_review_path(restaurant, my_review)
+      fill_in '注文したメニュー', with: ''
+      fill_in '料金', with: ''
+      fill_in 'ご利用人数', with: ''
+      expect{find('.submit-btn').click}.to change { Review.count }.by(0)
+      expect(current_path).to eq(restaurant_review_path(restaurant, my_review))
+      expect(page).to have_content '口コミの更新に失敗しました'
+      expect(page).to have_content '注文したメニュー を入力してください'
+      expect(page).to have_content '料金 を入力してください'
+      expect(page).to have_content 'ご利用人数 を入力してください'
     end
   end
 end
