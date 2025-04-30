@@ -148,4 +148,19 @@ RSpec.describe "Reviews", type: :system do
       expect(page).to have_content 'ご利用人数 を入力してください'
     end
   end
+
+  context '口コミ削除に関するテスト' do
+    let(:my_review) { create(:review, user_id: user.id) }
+    
+    it '口コミ詳細画面の「削除」ボタンをクリックしたら、ユーザーが投稿した口コミの件数が1つ減ること' do
+      sign_in user
+      visit restaurant_review_path(restaurant, my_review)
+      expect(user.reviews.count).to eq 1
+      find('.destroy-color').click
+      accept_alert
+      expect(current_path).to eq(restaurant_path(restaurant))
+      expect(page).to have_content '口コミを削除しました'
+      expect(user.reviews.count).to eq 0
+    end
+  end
 end
