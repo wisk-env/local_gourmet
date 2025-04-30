@@ -55,4 +55,58 @@ RSpec.describe "Reviews", type: :system do
       expect(page).to have_content 'ご利用人数 を入力してください'
     end
   end
+
+  context '口コミ表示に関するテスト' do
+    let(:review) { create(:review, restaurant_id: restaurant.id) }
+    let(:my_review) { create(:review, user_id: user.id, restaurant_id: restaurant.id) }
+    let(:another_user) { create(:user) }
+    let(:another_user_review) { create(:review, price: 1500, user_id: another_user.id, restaurant_id: restaurant.id) }
+
+    it '店舗詳細画面に、投稿した口コミの「メニュー」と「料金」が表示されること' do
+      sign_in user
+      visit restaurant_path(restaurant, review)
+      expect(page).to have_content(review.menu)
+      expect(page).to have_content(review.price)
+    end
+
+    it '店舗詳細画面に投稿されている口コミをクリックしたら口コミの詳細画面に遷移すること' do
+      sign_in user
+      visit restaurant_path(restaurant, review)
+      first('.review-link').click
+      expect(current_path).to eq(restaurant_review_path(restaurant, review))
+    end
+
+    it '口コミの詳細画面に投稿者名やmenu, price, visit_date, visit_time, number_of_visitorsなどの情報が表示されること' do
+      sign_in user
+      visit restaurant_review_path(restaurant, review)
+      expect(page).to have_content(review.user.name)
+      expect(page).to have_content(review.menu)
+      expect(page).to have_content("¥ #{review.price}")
+      expect(page).to have_content("#{review.visit_date} #{review.visit_time}の時間帯に #{review.number_of_visitors} 名で利用")
+      expect(page).to have_content(review.comment)
+    end
+
+    it '自分が投稿した口コミの詳細画面では編集ボタンと削除ボタンが表示されていること' do
+      sign_in user
+      visit restaurant_review_path(restaurant, my_review)
+      expect(page).to have_content('編集')
+      expect(page).to have_content('削除')
+    end
+
+    it '投稿した口コミがマイページに表示されていること' do
+      sign_in user
+      visit profile_path(my_review)
+      find('.tab-list').find('.my-review').click
+      expect(page).to have_content(my_review.menu)
+      expect(page).to have_content(my_review.price)
+    end
+
+    it '他のユーザーが投稿した口コミはマイページに表示されていないこと' do
+      sign_in user
+      visit profile_path(my_review)
+      find('.tab-list').find('.my-review').click
+      expect(page).to have_no_content(another_user_review.menu)
+      expect(page).to have_no_content(another_user_review.price)
+    end
+  end
 end
