@@ -2,7 +2,7 @@ require 'rails_helper'
 
 RSpec.describe Review, type: :model do
   describe '口コミ投稿' do
-    let(:review) { create(:review) }
+    let(:review) { build(:review) }
 
     context '口コミ投稿ができる時' do
       it 'menu, price, visit_date, visit_time, number_of_visitors, user_id, restaurant_idがあれば投稿できる' do
