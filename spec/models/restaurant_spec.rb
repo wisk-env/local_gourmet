@@ -1,9 +1,9 @@
 require 'rails_helper'
 
 RSpec.describe Restaurant, type: :model do
-  let(:restaurant) { build(:restaurant) }
-
   describe '店舗登録' do
+    let(:restaurant) { build(:restaurant) }
+
     context '店舗登録ができる時' do
       it 'name, address, lat, lng があれば登録できること' do
         expect(restaurant).to be_valid
@@ -40,6 +40,20 @@ RSpec.describe Restaurant, type: :model do
         same_restaurant = build(:restaurant, lat: restaurant.lat, lng: restaurant.lng)
         expect(same_restaurant.valid?).to be false
       end
+    end
+  end
+
+  describe 'Restaurantの関連付け' do
+    let!(:restaurant) { create(:restaurant) }
+
+    it 'reviewsとの関連付けが正しく設定されていること' do
+      review = create(:review, restaurant: restaurant)
+      expect(restaurant.reviews).to include review
+    end
+
+    it 'bookmarksとの関連付けが正しく設定されていること' do
+      bookmark = create(:bookmark, restaurant: restaurant)
+      expect(restaurant.bookmarks).to include bookmark
     end
   end
 end
