@@ -1,6 +1,7 @@
 class RestaurantsController < ApplicationController
   before_action :authenticate_user!, only: %i[new create]
   before_action :params_required, only: %i[new]
+  before_action :already_registered, only: %i[new]
   
   def index
     @restaurant = Restaurant.new
@@ -47,6 +48,13 @@ class RestaurantsController < ApplicationController
   def params_required
     if params[:lat].blank? || params[:lng].blank? || params[:address].blank?
       redirect_to restaurant_registered_statuses_path
+    end
+  end
+
+  def already_registered
+    if Restaurant.find_by(lat: params[:lat]).present? || Restaurant.find_by(lng: params[:lng]).present?
+      restaurant = Restaurant.find_by(lat: params[:lat], lng: params[:lng])
+      redirect_to restaurant_path(restaurant)
     end
   end
 end
