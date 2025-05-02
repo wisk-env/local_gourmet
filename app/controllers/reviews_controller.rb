@@ -89,8 +89,6 @@ class ReviewsController < ApplicationController
   def ensure_correct_user
     @restaurant = Restaurant.find(params[:restaurant_id])
     @review = Review.find(params[:id])
-    if @review.user_id != current_user.id
-      redirect_to restaurant_path(@restaurant)
-    end
+    redirect_to restaurant_path(@restaurant) if @review.user_id != current_user.id
   end
 end

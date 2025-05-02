@@ -22,7 +22,7 @@ RSpec.describe Bookmark, type: :model do
           FactoryBot.create(:bookmark,
                             user_id: @user.id,
                             restaurant_id: another_restaurant.id)
-          ).to be_valid
+        ).to be_valid
       end
 
       it 'restaurant_idが同じでも、user_idが異なればbookmarksテーブルに保存できる' do

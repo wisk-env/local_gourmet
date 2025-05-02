@@ -20,8 +20,8 @@ class Review < ApplicationRecord
     likes.exists?(user_id: user.id)
   end
 
-  def self.ransackable_attributes(auth_object = nil)
-    ['menu', 'price', 'visit_date', 'visit_time', 'comment', 'feedback_options', 'genres']
+  def self.ransackable_attributes(_auth_object = nil)
+    %w[menu price visit_date visit_time comment feedback_options genres]
   end
 
   def self.ransackable_associations(auth_object = nil)

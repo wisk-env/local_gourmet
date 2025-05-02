@@ -9,6 +9,7 @@ class User < ApplicationRecord
          :recoverable, :rememberable, :validatable
   validates :name, presence: true
   attr_accessor :current_password
+
   has_one_attached :avatar
   has_many :bookmarks, dependent: :destroy
   has_many :bookmark_restaurants, through: :bookmarks, source: :restaurant

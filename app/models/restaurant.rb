@@ -9,7 +9,7 @@ class Restaurant < ApplicationRecord
   has_many :reviews, dependent: :destroy
   has_many :bookmarks, dependent: :destroy
 
-  def self.ransackable_attributes(auth_object = nil)
-    ['id', 'address']
+  def self.ransackable_attributes(_auth_object = nil)
+    %w[id address]
   end
 end

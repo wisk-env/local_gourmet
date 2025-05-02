@@ -5,7 +5,7 @@ class Genre < ApplicationRecord
   has_many :review_genres, dependent: :destroy
   has_many :reviews, through: :review_genres
 
-  def self.ransackable_attributes(auth_object = nil)
-    ['id', 'name']
+  def self.ransackable_attributes(_auth_object = nil)
+    %w[id name]
   end
 end

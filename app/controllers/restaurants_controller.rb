@@ -50,9 +50,7 @@ class RestaurantsController < ApplicationController
   end
 
   def params_required
-    if params[:lat].blank? || params[:lng].blank? || params[:address].blank?
-      redirect_to restaurant_registered_statuses_path
-    end
+    redirect_to restaurant_registered_statuses_path if params[:lat].blank? || params[:lng].blank? || params[:address].blank?
   end
 
   def already_registered
