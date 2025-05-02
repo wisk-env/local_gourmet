@@ -1,3 +1,5 @@
+# frozen_string_literal: true
+
 require 'rails_helper'
 
 RSpec.describe Genre, type: :model do
@@ -13,7 +15,7 @@ RSpec.describe Genre, type: :model do
     it 'nameが空の場合は保存できないこと' do
       genre.name = nil
       genre.valid?
-      expect(genre.errors.full_messages).to include "ジャンル名 を入力してください"
+      expect(genre.errors.full_messages).to include 'ジャンル名 を入力してください'
     end
   end
 

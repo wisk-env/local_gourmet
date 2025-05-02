@@ -1,7 +1,9 @@
+# frozen_string_literal: true
+
 class RestaurantRegisteredStatusesController < ApplicationController
   before_action :authenticate_user!
   before_action :params_required, only: %i[new]
-  
+
   def index
     @restaurants = Restaurant.all
   end

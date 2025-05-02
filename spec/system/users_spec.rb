@@ -1,17 +1,19 @@
+# frozen_string_literal: true
+
 require 'rails_helper'
 
-RSpec.describe "Users", type: :system do
+RSpec.describe 'Users', type: :system do
   context 'ユーザー登録に成功する時' do
     before do
       visit new_user_registration_path
     end
 
-    it "ユーザー登録画面でフォームに必要事項を入力して登録ボタンを押したらホーム画面に遷移すること" do
+    it 'ユーザー登録画面でフォームに必要事項を入力して登録ボタンを押したらホーム画面に遷移すること' do
       fill_in 'ユーザー名', with: 'test_user'
       fill_in 'メールアドレス', with: 'test_user@example.com'
       fill_in 'パスワード', with: 'password'
       fill_in 'パスワード（確認用）', with: 'password'
-      expect{find('input[name="commit"]').click}.to change { User.count }.by(1)
+      expect { find('input[name="commit"]').click }.to change { User.count }.by(1)
       expect(current_path).to eq(root_path)
       expect(find('.header-end')).to have_content('test_user')
       expect(find('.header-end')).to have_content('ログアウト')
@@ -23,25 +25,25 @@ RSpec.describe "Users", type: :system do
       visit new_user_registration_path
     end
 
-    it "全てのフォームを入力せず登録ボタンを押したらユーザー登録に失敗すること" do
+    it '全てのフォームを入力せず登録ボタンを押したらユーザー登録に失敗すること' do
       fill_in 'ユーザー名', with: ''
       fill_in 'メールアドレス', with: ''
       fill_in 'パスワード', with: ''
       fill_in 'パスワード（確認用）', with: ''
-      expect{find('input[name="commit"]').click}.to change { User.count }.by(0)
+      expect { find('input[name="commit"]').click }.to change { User.count }.by(0)
       expect(current_path).to eq('/users')
       expect(page).to have_content('ユーザー名 を入力してください')
       expect(page).to have_content('メールアドレス を入力してください')
       expect(page).to have_content('パスワード を入力してください')
     end
 
-    it "既に登録されているメールアドレスを入力して登録ボタンを押したらユーザー登録に失敗すること" do
+    it '既に登録されているメールアドレスを入力して登録ボタンを押したらユーザー登録に失敗すること' do
       user = FactoryBot.create(:user, email: 'test_user@example.com')
       fill_in 'ユーザー名', with: 'test_user'
       fill_in 'メールアドレス', with: user.email
       fill_in 'パスワード', with: 'password'
       fill_in 'パスワード（確認用）', with: 'password'
-      expect{find('input[name="commit"]').click}.to change { User.count }.by(0)
+      expect { find('input[name="commit"]').click }.to change { User.count }.by(0)
       expect(current_path).to eq('/users')
       expect(find('.error-message-list')).to have_content('メールアドレス は既に登録されています')
     end
@@ -51,7 +53,7 @@ RSpec.describe "Users", type: :system do
       fill_in 'メールアドレス', with: 'test_user@example.com'
       fill_in 'パスワード', with: '12345'
       fill_in 'パスワード（確認用）', with: 'password'
-      expect{find('input[name="commit"]').click}.to change { User.count }.by(0)
+      expect { find('input[name="commit"]').click }.to change { User.count }.by(0)
       expect(current_path).to eq('/users')
       expect(page).to have_content('パスワード は6文字以上で設定してください')
     end
@@ -61,7 +63,7 @@ RSpec.describe "Users", type: :system do
       fill_in 'メールアドレス', with: 'test_user@example.com'
       fill_in 'パスワード', with: 'password'
       fill_in 'パスワード（確認用）', with: 'another_password'
-      expect{find('input[name="commit"]').click}.to change { User.count }.by(0)
+      expect { find('input[name="commit"]').click }.to change { User.count }.by(0)
       expect(current_path).to eq('/users')
       expect(page).to have_content('パスワード（確認用） が一致しません')
     end
@@ -70,7 +72,7 @@ RSpec.describe "Users", type: :system do
   context 'ログインに成功する時' do
     let(:user) { create(:user) }
 
-    it "ログイン画面でフォームに必要事項を入力してログインボタンを押したらホーム画面に遷移すること" do
+    it 'ログイン画面でフォームに必要事項を入力してログインボタンを押したらホーム画面に遷移すること' do
       visit new_user_session_path
       fill_in 'メールアドレス', with: user.email
       fill_in 'パスワード', with: user.password
@@ -84,7 +86,7 @@ RSpec.describe "Users", type: :system do
   context 'ログインに失敗する時' do
     let(:user) { create(:user) }
 
-    it "メールアドレスとパスワードを入力せずログインボタンを押したらログインに失敗すること" do
+    it 'メールアドレスとパスワードを入力せずログインボタンを押したらログインに失敗すること' do
       visit new_user_session_path
       fill_in 'メールアドレス', with: ''
       fill_in 'パスワード', with: ''
@@ -117,7 +119,7 @@ RSpec.describe "Users", type: :system do
       click_link 'プロフィール編集'
       fill_in 'ユーザー名', with: 'update_user'
       fill_in 'メールアドレス', with: 'update_user@example.com'
-      attach_file 'プロフィール写真', "spec/fixtures/image/test_image.jpg"
+      attach_file 'プロフィール写真', 'spec/fixtures/image/test_image.jpg'
       click_button 'プロフィール更新'
       expect(current_path).to eq(profile_path)
       expect(page).to have_content('アカウント情報を変更しました。')
@@ -142,7 +144,7 @@ RSpec.describe "Users", type: :system do
       click_link '口コミを投稿する'
       expect(current_path).to eq(new_user_session_path)
     end
-  
+
     it 'マイページのリンクを押すとログインページにリダイレクトされること' do
       click_link 'マイページ'
       expect(current_path).to eq(new_user_session_path)

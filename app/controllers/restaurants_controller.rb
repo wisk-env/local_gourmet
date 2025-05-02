@@ -1,8 +1,10 @@
+# frozen_string_literal: true
+
 class RestaurantsController < ApplicationController
   before_action :authenticate_user!, only: %i[new create]
   before_action :params_required, only: %i[new]
   before_action :already_registered, only: %i[new]
-  
+
   def index
     @restaurant = Restaurant.new
     @restaurants = Restaurant.all
@@ -30,9 +32,11 @@ class RestaurantsController < ApplicationController
   def show
     @restaurant = Restaurant.find(params[:id])
     @reviews = @restaurant.reviews
-                .includes(:genres, :feedback_options,
-                :likes, {user: { avatar_attachment: :blob }},
-                {image_attachment: :blob})
+                .includes(:genres,
+                          :feedback_options,
+                          :likes,
+                          { user: { avatar_attachment: :blob } },
+                          { image_attachment: :blob })
   end
 
   private

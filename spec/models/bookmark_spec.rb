@@ -1,3 +1,5 @@
+# frozen_string_literal: true
+
 require 'rails_helper'
 
 RSpec.describe Bookmark, type: :model do
@@ -18,7 +20,8 @@ RSpec.describe Bookmark, type: :model do
         bookmark = FactoryBot.create(:bookmark, user_id: @user.id, restaurant_id: @restaurant.id)
         expect(
           FactoryBot.create(:bookmark,
-          user_id: @user.id, restaurant_id: another_restaurant.id)
+                            user_id: @user.id,
+                            restaurant_id: another_restaurant.id)
           ).to be_valid
       end
 
@@ -27,7 +30,8 @@ RSpec.describe Bookmark, type: :model do
         bookmark = FactoryBot.create(:bookmark, user_id: @user.id, restaurant_id: @restaurant.id)
         expect(
           FactoryBot.create(:bookmark,
-          user_id: another_user.id, restaurant_id: @restaurant.id)
+                            user_id: another_user.id,
+                            restaurant_id: @restaurant.id)
         ).to be_valid
       end
     end
@@ -36,13 +40,13 @@ RSpec.describe Bookmark, type: :model do
       it 'user_idが空だとブックマークできない' do
         @bookmark = FactoryBot.build(:bookmark, user_id: nil, restaurant_id: @restaurant.id)
         @bookmark.valid?
-        expect(@bookmark.errors.full_messages).to include "ユーザーID が必要です"
+        expect(@bookmark.errors.full_messages).to include 'ユーザーID が必要です'
       end
 
       it 'restaurant_idが空だとブックマークできない' do
         @bookmark = FactoryBot.build(:bookmark, user_id: @user.id, restaurant_id: nil)
         @bookmark.valid?
-        expect(@bookmark.errors.full_messages).to include "レストランID が必要です"
+        expect(@bookmark.errors.full_messages).to include 'レストランID が必要です'
       end
 
       it 'user_idとrestaurant_idの両方が同じデータが既に存在すればブックマークできない' do

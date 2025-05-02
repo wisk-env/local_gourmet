@@ -1,3 +1,5 @@
+# frozen_string_literal: true
+
 class Restaurant < ApplicationRecord
   validates :name, presence: true
   validates :address, presence: true
@@ -8,6 +10,6 @@ class Restaurant < ApplicationRecord
   has_many :bookmarks, dependent: :destroy
 
   def self.ransackable_attributes(auth_object = nil)
-    ["id", "address"]
+    ['id', 'address']
   end
 end

@@ -1,3 +1,5 @@
+# frozen_string_literal: true
+
 FeedbackOption.create([
   { option_title: 'にぎやか' },
   { option_title: '落ち着いて食事ができる' },

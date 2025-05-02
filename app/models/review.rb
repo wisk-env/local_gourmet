@@ -1,3 +1,5 @@
+# frozen_string_literal: true
+
 class Review < ApplicationRecord
   validates :menu, presence: true
   validates :price, presence: true
@@ -19,7 +21,7 @@ class Review < ApplicationRecord
   end
 
   def self.ransackable_attributes(auth_object = nil)
-    ["menu", "price", "visit_date", "visit_time", "comment", "feedback_options", "genres"]
+    ['menu', 'price', 'visit_date', 'visit_time', 'comment', 'feedback_options', 'genres']
   end
 
   def self.ransackable_associations(auth_object = nil)

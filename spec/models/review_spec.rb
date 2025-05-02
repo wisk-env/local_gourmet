@@ -1,3 +1,5 @@
+# frozen_string_literal: true
+
 require 'rails_helper'
 
 RSpec.describe Review, type: :model do
@@ -14,31 +16,31 @@ RSpec.describe Review, type: :model do
       it 'menuが空の場合は投稿できないこと' do
         review.menu = nil
         review.valid?
-        expect(review.errors.full_messages).to include("注文したメニュー を入力してください")
+        expect(review.errors.full_messages).to include('注文したメニュー を入力してください')
       end
 
       it 'priceが空の場合は投稿できないこと' do
         review.price = nil
         review.valid?
-        expect(review.errors.full_messages).to include("料金 を入力してください")
+        expect(review.errors.full_messages).to include('料金 を入力してください')
       end
 
       it 'visit_dateが空の場合は投稿できないこと' do
         review.visit_date = nil
         review.valid?
-        expect(review.errors.full_messages).to include("ご利用日 を入力してください")
+        expect(review.errors.full_messages).to include('ご利用日 を入力してください')
       end
 
       it 'visit_timeが空の場合は投稿できないこと' do
         review.visit_time = nil
         review.valid?
-        expect(review.errors.full_messages).to include("ご利用時間帯 を入力してください")
+        expect(review.errors.full_messages).to include('ご利用時間帯 を入力してください')
       end
 
       it 'number_of_visitorsが空の場合は投稿できないこと' do
         review.number_of_visitors = nil
         review.valid?
-        expect(review.errors.full_messages).to include("ご利用人数 を入力してください")
+        expect(review.errors.full_messages).to include('ご利用人数 を入力してください')
       end
     end
   end

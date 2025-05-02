@@ -1,8 +1,10 @@
+# frozen_string_literal: true
+
 class User < ApplicationRecord
   # Include default devise modules. Others available are:
   # :confirmable, :lockable, :timeoutable, :trackable and :omniauthable
   before_create :default_icon
-  
+
   devise :database_authenticatable, :registerable,
          :recoverable, :rememberable, :validatable
   validates :name, presence: true
@@ -16,7 +18,8 @@ class User < ApplicationRecord
 
   def default_icon
     if !self.avatar.attached?
-      self.avatar.attach(io: File.open(Rails.root.join('app', 'assets', 'images', 'default_icon.png')), filename: 'default_icon.png', content_type: 'image/png')
+      self.avatar.attach(io: File.open(Rails.root.join('app', 'assets', 'images', 'default_icon.png')),
+                         filename: 'default_icon.png', content_type: 'image/png')
     end
   end
 

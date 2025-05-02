@@ -1,3 +1,5 @@
+# frozen_string_literal: true
+
 require 'rails_helper'
 
 RSpec.describe FeedbackOption, type: :model do
@@ -13,7 +15,7 @@ RSpec.describe FeedbackOption, type: :model do
     it 'option_titleが空の場合は保存できないこと' do
       feedback_option.option_title = nil
       feedback_option.valid?
-      expect(feedback_option.errors.full_messages).to include "選択肢 を入力してください"
+      expect(feedback_option.errors.full_messages).to include '選択肢 を入力してください'
     end
   end
 

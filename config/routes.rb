@@ -1,3 +1,5 @@
+# frozen_string_literal: true
+
 Rails.application.routes.draw do
   root 'home#index'
   devise_for :users, controllers: {
@@ -7,10 +9,10 @@ Rails.application.routes.draw do
   devise_scope :user do
     post 'users/guest_sign_in', to: 'users/sessions#guest_sign_in'
   end
-  get 'users' => redirect("/users/sign_up")
+  get 'users' => redirect('/users/sign_up')
   resource :profile, only: %i[show]
   resources :restaurants do
-    resources :reviews, except: %i[index] do  
+    resources :reviews, except: %i[index] do
       resource :likes, only: %i[create destroy]
     end
   end
