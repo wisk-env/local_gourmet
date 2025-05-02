@@ -54,9 +54,9 @@ class RestaurantsController < ApplicationController
   end
 
   def already_registered
-    if Restaurant.find_by(lat: params[:lat]).present? || Restaurant.find_by(lng: params[:lng]).present?
-      restaurant = Restaurant.find_by(lat: params[:lat], lng: params[:lng])
-      redirect_to restaurant_path(restaurant)
-    end
+    return unless Restaurant.find_by(lat: params[:lat]).present? || Restaurant.find_by(lng: params[:lng]).present?
+
+    restaurant = Restaurant.find_by(lat: params[:lat], lng: params[:lng])
+    redirect_to restaurant_path(restaurant)
   end
 end

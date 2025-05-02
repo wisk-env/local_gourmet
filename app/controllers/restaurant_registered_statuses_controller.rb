@@ -14,7 +14,7 @@ class RestaurantRegisteredStatusesController < ApplicationController
 
   def new
     @restaurant = Restaurant.find_or_initialize_by(check_params)
-    if @restaurant && @restaurant.name
+    if @restaurant&.name
       redirect_to restaurant_registered_status_path(@restaurant)
     else
       redirect_to new_restaurant_path(check_params)

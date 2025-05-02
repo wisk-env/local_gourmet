@@ -25,6 +25,6 @@ class Review < ApplicationRecord
   end
 
   def self.ransackable_associations(auth_object = nil)
-    auth_object ? super : %w(feedback_options genres restaurant)
+    auth_object ? super : %w[feedback_options genres restaurant]
   end
 end
