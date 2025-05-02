@@ -32,11 +32,11 @@ class RestaurantsController < ApplicationController
   def show
     @restaurant = Restaurant.find(params[:id])
     @reviews = @restaurant.reviews
-                .includes(:genres,
-                          :feedback_options,
-                          :likes,
-                          { user: { avatar_attachment: :blob } },
-                          { image_attachment: :blob })
+                          .includes(:genres,
+                                    :feedback_options,
+                                    :likes,
+                                    { user: { avatar_attachment: :blob } },
+                                    { image_attachment: :blob })
   end
 
   private

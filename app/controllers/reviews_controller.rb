@@ -67,12 +67,12 @@ class ReviewsController < ApplicationController
     @genres = Genre.all
     @feedback_options = FeedbackOption.all
     @results = @q.result
-                .includes(:restaurant,
-                          :genres,
-                          :feedback_options,
-                          :likes,
-                          { user: { avatar_attachment: :blob } },
-                          { image_attachment: :blob }).distinct
+                 .includes(:restaurant,
+                           :genres,
+                           :feedback_options,
+                           :likes,
+                           { user: { avatar_attachment: :blob } },
+                           { image_attachment: :blob }).distinct
   end
 
   private
