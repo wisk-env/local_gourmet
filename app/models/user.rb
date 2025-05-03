@@ -18,10 +18,10 @@ class User < ApplicationRecord
   has_many :like_reviews, through: :likes, source: :review
 
   def default_icon
-    if !self.avatar.attached?
-      self.avatar.attach(io: File.open(Rails.root.join('app', 'assets', 'images', 'default_icon.png')),
-                         filename: 'default_icon.png', content_type: 'image/png')
-    end
+    return if avatar.attached?
+
+    avatar.attach(io: File.open(Rails.root.join('app', 'assets', 'images', 'default_icon.png')),
+                  filename: 'default_icon.png', content_type: 'image/png')
   end
 
   def bookmark(restaurant)
