@@ -22,6 +22,5 @@ Rails.application.routes.draw do
     end
   end
   resources :restaurant_registered_statuses, only: %i[index show new]
-  resources :restaurant_unregistered_statuses, only: %i[index]
   resources :bookmarks, only: %i[create destroy]
 end
