@@ -27,22 +27,31 @@
 </div>
 
 <script>
-let map
-let marker
+let map;
+let marker = [];
+let infoWindow = [];
+let currentInfoWindow = null;
+
 const latlngDis = document.getElementById('latlngDisplay')
 const addressDis = document.getElementById('addressDisplay')
 
-function initMap(){
+function initMap() {
   geocoder = new google.maps.Geocoder()
 
   map = new google.maps.Map(document.getElementById('map'), {
-    center:  {lat: 35.6803997, lng:139.7690174},  //東京
+    center:  {lat: 35.6803997, lng:139.7690174},
     zoom: 15,  
   });
 
   marker = new google.maps.Marker({
     position:  {lat: 35.6813, lng:139.767066},
-    map: map
+    map: map,
+  });
+
+  marker.setOptions({
+    icon: {
+      url: '/map_logo.png'
+    }
   });
 
     <% @restaurants.each do |restaurant|%>
@@ -50,14 +59,19 @@ function initMap(){
         let markerLatLng = { lat: <%= restaurant.lat %>, lng: <%= restaurant.lng %> }; // 緯度経度のデータ作成
         let marker = new google.maps.Marker({ 
           position: markerLatLng, 
-          map: map 
+          map: map
         });
         let infowindow = new google.maps.InfoWindow({
           position: markerLatLng,
           content: "<a href='<%= restaurant_url(restaurant.id) %>' target='_blank'><%= restaurant.name %></a>"
         });
         marker.addListener('click', function() {
+          if (currentInfoWindow) {
+            currentInfoWindow.close();
+          }
+
           infowindow.open(map, marker);
+          currentInfoWindow = infowindow;
         });
       })();
     <% end %>
@@ -84,7 +98,7 @@ function codeAddress(){
       document.getElementById('lat').value = results[0].geometry.location.lat();
       document.getElementById('lng').value = results[0].geometry.location.lng();
 
-      google.maps.event.addListener( marker, 'dragend', function(ev){
+      google.maps.event.addListener( marker, function(ev){
         document.getElementById('lat').value = ev.latLng.lat();
         document.getElementById('lng').value = ev.latLng.lng();
       });
