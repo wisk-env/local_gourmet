@@ -135,12 +135,11 @@ RSpec.describe 'Reviews', type: :system do
     end
   end
 
-  context '口コミ削除に関するテスト', js: true do
+  context '口コミ削除に関するテスト' do
     it '口コミ詳細画面の「削除」ボタンをクリックしたら、ユーザーが投稿した口コミの件数が1つ減ること' do
       visit restaurant_review_path(restaurant, my_review)
       expect(user.reviews.count).to eq 1
       find('.destroy-color').click
-      accept_alert
       expect(current_path).to eq(restaurant_path(restaurant))
       expect(page).to have_content '口コミを削除しました'
       expect(user.reviews.count).to eq 0
