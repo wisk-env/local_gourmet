@@ -1,6 +1,8 @@
+# frozen_string_literal: true
+
 FactoryBot.define do
   factory :restaurant do
-    name { Faker::Restaurant.name }  
+    name { Faker::Restaurant.name }
     lat { Faker::Address.latitude }
     lng { Faker::Address.longitude }
     address { Faker::Address.full_address }

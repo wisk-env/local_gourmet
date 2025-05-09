@@ -11,6 +11,11 @@ ja:
       like:
         review: レビューID
         user: ユーザーID
+      restaurant:
+        address: 住所
+        lat: 緯度
+        lng: 経度
+        name: 店舗名
       review_feedback_option:
         feedback_option: フィードバックオプションID
         review: レビューID

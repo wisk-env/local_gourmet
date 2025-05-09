@@ -1,3 +1,5 @@
+# frozen_string_literal: true
+
 class CreateBookmarks < ActiveRecord::Migration[7.1]
   def change
     create_table :bookmarks do |t|
@@ -5,7 +7,7 @@ class CreateBookmarks < ActiveRecord::Migration[7.1]
       t.references :restaurant, null: false, foreign_key: true
 
       t.timestamps
-      t.index [:user_id, :restaurant_id], unique: true
+      t.index %i[user_id restaurant_id], unique: true
     end
   end
 end

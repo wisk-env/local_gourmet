@@ -1,6 +1,8 @@
+# frozen_string_literal: true
+
 require 'rails_helper'
 
-RSpec.describe "Likes", type: :system do
+RSpec.describe 'Likes', type: :system do
   let(:user) { create(:user) }
   let(:another_user) { create(:user) }
   let(:restaurant) { create(:restaurant) }
@@ -21,7 +23,7 @@ RSpec.describe "Likes", type: :system do
 
     it '店舗の詳細画面で、他のユーザーの口コミの「いいね」ボタンをクリックしたらlikesテーブルのレコードが一つ増えること' do
       visit restaurant_path(restaurant, review)
-      expect{find('.unliked').click}.to change { Like.count }.by(1)
+      expect { find('.unliked').click }.to change { Like.count }.by(1)
     end
 
     it '他のユーザーの口コミ詳細画面に遷移したら「いいね」ボタンが表示されること' do
@@ -32,7 +34,7 @@ RSpec.describe "Likes", type: :system do
 
     it '他のユーザーの口コミ詳細画面で「いいね」ボタンをクリックしたらlikesテーブルのレコードが一つ増えること' do
       visit restaurant_review_path(restaurant_id: restaurant.id, id: review.id)
-      expect{find('.unliked').click}.to change { Like.count }.by(1)
+      expect { find('.unliked').click }.to change { Like.count }.by(1)
     end
   end
 
@@ -49,7 +51,7 @@ RSpec.describe "Likes", type: :system do
     end
 
     it '「いいね」解除ボタンをクリックしたらlikesテーブルのレコードが一つ減ること' do
-      expect{find('.liked').click}.to change { Like.count }.by(-1)
+      expect { find('.liked').click }.to change { Like.count }.by(-1)
     end
 
     it 'あるユーザーが「いいね」した場合でも、別のユーザーでサインインすると「いいね」ボタンが表示されており、いいね解除ボタンが表示されないこと' do
@@ -71,7 +73,7 @@ RSpec.describe "Likes", type: :system do
       visit restaurant_path(another_restaurant, my_review)
       expect(user.own?(my_review)).to be true
       expect(find('.review-user-name').text).to eq(user.name)
-      expect{find('.like-button-container').click}.to change { Like.count }.by(0)
+      expect { find('.like-button-container').click }.to change { Like.count }.by(0)
     end
 
     it '自分が投稿した口コミ詳細画面に「いいね」ボタンは表示されず、編集・削除ボタンが表示されていること' do
@@ -86,7 +88,7 @@ RSpec.describe "Likes", type: :system do
 
     it 'マイページで、投稿した口コミの「いいね」をクリックしてもlikesテーブルのレコード数が変化しないこと' do
       visit profile_path(my_review)
-      expect{find('.like-button-container').click}.to change { Like.count }.by(0)
+      expect { find('.like-button-container').click }.to change { Like.count }.by(0)
     end
   end
 

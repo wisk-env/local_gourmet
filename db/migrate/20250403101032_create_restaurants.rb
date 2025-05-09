@@ -1,3 +1,5 @@
+# frozen_string_literal: true
+
 class CreateRestaurants < ActiveRecord::Migration[7.1]
   def change
     create_table :restaurants do |t|
@@ -6,7 +8,7 @@ class CreateRestaurants < ActiveRecord::Migration[7.1]
       t.float :lng, null: false
 
       t.timestamps
-      t.index [:lat, :lng], unique: true
+      t.index %i[lat lng], unique: true
     end
   end
 end

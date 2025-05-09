@@ -1,3 +1,5 @@
+# frozen_string_literal: true
+
 class ReviewsController < ApplicationController
   before_action :authenticate_user!, only: %i[new create edit update destroy]
   before_action :search_params, only: %i[index search]
@@ -52,10 +54,10 @@ class ReviewsController < ApplicationController
     @restaurant = Restaurant.find(params[:restaurant_id])
     @review = Review.find(params[:id])
     if @review.destroy
-      flash[:notice] = "口コミを削除しました"
+      flash[:notice] = '口コミを削除しました'
       redirect_to restaurant_path(@restaurant)
     else
-      flash.now[:alert] = "口コミの削除に失敗しました"
+      flash.now[:alert] = '口コミの削除に失敗しました'
       render 'show'
     end
   end
@@ -65,15 +67,19 @@ class ReviewsController < ApplicationController
     @genres = Genre.all
     @feedback_options = FeedbackOption.all
     @results = @q.result
-                .includes(:restaurant, :genres, :feedback_options,
-                :likes, { user: { avatar_attachment: :blob } },
-                { image_attachment: :blob }).distinct
+                 .includes(:restaurant,
+                           :genres,
+                           :feedback_options,
+                           :likes,
+                           { user: { avatar_attachment: :blob } },
+                           { image_attachment: :blob }).distinct
   end
 
   private
 
   def review_params
-    params.require(:review).permit(:menu, :price, :visit_date, :visit_time, :number_of_visitors, :comment, :image, :user_id, :restaurant_id, feedback_option_ids: [], genre_ids: [])
+    params.require(:review).permit(:menu, :price, :visit_date, :visit_time, :number_of_visitors, :comment, :image,
+                                   :user_id, :restaurant_id, feedback_option_ids: [], genre_ids: [])
   end
 
   def search_params
@@ -83,8 +89,6 @@ class ReviewsController < ApplicationController
   def ensure_correct_user
     @restaurant = Restaurant.find(params[:restaurant_id])
     @review = Review.find(params[:id])
-    if @review.user_id != current_user.id
-      redirect_to restaurant_path(@restaurant)
-    end
+    redirect_to restaurant_path(@restaurant) if @review.user_id != current_user.id
   end
 end

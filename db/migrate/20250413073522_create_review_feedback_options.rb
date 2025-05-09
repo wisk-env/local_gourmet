@@ -1,3 +1,5 @@
+# frozen_string_literal: true
+
 class CreateReviewFeedbackOptions < ActiveRecord::Migration[7.1]
   def change
     create_table :review_feedback_options do |t|

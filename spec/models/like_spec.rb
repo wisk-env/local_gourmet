@@ -1,3 +1,5 @@
+# frozen_string_literal: true
+
 require 'rails_helper'
 
 RSpec.describe Like, type: :model do
@@ -30,13 +32,13 @@ RSpec.describe Like, type: :model do
       it 'user_idが空だと「いいね」できない' do
         like = build(:like, user_id: nil, review_id: review.id)
         like.valid?
-        expect(like.errors.full_messages).to include "ユーザーID が必要です"
+        expect(like.errors.full_messages).to include 'ユーザーID が必要です'
       end
 
       it 'review_idが空だと「いいね」できない' do
         like = build(:like, user_id: user.id, review_id: nil)
         like.valid?
-        expect(like.errors.full_messages).to include "レビューID が必要です"
+        expect(like.errors.full_messages).to include 'レビューID が必要です'
       end
 
       it 'user_idとreview_idの両方が同じデータが既に存在すれば「いいね」できない' do

@@ -1,6 +1,8 @@
+# frozen_string_literal: true
+
 require 'rails_helper'
 
-RSpec.describe "Reviews", type: :system do
+RSpec.describe 'Reviews', type: :system do
   let(:user) { create(:user) }
   let(:restaurant) { create(:restaurant) }
   let(:my_review) { create(:review, user_id: user.id, restaurant_id: restaurant.id) }
@@ -21,7 +23,7 @@ RSpec.describe "Reviews", type: :system do
       fill_in '注文したメニュー', with: 'test_food'
       fill_in '料金', with: '1000'
       fill_in 'ご利用人数', with: '1'
-      expect{find('.submit-btn').click}.to change { Review.count }.by(1)
+      expect { find('.submit-btn').click }.to change { Review.count }.by(1)
       expect(current_path).to eq(restaurant_path(restaurant))
       expect(page).to have_content '口コミを投稿しました'
       expect(page).to have_content 'test_food'
@@ -32,7 +34,7 @@ RSpec.describe "Reviews", type: :system do
       visit new_restaurant_review_path(restaurant)
       fill_in '注文したメニュー', with: 'test_food'
       fill_in '料金', with: '1000'
-      attach_file 'review[image]', "spec/fixtures/image/test_image.jpg"
+      attach_file 'review[image]', 'spec/fixtures/image/test_image.jpg'
       fill_in 'ご利用人数', with: '1'
       click_on '上記内容で口コミを投稿する'
       expect(page).to have_selector("img[src$='test_image.jpg']")
@@ -44,7 +46,7 @@ RSpec.describe "Reviews", type: :system do
       fill_in '注文したメニュー', with: ''
       fill_in '料金', with: ''
       fill_in 'ご利用人数', with: ''
-      expect{find('.submit-btn').click}.to change { Review.count }.by(0)
+      expect { find('.submit-btn').click }.to change { Review.count }.by(0)
       expect(current_path).to eq("/restaurants/#{restaurant.id}/reviews")
       expect(page).to have_content '口コミ投稿に失敗しました'
       expect(page).to have_content '注文したメニュー を入力してください'
@@ -112,7 +114,7 @@ RSpec.describe "Reviews", type: :system do
       fill_in '注文したメニュー', with: 'test_food_update'
       fill_in '料金', with: '4000'
       fill_in 'ご利用人数', with: '2'
-      expect{find('.submit-btn').click}.to change { Review.count }.by(0)
+      expect { find('.submit-btn').click }.to change { Review.count }.by(0)
       expect(current_path).to eq(restaurant_review_path(restaurant, my_review))
       expect(page).to have_content '口コミを更新しました'
       expect(page).to have_content 'test_food_update'
@@ -124,7 +126,7 @@ RSpec.describe "Reviews", type: :system do
       fill_in '注文したメニュー', with: ''
       fill_in '料金', with: ''
       fill_in 'ご利用人数', with: ''
-      expect{find('.submit-btn').click}.to change { Review.count }.by(0)
+      expect { find('.submit-btn').click }.to change { Review.count }.by(0)
       expect(current_path).to eq(restaurant_review_path(restaurant, my_review))
       expect(page).to have_content '口コミの更新に失敗しました'
       expect(page).to have_content '注文したメニュー を入力してください'
@@ -133,12 +135,11 @@ RSpec.describe "Reviews", type: :system do
     end
   end
 
-  context '口コミ削除に関するテスト', js: true do    
+  context '口コミ削除に関するテスト' do
     it '口コミ詳細画面の「削除」ボタンをクリックしたら、ユーザーが投稿した口コミの件数が1つ減ること' do
       visit restaurant_review_path(restaurant, my_review)
       expect(user.reviews.count).to eq 1
       find('.destroy-color').click
-      accept_alert
       expect(current_path).to eq(restaurant_path(restaurant))
       expect(page).to have_content '口コミを削除しました'
       expect(user.reviews.count).to eq 0

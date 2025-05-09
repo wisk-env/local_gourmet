@@ -1,3 +1,5 @@
+# frozen_string_literal: true
+
 class BookmarksController < ApplicationController
   def create
     restaurant = Restaurant.find(params[:restaurant_id])

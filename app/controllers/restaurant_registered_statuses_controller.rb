@@ -1,7 +1,9 @@
+# frozen_string_literal: true
+
 class RestaurantRegisteredStatusesController < ApplicationController
   before_action :authenticate_user!
   before_action :params_required, only: %i[new]
-  
+
   def index
     @restaurants = Restaurant.all
   end
@@ -12,7 +14,7 @@ class RestaurantRegisteredStatusesController < ApplicationController
 
   def new
     @restaurant = Restaurant.find_or_initialize_by(check_params)
-    if @restaurant && @restaurant.name
+    if @restaurant&.name
       redirect_to restaurant_registered_status_path(@restaurant)
     else
       redirect_to new_restaurant_path(check_params)
@@ -26,8 +28,8 @@ class RestaurantRegisteredStatusesController < ApplicationController
   end
 
   def params_required
-    if params[:lat].blank? || params[:lng].blank? || params[:address].blank?
-      redirect_to restaurant_registered_statuses_path
-    end
+    return unless params[:lat].blank? || params[:lng].blank? || params[:address].blank?
+
+    redirect_to restaurant_registered_statuses_path
   end
 end

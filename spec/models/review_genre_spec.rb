@@ -1,3 +1,5 @@
+# frozen_string_literal: true
+
 require 'rails_helper'
 
 RSpec.describe ReviewGenre, type: :model do
@@ -30,13 +32,13 @@ RSpec.describe ReviewGenre, type: :model do
       it 'review_idが空だと保存できないこと' do
         review_genre = build(:review_genre, review_id: nil, genre_id: genre.id)
         review_genre.valid?
-        expect(review_genre.errors.full_messages).to include "レビューID が必要です"
+        expect(review_genre.errors.full_messages).to include 'レビューID が必要です'
       end
 
       it 'genre_idが空だと保存できないこと' do
         review_genre = build(:review_genre, review_id: review.id, genre_id: nil)
         review_genre.valid?
-        expect(review_genre.errors.full_messages).to include "ジャンルID が必要です"
+        expect(review_genre.errors.full_messages).to include 'ジャンルID が必要です'
       end
 
       it 'review_idとgenre_idの両方が同じデータが既に存在すれば保存できないこと' do
