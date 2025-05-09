@@ -1,0 +1,134 @@
+<div class="wrap-container">
+  <div class="search-restaurant-container">
+    <h2 class="search-top-title">
+      <i class="fa-solid fa-magnifying-glass"></i>
+      <span class="search-top-text">お店を探す</span>
+    </h2>
+    <div class="search-tab-container">
+      <div class="search-tab-navigation">
+        <div class="search-tab active-status">
+          <%= link_to '地図から探す', restaurants_path, class: "search-from-map font-size-S" %>
+        </div>
+        <div class="search-tab">
+          <%= link_to '口コミから探す', reviews_path, class: "search-from-reviews font-size-S" %>
+        </div>
+      </div>
+    </div>
+    <div>
+      <div class="search-input-wrap">
+        <input id="address" type="textbox" placeholder="駅や施設名で検索" class="search-form-input font-size-S">
+        <input type="button" value="&#xf002;" onclick="codeAddress()" class="search-button fa-solid fa-magnifying-glass font-size-S">
+      </div>
+      <div class="map-wrap">
+        <div id='map'></div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<script>
+let map;
+let marker = [];
+let infoWindow = [];
+let currentInfoWindow = null;
+
+const latlngDis = document.getElementById('latlngDisplay')
+const addressDis = document.getElementById('addressDisplay')
+
+function initMap() {
+  geocoder = new google.maps.Geocoder()
+
+  map = new google.maps.Map(document.getElementById('map'), {
+    center: {lat: 35.6813, lng:139.767066},
+    zoom: 15,  
+  });
+
+  marker = new google.maps.Marker({
+    position: {lat: 35.6813, lng:139.767066},
+    map: map,
+    icon: {
+      url: '/marker.svg'
+    }
+  });
+
+  const locationButton = document.createElement("button");
+  locationButton.textContent = "現在地取得";
+  locationButton.classList.add("now-location-button");
+  map.controls[google.maps.ControlPosition.LEFT_TOP].push(locationButton);
+  locationButton.addEventListener("click", getCurrentLocation);
+
+  <% @restaurants.each do |restaurant| %>
+    ( function() { 
+      let markerLatLng = { lat: <%= restaurant.lat %>, lng: <%= restaurant.lng %> }; // 緯度経度のデータ作成
+      let marker = new google.maps.Marker({ 
+        position: markerLatLng, 
+        map: map
+      });
+      let infowindow = new google.maps.InfoWindow({
+        position: markerLatLng,
+        content: "<a href='<%= restaurant_url(restaurant.id) %>' target='_blank'><%= restaurant.name %></a>"
+      });
+      marker.addListener('click', function() {
+        if (currentInfoWindow) {
+          currentInfoWindow.close();
+        }
+        infowindow.open(map, marker);
+        currentInfoWindow = infowindow;
+      });
+    })();
+  <% end %>
+}
+
+function getCurrentLocation() {
+  if (navigator.geolocation) {
+    navigator.geolocation.getCurrentPosition(
+      function(position) {
+        const latLng = {
+          lat: position.coords.latitude,
+          lng: position.coords.longitude
+        };
+
+        map.setCenter(latLng);
+        map.setZoom(15);
+
+        marker.setPosition(latLng);
+        marker.setMap(map);
+      },
+      function(error) {
+        alert("現在地の取得に失敗しました：" + error.message);
+      }
+    );
+  } else {
+    alert("このブラウザでは現在地取得がサポートされていません。");
+  }
+}
+
+let geocoder
+function codeAddress(){
+  let inputAddress = document.getElementById('address').value;
+  geocoder.geocode({ 'address': inputAddress}, function(results, status) {
+    if (status == 'OK') {
+      map.setCenter(results[0].geometry.location);
+      marker.setPosition(results[0].geometry.location);
+      marker.setMap(map);
+
+      document.getElementById('lat').value = results[0].geometry.location.lat();
+      document.getElementById('lng').value = results[0].geometry.location.lng();
+
+      latlngDis.innerHTML = results[0].geometry.location;
+
+      geocoder.geocode({ 'location': marker.getPosition()}, function(results, status) {
+        if (status == "OK"){
+          addressDis.innerHTML = results[0].formatted_address.slice(13);
+          areaDis.innerHTML = results[0].plus_code.compound_code.slice(11);
+        } else {
+          alert("Geocode 取得に失敗しました：" + status);
+        }
+      });
+    } else {
+      alert('該当する結果がありませんでした：' + status);
+    }
+  });
+}
+</script>
+<script src="https://maps.googleapis.com/maps/api/js?key=<%= ENV['GOOGLE_MAPS_API_KEY'] %>&callback=initMap" async defer></script>

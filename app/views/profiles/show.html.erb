@@ -1,0 +1,40 @@
+<div class="wrap-container my-page">
+  <h2 class="page-top-text font-size-L">マイページ</h2>
+  <div class="user-container">
+    <div>
+      <%= image_tag @user.avatar, class: "avatar-image" %>
+    </div>
+    <div class="user-info-box">
+      <div class="user-name font-size-M dark-brown"><%= @user.name %></div>
+      <div class="user-email font-size-S"><%= @user.email %></div>
+      <div class="profile-edit-button font-size-M">
+        <%= link_to edit_user_registration_path, class: "profile-edit-button-link" do %>
+          プロフィール編集
+        <% end %>
+      </div>
+    </div>
+  </div>
+
+  <ul class="tab-list center-block font-size-M break-keep">
+    <li class="tab tab-active">
+      ブックマークした<wbr />お店
+    </li>
+    <li class="tab my-review">
+      投稿した<wbr />口コミ
+    </li>
+  </ul>
+  <div class="center-block">
+    <div class="tab-container">
+      <div class="tab-contents active-contents">
+        <%= render 'shared/bookmarks', bookmarks: @bookmark_restaurants %>
+      </div>
+      <div class="tab-contents">
+        <%= render 'shared/reviews', reviews: @reviews %>
+      </div>
+    </div>
+  </div>
+</div>
+
+<% content_for :js do %>
+  <%= javascript_import_module_tag "profile/show" %>
+<% end %>

@@ -1,0 +1,24 @@
+<div class="wrap-container">
+  <div class="restaurant-registration-form">
+    <h2 class="registration-top-text font-size-L">店舗登録画面</h2>
+    <div class="registration-form-container font-size-S">
+      <p>
+        まだ登録されていない店舗です。</br>
+        お店の名前を入力して店舗を登録しましょう。
+      </p>
+      <%= form_with model: @restaurant, local: true do |f| %>
+        <%= f.label :name, "飲食店名", class: "search-form-label font-size-S" %>
+        <%= f.text_field :name, class: "form-text-input font-size-S" %>
+        <div>
+          <%= f.label :address, "住所", class: "search-form-label font-size-S" %>
+          <%= @not_registered_data[:address] %>
+        </div>
+        <%= f.hidden_field :address, value: @not_registered_data[:address] %>
+        <%= f.hidden_field :lat, value: @not_registered_data[:lat] %>
+        <%= f.hidden_field :lng, value: @not_registered_data[:lng] %>
+        <%= f.submit "店舗登録を完了する", class: "registration-button font-size-M" %>
+        <%= link_to "キャンセル", restaurant_registered_statuses_path, class: "back-button font-size-M" %>
+      <% end %>
+    </div>
+  </div>
+</div>

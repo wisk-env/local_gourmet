@@ -1,0 +1,21 @@
+<% if @bookmark_restaurants.present? %>
+  <div id="test" class="restaurant-card-container">
+    <% @bookmark_restaurants.each do |restaurant| %>
+      <div class="restaurant_card">
+        <%= link_to restaurant_path(restaurant) do %>
+          <div class="restaurant-name-in-card font-size-M">
+            <i class="fa-solid fa-shop"></i>
+            <%= restaurant.name %>
+          </div>
+          <div class="restaurant-address font-size-S">
+            <i class="fa-solid fa-map-location-dot"></i>
+            <%= restaurant.address %>
+          </div>
+        <% end %>
+      </div>
+    <% end %>
+  </div>
+<% else %>
+  <div class="no-lists">保存したお店はまだありません。</div>
+<% end %>
+

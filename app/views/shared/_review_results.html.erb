@@ -1,0 +1,60 @@
+<div class="review-box-container">
+  <% @results.each do |review| %>
+    <div class="review-box">
+      <%= link_to restaurant_review_path(review.restaurant_id, review) do %>
+        <div class="center-image">
+          <% if review.image.present? %>
+            <div class="menu-image border-image">
+              <%= image_tag review.image, class: "menu-image border-image" %>
+            </div>
+          <% else %>
+            <div class="menu-image no-image border-image">NO IMAGE</div>
+          <% end %>
+        </div>
+        <div class="review-content">
+          <div class="restaurant-name-in-card font-size-M">
+            <i class="fa-solid fa-shop"></i>
+            <%= review.restaurant.name %>
+          </div>
+          <div class="restaurant-address font-size-S">
+            <i class="fa-solid fa-map-location-dot"></i>
+            <%= review.restaurant.address %>
+          </div>
+          <div class="font-brown font-size-M">
+            <i class="fa-solid fa-utensils"></i>
+            <%= review.menu %>
+          </div>
+          <div class="menu-price font-size-M">
+            <%= "¥ #{review.price}" %>
+          </div>
+          <div class="tag-container">
+            <% review.genres.each do |genre| %>
+              <div class="tag genre-tag font-size-S"><%= genre.name %></div>
+            <% end %>
+            <% review.feedback_options.each do |feedback_option| %>
+              <div class="tag feedback-tag font-size-S"><%= feedback_option.option_title %></div>
+            <% end %>
+          </div>
+          <div class="review-card-bottom-wrap">
+            <div class="review-user">
+              <div><%= image_tag review.user.avatar, class: "review-user-icon" %></div>
+              <div class="review-user-name font-size-S"><%= review.user.name %></div>
+            </div>
+            <% if user_signed_in? %>
+              <% if current_user.own?(review) %>
+                <div class="like-button-container font-size-M">
+                  <div><i class="fa-solid fa-heart"></i></div>
+                  <div class="review-likes-count"><%= review.likes.length %></div>
+                </div>
+              <% else %>
+                <div id="like_buttons_<%= review.id %>" class="like-button-container font-size-M">
+                  <%= render 'shared/like_button', review: review %>
+                </div>
+              <% end %>
+            <% end %>
+          </div>
+        </div>
+      <% end %>
+    </div>
+  <% end %>
+</div>
