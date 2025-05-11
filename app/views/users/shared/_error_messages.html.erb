@@ -1,0 +1,24 @@
+<% if resource.errors.any? %>
+  <div id="error_explanation" data-turbo-cache="false">
+    <ul>
+      <% resource.errors.full_messages_for(:email).each do |message| %>
+        <li class="error-message-list"><%= message %></li>
+      <% end %>
+    </ul>
+    <ul>
+      <% resource.errors.full_messages_for(:name).each do |message| %>
+        <li class="error-message-list"><%= message %></li>
+      <% end %>
+    </ul>
+    <ul>
+      <% resource.errors.full_messages_for(:password).each do |message| %>
+        <li class="error-message-list"><%= message %></li>
+      <% end %>
+    </ul>
+    <ul>
+      <% resource.errors.full_messages_for(:password_confirmation).each do |message| %>
+        <li class="error-message-list"><%= message %></li>
+      <% end %>
+    </ul>
+  </div>
+<% end %>
