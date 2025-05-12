@@ -1425,6 +1425,10 @@ ul {
     width: 100%;
   }
 
+  .slide-cover {
+    display: none;
+  }
+
   .home-guide-top-title {
     padding: 0 10%;
   }
