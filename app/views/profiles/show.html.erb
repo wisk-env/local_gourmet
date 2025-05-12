@@ -1,7 +1,7 @@
 <div class="wrap-container my-page">
   <h2 class="page-top-text font-size-L">マイページ</h2>
   <div class="user-container">
-    <div>
+    <div class="avatar-image-wrap">
       <%= image_tag @user.avatar, class: "avatar-image" %>
     </div>
     <div class="user-info-box">
@@ -15,9 +15,9 @@
     </div>
   </div>
 
-  <ul class="tab-list center-block font-size-M break-keep">
+  <ul class="tab-list center-block font-size-M">
     <li class="tab tab-active">
-      ブックマークした<wbr />お店
+      ブックマークしたお店
     </li>
     <li class="tab my-review">
       投稿した<wbr />口コミ

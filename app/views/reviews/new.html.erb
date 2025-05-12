@@ -1,15 +1,15 @@
-<div class="wrap-container review-form-width">
+<div class="review-form">
   <h2 class="review-top-text dark-brown font-size-L">
     <i class="fa-solid fa-pen-to-square"></i>
     <span>口コミ投稿画面</span>
   </h2>
   <%= form_with model: @review, url: restaurant_reviews_path, local: true do |f| %>
     <div class="font-size-M">
-      <div>
+      <div class="review-form-elements">
         <p class="form-text-label">口コミを投稿するお店の名前</p><br>
         <%= @restaurant.name %>
       </div>
-      <div>
+      <div class="review-form-elements">
         <%= f.label :menu, "注文したメニュー", class: "form-text-label" %><br>
         <%= f.text_field :menu, class: "form-text-input font-size-M" %>
         <%= render 'shared/error_messages', model: @review, attribute: :menu %>
@@ -22,7 +22,7 @@
       </div>
       <div>
         <%= f.label :image, "写真", class: "form-text-label" %><br>
-        <%= f.file_field :image, accept: "image/jpeg, image/gif, image/png", id: "image", class: "font-size-M" %>
+        <%= f.file_field :image, accept: "image/jpeg, image/gif, image/png", id: "image" %>
       </div>
       <div>
         <%= image_tag 'NOIMAGE.jpg', id: "image-preview", class: "menu-preview" %>
@@ -41,7 +41,7 @@
         <span>人</span>
         <%= render 'shared/error_messages', model: @review, attribute: :number_of_visitors %>
       </div>
-      <div>
+      <div class="review-form-elements">
         <%= f.label :genres, "ジャンル", class: "form-text-label" %><br>
         <div class="checkbox-container">
           <%= collection_check_boxes(:review, :genre_ids, Genre.all, :id, :name) do |genre| %>
@@ -49,7 +49,7 @@
           <% end %>
         </div>
       </div>
-      <div>
+      <div class="review-form-elements">
         <%= f.label :feedback_options, "お店の雰囲気・特徴・評価ポイントなど", class: "form-text-label" %><br>
         <div class="checkbox-container">
           <%= collection_check_boxes(:review, :feedback_option_ids, FeedbackOption.all, :id, :option_title) do |option| %>
@@ -57,7 +57,7 @@
           <% end %>
         </div>
       </div>
-      <div>
+      <div class="review-form-elements">
         <%= f.label :comment, "コメント", class: "form-text-label" %><br>
         <%= f.text_area :comment, class: "form-comment-input font-size-M" %>
       </div>
@@ -66,9 +66,9 @@
       <%= f.hidden_field :user_id, value: current_user.id %><br>
       <%= f.hidden_field :restaurant_id, value: @restaurant.id %>
     </div>
-    <div>
-      <%= f.submit "上記内容で口コミを投稿する", class: "submit-btn" %>
-      <%= link_to 'javascript:history.back()', class: "back-button font-size-M" do %>
+    <div class="review-form-elements">
+      <%= f.submit "上記内容で口コミを投稿する", class: "submit-btn font-size-S" %>
+      <%= link_to 'javascript:history.back()', class: "back-button font-size-S" do %>
         戻る
       <% end %>
     </div>

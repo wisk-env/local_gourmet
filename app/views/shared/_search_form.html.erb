@@ -16,12 +16,12 @@
   <%= search_form_for @q, url: search_reviews_path do |f| %>
     <div class="search-element">
       <%= f.label :menu_or_comment_or_genres_name_or_feedback_options_option_title_cont, 'キーワード', class: "search-form-label font-size-M" %>
-      <%= f.search_field :menu_or_comment_or_genres_name_or_feedback_options_option_title_cont, placeholder: "キーワードを入力 (例: 料理名)", class: "search-form-input font-size-M" %>
+      <%= f.search_field :menu_or_comment_or_genres_name_or_feedback_options_option_title_cont, placeholder: "キーワードを入力 (例: 料理名)", class: "search-form-input" %>
     </div>
 
     <div class="search-element">
       <%= f.label :restaurant_address_cont, 'エリア名', class: "search-form-label font-size-M" %>
-      <%= f.search_field :restaurant_address_cont, placeholder: "エリア名を入力 (例: 東京)", class: "search-form-input font-size-M" %>
+      <%= f.search_field :restaurant_address_cont, placeholder: "エリア名を入力 (例: 東京)", class: "search-form-input" %>
     </div>
 
     <div class="search-price-element">
@@ -74,7 +74,7 @@
     </div>
 
     <div class="search-form-submit-button">
-      <%= f.submit 'この条件で検索する', class: "submit-btn" %>
+      <%= f.submit 'この条件で検索する', class: "submit-btn font-size-M" %>
     </div>
   <% end %>
 </div>

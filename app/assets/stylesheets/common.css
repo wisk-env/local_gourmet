@@ -207,7 +207,7 @@ ul {
 }
 
 .error-message-container {
-  margin: 0;
+  margin: 0 10%;
 }
 
 .error-message-list {
@@ -411,13 +411,17 @@ ul {
   justify-content: center;
 }
 
-.review-form-width {
-  width: 320px;
+.review-form {
+  width: 420px;
+  margin: 56px auto;
+  padding: 20px 40px 50px;
+  justify-content: center;
 }
 
-.review-form-width .back-button {
+.review-form .back-button {
   margin: 0;
-  width: 94%;
+  width: 100%;
+  box-sizing: border-box;
   padding: 10px;
 }
 
@@ -1176,13 +1180,15 @@ ul {
 }
 
 .restaurant-container .back-button {
-  width: 90%;
+  width: 100%;
   margin: 5px 0 30px;
+  box-sizing: border-box;
 }
 
 .registration-form-container .back-button {
-  width: 90%;
+  width: 100%;
   margin: 15px 0 30px;
+  box-sizing: border-box;
 }
 
 .hide {
@@ -1249,6 +1255,7 @@ ul {
   .search-form-input {
     height: auto;
     padding: 10px;
+    font-size: 18px;
   }
 
   .select-element {
@@ -1266,18 +1273,11 @@ ul {
   .submit-btn {
     width: 100%;
     height: auto;
-    font-size: 25px;
     padding: 10px 40px;
   }
 
   .review-box {
     width: 100%;
-  }
-
-  .center-image {
-    display: flex;
-    justify-content: center;
-    margin-bottom: 20px;
   }
 
   .tag-container {
@@ -1292,10 +1292,6 @@ ul {
     width: 270px;
   }
 
-  .border-image {
-    border-radius: 0;
-  }
-
   .search-tab {
     padding: 5px 10px;
   }
@@ -1308,12 +1304,20 @@ ul {
     padding: 0 5px;
   }
 
-  .review-form-width {
-    margin-left: 30px;
+  .review-form {
+    margin: 56px 10%;
+    width: 80%;
+    box-sizing: border-box;
+    padding: 40px 0;
+  }
+
+  .review-form-elements {
+    width: 100%;
   }
 
   .form-text-input {
-    width: 95%;
+    width: 100%;
+    box-sizing: border-box;
   }
 
   .form-number-input {
@@ -1331,9 +1335,16 @@ ul {
     padding: 10px;
   }
 
+  .image-uploader {
+    width: 90%;
+    font-size: 18px;
+    padding: 0;
+  }
+
   .form-comment-input {
-    width: 95%;
+    width: 100%;
     padding: 10px;
+    box-sizing: border-box;
   }
 
   .no-lists {
@@ -1351,6 +1362,12 @@ ul {
 
   .user-container .avatar-image {
     margin: 0;
+  }
+
+  .avatar-image-wrap {
+    display: flex;
+    justify-content: center;
+    margin-bottom: 10px;
   }
 
   .avatar-image {
@@ -1380,6 +1397,7 @@ ul {
 
   footer {
     height: 90px;
+    width: 100%;
   }
 
   .footer-menu-link {
@@ -1389,9 +1407,148 @@ ul {
   .header-text, .footer-text {
     font-size: 18px;
   }
+
+  .wrap-container {
+    width: 100%;
+    box-sizing: border-box;
+  }
+
+  .rank-container {
+    width: 100%;
+  }
+
+  .rank-container .restaurant_card {
+    margin: 20px 10%;
+  }
+
+  .home-guide-container {
+    width: 100%;
+  }
+
+  .home-guide-top-title {
+    padding: 0 10%;
+  }
+
+  .guide-block {
+    padding: 0 10%;
+  }
+
+  .search-tab-container {
+    width: 100%;
+  }
+
+  .search-restaurant-container {
+    width: 100%;
+  }
+
+  .restaurant-registration-form {
+    width: 100%;
+  }
+
+  .restaurant-container {
+    width: 100%;
+  }
+
+  .profile-edit-container {
+    width: 100%;
+  }
+
+  .profile-edit-container .back-button {
+    margin-bottom: 40px;
+  }
+
+  .label-wrap {
+    padding: 0 10%;
+  }
+
+  .form-input {
+    width: 80%;
+    margin: 0 10% 10px;
+  }
+
+  .registration-container .submit-btn,
+  .login-container .submit-btn {
+    width: 80%;
+    margin: 10px 10%;
+  }
+
+  .page-top-text {
+    padding: 0 10%;
+  }
+
+  #user_avatar {
+    width: 90%;
+    margin-left: 10%;
+  }
+
+  .avatar-image {
+    margin-left: 10%;
+  }
+
+  .profile-update-button {
+    width: 80%;
+    margin-left: 10%;
+  }
+
+  .back-button {
+    width: 69%;
+    margin-left: 10%;
+  }
+
+  .user-container {
+    display: block;
+  }
+
+  .user-info-box {
+    margin-left: 0;
+    text-align: center;
+  }
+
+  .profile-edit-button {
+    width: 100%;
+    box-sizing: border-box;
+  }
+
+  .restaurant-card-container {
+    width: 100%;
+  }
+
+  .restaurant_card {
+    margin: 0;
+  }
+
+  .tab-container {
+    width: 100%;
+  }
+
+  .submit-btn {
+    padding: 10px;
+  }
+
+  .review-box {
+    margin: 10px 0;
+  }
+
+  .review-button-wrap {
+    text-align: center;
+  }
+
+  .review-top-elements {
+    display: block;
+  }
+
+  .review-menu-image {
+    width: 100%;
+    height: 200px;
+    line-height: 200px;
+  }
+
+  .menu-image {
+    width: 100%;
+  }
 }
 
-@media screen and (max-width:679px) {
+@media screen and (min-width: 391px) and (max-width:679px) {
   .wrap-container {
     width: 420px;
   }
@@ -1437,10 +1594,6 @@ ul {
 
   .review-box-container {
     justify-content: center;
-  }
-
-  .review-form-width .back-button {
-    width: 95%;
   }
 
   .review-menu-image {

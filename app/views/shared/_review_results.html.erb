@@ -2,7 +2,7 @@
   <% @results.each do |review| %>
     <div class="review-box">
       <%= link_to restaurant_review_path(review.restaurant_id, review) do %>
-        <div class="center-image">
+        <div>
           <% if review.image.present? %>
             <div class="menu-image border-image">
               <%= image_tag review.image, class: "menu-image border-image" %>
