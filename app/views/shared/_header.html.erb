@@ -11,13 +11,11 @@
         </div>
       <% end %>
     </div>
-    <div class="header-end-button">
-      <%= link_to "ログアウト", destroy_user_session_path, data: { turbo_method: :delete }, class: "logout-button" %>
-    </div>
+    <%= link_to "ログアウト", destroy_user_session_path, data: { turbo_method: :delete }, class: "header-end-button logout-button" %>
   </div>
 <% else %>
-  <div class='header-end font-size-S'>
-    <%= link_to "ログイン", new_user_session_path, class: "header-end-button" %>
-    <%= link_to "新規登録", new_user_registration_path, class: "header-end-button" %>
+  <div class="header-end">
+    <%= link_to "ログイン", new_user_session_path, class: "header-end-button login-button" %>
+    <%= link_to "新規登録", new_user_registration_path, class: "header-end-button sign-up-button" %>
   </div>
 <% end %>
