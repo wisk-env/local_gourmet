@@ -96,18 +96,12 @@ a {
 }
 
 .logout-button {
-  /* color: #ffffff; */
   background-color: #43766C;
 }
 
 .header-end-button:hover {
-  /* color: #674636; */
   opacity: .7;
 }
-
-/* .logout-button:hover {
-  color: #674636;
-} */
 
 .content {
   width: 100%;
@@ -1093,10 +1087,9 @@ ul {
   margin-left: 10px;
 }
 
-.search-top-block {
+.search-block {
   width: 400px;
   margin: 0 auto;
-  box-sizing: border-box;
 }
 
 .search-top-title {
@@ -1275,7 +1268,7 @@ ul {
   .search-form-input {
     height: auto;
     padding: 10px;
-    font-size: 18px;
+    font-size: 16px;
   }
 
   .select-element {
@@ -1465,6 +1458,10 @@ ul {
   .search-restaurant-container {
     width: 100%;
   }
+
+  .search-block {
+    width: 100%;
+  }  
 
   .restaurant-registration-form {
     width: 100%;

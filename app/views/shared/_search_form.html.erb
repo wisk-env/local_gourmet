@@ -6,10 +6,10 @@
   <div class="search-tab-container">
     <div class="search-tab-navigation">
       <div class="search-tab">
-        <%= link_to '地図から探す', restaurants_path, class: "search-from-map font-size-M" %>
+        <%= link_to '地図から探す', restaurants_path, class: "search-from-map font-size-S" %>
       </div>
       <div class="search-tab active-status">
-        <%= link_to '口コミから探す', reviews_path, class: "search-from-reviews font-size-M" %>
+        <%= link_to '口コミから探す', reviews_path, class: "search-from-reviews font-size-S" %>
       </div>
     </div>
   </div>
@@ -26,11 +26,13 @@
 
     <div class="search-price-element">
       <%= f.label :price, '料金', class: "search-form-label font-size-M" %>
-      <span class="text-in-price-element">¥</span>
-      <%= f.number_field :price_gteq, class: "search-price-input font-size-M" %>
-      <span class="text-in-price-element">以上 〜¥</span>
-      <%= f.number_field :price_lteq, class: "search-price-input font-size-M" %>
-      <span class="text-in-price-element">以下</span>
+        <span class="text-in-price-element">¥</span>
+        <%= f.number_field :price_gteq, class: "search-price-input font-size-M" %>
+        <span class="text-in-price-element">以上</span>
+        <span class="text-in-price-element"> 〜¥</span>
+        <%= f.number_field :price_lteq, class: "search-price-input font-size-M" %>
+        <span class="text-in-price-element">以下</span>
+      </div>
     </div>
 
     <div class="user-pick-element-box">
