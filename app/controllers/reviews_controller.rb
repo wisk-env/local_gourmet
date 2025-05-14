@@ -85,9 +85,7 @@ class ReviewsController < ApplicationController
   end
 
   def image_resize(params)
-    if params[:image]
-      params[:image].tempfile = ImageProcessing::MiniMagick.source(params[:image].tempfile).resize_to_limit(380, 260).call
-    end
+    params[:image].tempfile = ImageProcessing::MiniMagick.source(params[:image].tempfile).resize_to_limit(380, 260).call if params[:image]
     params
   end
 
