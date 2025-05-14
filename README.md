@@ -31,7 +31,7 @@ API | Geocoding API / Maps JavaScript API
 - レスポンシブ対応
 
 ## ER図
-[![Image from Gyazo](https://i.gyazo.com/74e93c539b2f8aaa223f81de4d851697.png)](https://gyazo.com/74e93c539b2f8aaa223f81de4d851697)
+[![Image from Gyazo](https://i.gyazo.com/8b46c2a92cf8f7a218c5a49412133778.png)](https://gyazo.com/8b46c2a92cf8f7a218c5a49412133778)
 
 ## 画面遷移図
 [Figma](https://www.figma.com/design/Oyd9S91vphi0PfvhBlKD70/%E3%83%AD%E3%83%BC%E3%82%AB%E3%83%AB%E3%82%B0%E3%83%AB%E3%83%A1?node-id=429-39&p=f&t=boF0yFyNhmlYzMtQ-0)
