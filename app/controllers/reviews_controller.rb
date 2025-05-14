@@ -23,7 +23,8 @@ class ReviewsController < ApplicationController
 
   def create
     @restaurant = Restaurant.find(params[:restaurant_id])
-    @review = Review.new(review_params)
+    # @review = Review.new(review_params)
+    @review = Review.new(image_resize(review_params))
     if @review.save
       flash[:notice] = '口コミを投稿しました'
       redirect_to restaurant_path(@review.restaurant_id)
@@ -41,7 +42,8 @@ class ReviewsController < ApplicationController
   def update
     @restaurant = Restaurant.find(params[:restaurant_id])
     @review = Review.find(params[:id])
-    if @review.update(review_params)
+    # if @review.update(review_params)
+    if @review.update(image_resize(review_params))
       flash[:notice] = '口コミを更新しました'
       redirect_to restaurant_review_path(@restaurant, @review)
     else
@@ -80,6 +82,11 @@ class ReviewsController < ApplicationController
   def review_params
     params.require(:review).permit(:menu, :price, :visit_date, :visit_time, :number_of_visitors, :comment, :image,
                                    :user_id, :restaurant_id, feedback_option_ids: [], genre_ids: [])
+  end
+
+  def image_resize(params)
+    params[:image].tempfile = ImageProcessing::MiniMagick.source(params[:image].tempfile).resize_to_limit(380, 260).call if params[:image]
+    params
   end
 
   def search_params

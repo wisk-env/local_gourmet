@@ -5,7 +5,7 @@
   <div class="header-end">
     <div class="header-my-page-link">
       <%= link_to profile_path, class: "header-login-user" do %>
-        <div><%= image_tag current_user.avatar, class: "header-user-icon" %></div>
+        <div><%= image_tag current_user.avatar.variant(resize_to_fill: [40, 40]), class: "header-user-icon" %></div>
         <div class="header-login-user-name">
           <%= current_user.name %>
         </div>

@@ -14,7 +14,7 @@
     <div class="white-background-container font-size-M">
       <div class="review-user">
         <div>
-          <%= image_tag @review.user.avatar, class: "review-user-icon" %>
+          <%= image_tag @review.user.avatar.variant(resize_to_fill: [30, 30]), class: "review-user-icon" %>
         </div>
         <div class="detail-review-user-name">
           <%= @review.user.name %>
