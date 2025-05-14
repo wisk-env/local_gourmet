@@ -2,7 +2,7 @@
   <h2 class="page-top-text font-size-L">マイページ</h2>
   <div class="user-container">
     <div class="avatar-image-wrap">
-      <%= image_tag @user.avatar, class: "avatar-image" %>
+      <%= image_tag @user.avatar.variant(resize_to_fill: [150, 150]), class: "avatar-image" %>
     </div>
     <div class="user-info-box">
       <div class="user-name font-size-M dark-brown"><%= @user.name %></div>

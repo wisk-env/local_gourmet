@@ -62,7 +62,7 @@
               </div>
               <div class="review-card-bottom-wrap">
                 <div class="review-user">
-                  <div><%= image_tag review.user.avatar, class: "review-user-icon" %></div>
+                  <div><%= image_tag review.user.avatar.variant(resize_to_fill: [30, 30]), class: "review-user-icon" %></div>
                   <div class="review-user-name font-size-S"><%= review.user.name %></div>
                 </div>
                 <% if user_signed_in? %>
