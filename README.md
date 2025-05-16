@@ -43,10 +43,10 @@ API | Geocoding API / Maps JavaScript API
 
 </br>
 
-| マップ検索 | 口コミ検索 |
+| 口コミ検索 | マップ検索 |
 |:-----------:|:------------:|
-| [![Image from Gyazo](https://i.gyazo.com/0595a5dd9c3e5fd18698272b0859517b.gif)](https://gyazo.com/0595a5dd9c3e5fd18698272b0859517b) | [![Image from Gyazo](https://i.gyazo.com/879241ec85fb97dc5ce1245dc7ba4247.gif)](https://gyazo.com/879241ec85fb97dc5ce1245dc7ba4247) |
-| マップから登録されている店舗を検索できます。 | ユーザーの口コミ情報をキーワードやエリア、価格帯、その他こだわり条件を基に検索できます。 |
+| [![Image from Gyazo](https://i.gyazo.com/879241ec85fb97dc5ce1245dc7ba4247.gif)](https://gyazo.com/879241ec85fb97dc5ce1245dc7ba4247) | [![Image from Gyazo](https://i.gyazo.com/0595a5dd9c3e5fd18698272b0859517b.gif)](https://gyazo.com/0595a5dd9c3e5fd18698272b0859517b) |
+| ユーザーの口コミ情報をキーワードやエリア、価格帯、その他こだわり条件を基に検索できます。 | マップから登録されている店舗を検索できます。 |
 
 ## ER図
 [![Image from Gyazo](https://i.gyazo.com/8b46c2a92cf8f7a218c5a49412133778.png)](https://gyazo.com/8b46c2a92cf8f7a218c5a49412133778)
