@@ -546,6 +546,9 @@ ul {
 .font-brown {
   font-weight: 700;
   color: #B99470;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+  overflow: hidden;
 }
 
 .dark-brown {
@@ -631,6 +634,7 @@ ul {
 
 .review-contents-wrap {
   margin-top: 15px;
+  margin-left: 10px;
 }
 
 .form-text-label {
