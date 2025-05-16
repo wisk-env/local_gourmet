@@ -31,7 +31,7 @@ API | Geocoding API / Maps JavaScript API
 - レスポンシブ対応
 
 ## 工夫した点
-- ユーザーが口コミを投稿したい飲食店が、本サービスに登録されているお店か判定する処理を制御できるようにしたこと。
+- ユーザーが口コミを投稿したい飲食店が、本サービスに登録されているお店か判定できるように制御したこと。
 - 口コミ検索にて、キーワードやエリア、価格帯の他、ジャンルやお店の雰囲気・特徴等でも検索できるようにしたこと。
 - 本番環境での画像の読み込み速度を上げるため、口コミ投稿時にアップロードできる画像をリサイズして保存できるようにしたこと。
 
@@ -45,7 +45,7 @@ API | Geocoding API / Maps JavaScript API
 
 | マップ検索 | 口コミ検索 |
 |:-----------:|:------------:|
-| [![Image from Gyazo](https://i.gyazo.com/0595a5dd9c3e5fd18698272b0859517b.gif)](https://gyazo.com/0595a5dd9c3e5fd18698272b0859517b) |  |
+| [![Image from Gyazo](https://i.gyazo.com/0595a5dd9c3e5fd18698272b0859517b.gif)](https://gyazo.com/0595a5dd9c3e5fd18698272b0859517b) | [![Image from Gyazo](https://i.gyazo.com/879241ec85fb97dc5ce1245dc7ba4247.gif)](https://gyazo.com/879241ec85fb97dc5ce1245dc7ba4247) |
 | マップから登録されている店舗を検索できます。 | ユーザーの口コミ情報をキーワードやエリア、価格帯、その他こだわり条件を基に検索できます。 |
 
 ## ER図
