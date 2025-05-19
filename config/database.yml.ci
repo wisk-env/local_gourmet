@@ -1,7 +1,11 @@
-test:
+default: &default
   adapter: postgresql
   encoding: unicode
-  username: root
-  password: password
   host: localhost
+  username: postgres
+  password: postgres
+  pool: 5
+
+test:
+  <<: *default
   database: local_foodie_test
