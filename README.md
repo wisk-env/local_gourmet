@@ -15,7 +15,7 @@ https://local-gurume.com/
 バックエンド | Ruby 3.3.8 / Ruby on Rails 7.1.5.1 / PostgreSQL 14.17
 インフラ | Heroku / AWS S3
 API | Geocoding API / Maps JavaScript API
-その他ツール | Visual Studio Code / draw.io / Figma
+その他ツール | Visual Studio Code / draw.io / Figma / GitHub Actions
 
 ## 機能一覧
 - ユーザー登録 / ログイン / ログアウト機能 (devise)
