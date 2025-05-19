@@ -1,0 +1,7 @@
+test:
+  adapter: postgresql
+  encoding: unicode
+  username: root
+  password: password
+  host: localhost
+  database: local_foodie_test
