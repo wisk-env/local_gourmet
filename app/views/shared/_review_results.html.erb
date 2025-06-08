@@ -1,7 +1,7 @@
 <div class="review-box-container">
   <% @results.each do |review| %>
     <div class="review-box">
-      <%= link_to restaurant_review_path(review.restaurant_id, review) do %>
+      <%= link_to restaurant_review_path(review.restaurant_id, review), :rel => "preload" do %>
         <div>
           <% if review.image.present? %>
             <div class="menu-image border-image">
